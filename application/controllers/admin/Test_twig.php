@@ -19,6 +19,11 @@ class Test_twig extends CI_Controller {
 	{
 		$this->load->model('Stuff_template_generator');
 		$this->Stuff_template_generator->create_template($sectionid,$entryid);
+
+		$this->session->set_flashdata('type', '1');
+		$this->session->set_flashdata('msg', '<strong>Success</strong> Congratulations your template file has been generated!');
+
+		redirect("admin/entries/render_section/$sectionid/$entryid","refresh");
 	}
 
 

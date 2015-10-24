@@ -172,7 +172,7 @@
 
 		        	<div class="form-group">
 		        	    
-		        		<div class="btn btn-sm  btn-info btn-rounded" data-toggle="popover" data-html="true" data-placement="top" data-content="Click this link if you want the ignitedCMS engine to auto generate the template files including sub directories. <strong>Warning this will overwrite any existing templates you have created for this entry type!!</strong>" title="" data-original-title='<button type="button" class="close pull-right" data-dismiss="popover">&times;</button>Info'> <i class="fa fa-question"></i> <strong></strong> 
+		        		<div class="btn btn-sm  btn-danger btn-rounded" data-toggle="popover" data-html="true" data-placement="top" data-content="Click this link if you want the ignitedCMS engine to auto generate the template files including sub directories. <strong>Warning this will overwrite any existing templates you have created for this entry type!!</strong>" title="" data-original-title='<button type="button" class="close pull-right" data-dismiss="popover">&times;</button>Info'> <i class="fa fa-question"></i> <strong></strong> 
 		        		                </div>
 		        		   <a href="<?php echo site_url("admin/test_twig/gen_template/$sectionid/$entryid"); ?>" >
 			        		

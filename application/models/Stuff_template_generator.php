@@ -114,11 +114,11 @@ class Stuff_template_generator extends CI_Model {
 			
 			if ( ! write_file("./application/views/custom/$folder/_entry.html", $string))
 			{
-			    echo 'Unable to write the file';
+			    echo 'Unable to write the file, check you have right permissions';
 			}
 			else
 			{
-			    echo 'File written!';
+			    //echo 'File written!';
 			}
 		}
 		else
@@ -142,11 +142,11 @@ class Stuff_template_generator extends CI_Model {
 			$file = $this->get_section_name($sectionid);
 			if ( ! write_file("./application/views/custom/$file.html", $string))
 			{
-			    echo 'Unable to write the file';
+			    echo 'Unable to write the file, check you have right permissions';
 			}
 			else
 			{
-			    echo 'File written!';
+			    //echo 'File written!';
 			}
 		}
 	}
