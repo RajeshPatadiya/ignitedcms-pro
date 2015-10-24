@@ -7,14 +7,11 @@
     <li> <a href="<?php echo site_url('admin/help/templating'); ?>">Templating</a>
         <ul>
             <li> <a href="<?php echo site_url('admin/help/fields'); ?>">Fields</a> </li>
-            <li> <a href="#">Sections</a>
-                <ul>
-                    <li> <a href="#">Singles</a> </li>
-                    <li> <a href="#">Multiples</a> </li>
-                    <li> <a href="#">Globals</a> </li>
-                </ul>
+            <li> <a href="<?php echo site_url('admin/help/sections'); ?>">Sections</a>
+               
             </li>
-            <li> <a href="#">Entries</a> </li>
+            <li> <a href="<?php echo site_url('admin/help/entries'); ?>">Entries</a> </li>
         </ul>
     </li>
+    <li> <a href="<?php echo site_url('admin/help/wherenow'); ?>"> Where to go from here?</a> </li>
 </ul>

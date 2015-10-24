@@ -75,7 +75,7 @@
 
        
        $(m_tmp).attr("rid","0");
-       $(m_tmp).removeClass("required");
+       $(m_tmp).removeClass("m-required");
 
        
 

@@ -106,7 +106,7 @@
 			           	 		  if($row->required == "1")
 			           	 		  {
 			           	 		  	$required = 1;
-			           	 		  	$class = " required";
+			           	 		  	$class = "m-required";
 			           	 		  }
 
 			           	 		 ?>

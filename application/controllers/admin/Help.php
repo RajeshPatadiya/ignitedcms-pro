@@ -84,6 +84,33 @@ class Help extends CI_Controller {
 
 	}
 
+	public function sections()
+	{
+		$this->load->view('admin/header');
+		$this->load->view('admin/body');
+		$this->load->view('admin/help/sections');
+		$this->load->view('admin/footer');
+
+	}
+
+	public function entries()
+	{
+		$this->load->view('admin/header');
+		$this->load->view('admin/body');
+		$this->load->view('admin/help/entries');
+		$this->load->view('admin/footer');
+
+	}
+
+	public function wherenow()
+	{
+		$this->load->view('admin/header');
+		$this->load->view('admin/body');
+		$this->load->view('admin/help/where');
+		$this->load->view('admin/footer');
+
+	}
+
 }
 
 /* End of file help.php */
