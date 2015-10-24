@@ -1,0 +1,70 @@
+{#
+ This is the main template file that all other files will be inherited
+ from. PLEASE DO NOT DELETE THIS FILE!!! 
+
+
+ #}
+
+
+<html>
+
+<head>
+	<title>Something</title>
+
+	<style type="text/css">
+
+		
+		.container
+		{
+			position: relative;
+			margin: 0 auto;
+			max-width: 600px;	
+		}
+
+		a
+		{
+			
+		}
+
+		img
+		{
+			margin-top: 20px;
+			
+		}
+
+		.footer
+		{
+			background-color: #333;
+			padding:20px;
+			
+		}
+
+		/*style the date*/
+		.date{
+			max-width: 300px;
+			background-color: #eee;
+			padding:10px;
+			float:right;
+			font-size: 12px;
+		}
+
+		
+
+	</style>
+</head>
+<body>
+	
+	<div class="container"> 
+		
+		<div class="header"> </div>
+		{% block content %} 
+
+		{% endblock %}
+    	<div class="footer">Here is the footer </div>
+	</div>
+	
+
+
+</body>
+
+</html>
