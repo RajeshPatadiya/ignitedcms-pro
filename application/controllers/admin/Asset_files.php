@@ -66,7 +66,7 @@ class Asset_files extends CI_Controller {
 			}
 			
 
-			$config['upload_path'] = './img/uploads/';
+			$config['upload_path'] = './assets/uploads/';
 
 	          
 
@@ -106,7 +106,7 @@ class Asset_files extends CI_Controller {
 
 	            //create a thumbnail
 	   			$config['image_library'] = 'gd2';
-				$config['source_image']	= "./img/uploads/$filename";
+				$config['source_image']	= "./assets/uploads/$filename";
 				$config['create_thumb'] = TRUE;
 				
 				$config['maintain_ratio'] = TRUE;
@@ -129,7 +129,7 @@ class Asset_files extends CI_Controller {
 
 				//make square image
 				$config2['image_library'] = 'gd2';
-				$config2['source_image']	= "./img/uploads/$thumb";
+				$config2['source_image']	= "./assets/uploads/$thumb";
 				$config2['create_thumb'] = FALSE;
 				$config2['maintain_ratio'] = FALSE;
 				$config2['x_axis']  =5;
@@ -151,8 +151,8 @@ class Asset_files extends CI_Controller {
 
 				$fullsize = $mytry['raw_name'] .  $mytry['file_ext'];
 
-				$url = base_url('img/uploads') . "/" . $mytry['file_name'];
-				$thumb = base_url('img/uploads') . "/" . $thumb;
+				$url = base_url('assets/uploads') . "/" . $mytry['file_name'];
+				$thumb = base_url('assets/uploads') . "/" . $thumb;
 
 				$arrayName = array(
 					'entryid'     =>  $entryid, 

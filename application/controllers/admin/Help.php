@@ -34,9 +34,54 @@ class Help extends CI_Controller {
 	{
 		$this->load->view('admin/header');
 		$this->load->view('admin/body');
-		$this->load->view('admin/help/help-view');
+		$this->load->view('admin/help/help');
 		$this->load->view('admin/footer');
 		
+	}
+
+	public function glance()
+	{
+		$this->load->view('admin/header');
+		$this->load->view('admin/body');
+		$this->load->view('admin/help/glance');
+		$this->load->view('admin/footer');
+
+	}
+
+	public function structure()
+	{
+		$this->load->view('admin/header');
+		$this->load->view('admin/body');
+		$this->load->view('admin/help/structure');
+		$this->load->view('admin/footer');
+
+	}
+
+	public function templating()
+	{
+		$this->load->view('admin/header');
+		$this->load->view('admin/body');
+		$this->load->view('admin/help/templating');
+		$this->load->view('admin/footer');
+
+	}
+
+	public function fields()
+	{
+		$this->load->view('admin/header');
+		$this->load->view('admin/body');
+		$this->load->view('admin/help/fields');
+		$this->load->view('admin/footer');
+
+	}
+
+	public function installing()
+	{
+		$this->load->view('admin/header');
+		$this->load->view('admin/body');
+		$this->load->view('admin/help/installing');
+		$this->load->view('admin/footer');
+
 	}
 
 }

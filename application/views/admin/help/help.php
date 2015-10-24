@@ -37,42 +37,7 @@
   		        
   		        <div class="panel-body">
   		        	<h3 class="">Documentation</h3>
-  		        	<ul>
-					   <li>
-					      <a href="#">Introduction</a>
-					   </li>
-					   <li>
-					      <a href="#">Installing and Updating</a>
-					      <ul>
-					         <li>
-					            <a href="#">Requirements</a>
-					         </li>
-					         <li>
-					            <a href="#">Installing</a>
-					         </li>
-					         <li>
-					            <a href="#">Updating</a>
-					         </li>
-					      </ul>
-					   </li>
-					   <li>
-					      <a href="#">IgnitedCMS's Folder Structure</a>
-					   </li>
-					   <li>
-					      <a href="#">Configuration</a>
-					      <ul>
-					         <li>
-					            <a href="#">General Config Settings</a>
-					         </li>
-					         <li>
-					            <a href="#">Multi-Environment Configs</a>
-					         </li>
-					         <li>
-					            <a href="#">PHP Constants</a>
-					         </li>
-					      </ul>
-					   </li>
-					</ul>
+  		        	<?php $this->load->view('admin/help/menu'); ?>
   		        </div>
   		    </section>
   		</div>
@@ -96,9 +61,7 @@
 ?>
 
 ')); ?>
-  		        		
-
-  		        	</pre>
+</pre>
 
   		        </div>
   		    </section>
