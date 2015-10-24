@@ -131,13 +131,14 @@
 
 			      <div class="clearfix"></div>
 			      <div class="small-gap"></div>
-
-			      </div>
-
-			      <div class="form-group">
+			       <div class="form-group">
 			          <button type="submit" class="btn btn-purplet btn-s-xs " id="bob" ><strong>Update</strong></button>
 			          
 			      </div>
+
+			      </div>
+
+			     
 			      <?php echo form_close(); ?>
 	              </div>
 	          </section>

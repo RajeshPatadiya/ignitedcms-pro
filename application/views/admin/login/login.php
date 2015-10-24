@@ -25,11 +25,11 @@
                     
                         <div class="form-group">
                             <label>Username</label>
-                            <input name="name" type="text" data-required="true" data-maxlength="20" class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top" title="username" value="admin">
+                            <input name="name" type="text" data-required="true" data-maxlength="200" class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top"  value="admin">
                         </div>
                         <div class="form-group">
                             <label>Password</label>
-                            <input name="password" type="password" data-required="true" data-maxlength="20" class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top" title="password" value="">
+                            <input name="password" type="password" data-required="true" data-maxlength="100" class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top"  value="">
                         </div>
                    
                         

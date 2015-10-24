@@ -62,7 +62,7 @@
        
        $(m_tmp).attr("rid","1");
 
-       $(m_tmp).addClass("required");
+       $(m_tmp).addClass("m-required");
 
        
 

@@ -1,5 +1,6 @@
 <div class="row">
-    <div class="mainvcontainer" style="background-image:url('<?php echo base_url('img/bg.jpg'); ?>'); min-height:900px;">
+    <div class="mainvcontainer" style="background-image:url('<?php echo base_url('img/bg.jpg'); ?>'); backround-repeat: no-repeat; 
+        background-size:100%; min-height:990px;">
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
             <section class="panel" style="margin-top:90px;padding:50px; 

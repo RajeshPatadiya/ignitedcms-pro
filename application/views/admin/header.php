@@ -342,7 +342,7 @@
             cursor: pointer;
           }
 
-          .required{
+          .m-required{
             background-color: #2E8C7A;
 
           }

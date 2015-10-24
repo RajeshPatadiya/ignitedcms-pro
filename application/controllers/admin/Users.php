@@ -251,7 +251,7 @@ class Users extends CI_Controller {
 	  *
 	  *  	 @returns: returns
 	  */
-	public function save_user()
+	public function deprecated_save_user()
 	{
 		$this->form_validation->set_rules('name', 'Name', 'alpha');
         
@@ -287,7 +287,7 @@ class Users extends CI_Controller {
 	  *
 	  *  	 @returns: returns
 	  */
-	public function _deprecated_save_user()
+	public function save_user()
 	{
 		$name     = $this->input->post('name');
 		$email    = $this->input->post('email');
