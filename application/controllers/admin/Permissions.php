@@ -87,33 +87,57 @@ class Permissions extends CI_Controller {
 	public function save_permission_group()
 	{
 
-		$groupName = $this->input->post('groupName');
+		
 
-		$object = array('groupName' => $groupName );
+		$this->form_validation->set_rules('groupName', 'Group Name', 'required|is_unique[permission_groups.groupName]');
 
-		$this->db->insert('permission_groups', $object);
+		if ($this->form_validation->run() == FALSE)
+		{
+			//error
+			$this->db->select('*');
+			$this->db->from('permissions');
+			$query = $this->db->get();
+			
+			$data['query'] =  $query;
 
-		//get and store the insert id
-		$insert_id = $this->db->insert_id();
+			$this->load->helper('inflector');
+			//Use CI inflector to pretty up output
+			//eg convert site_settings to Site Settings with  humanize() function
+			
+
+			$this->load->view('admin/header');
+			$this->load->view('admin/body');
+			$this->load->view('admin/permissions/group-perm-details',$data);
+			$this->load->view('admin/footer');
+		}
+		else
+		{
+			$groupName = $this->input->post('groupName');
+
+			$object = array('groupName' => $groupName );
+
+			$this->db->insert('permission_groups', $object);
+
+			//get and store the insert id
+			$insert_id = $this->db->insert_id();
 
 
-		foreach($_POST as $key => $value) 
-    	{
-    		//ignore the first one
-    		if($key != "groupName")
-    		{
-    			if (isset($key))
+			foreach($_POST as $key => $value) 
+	    	{
+	    		//ignore the first one
+	    		if($key != "groupName")
 	    		{
-	    			//insert into db
-	    			$object2 = array('groupID' => $insert_id, 'permissionID' => $key );
-	    			$this->db->insert('permission_map', $object2);
-	    		}
-	    		
+	    			if (isset($key))
+		    		{
+		    			//insert into db
+		    			$object2 = array('groupID' => $insert_id, 'permissionID' => $key );
+		    			$this->db->insert('permission_map', $object2);
+		    		}
+	    		}	
+	    	}
 
-    		}	
-    	}
-
-    	redirect("admin/permissions", "refresh");
+	    	redirect("admin/permissions", "refresh");		
+		}		
 	}
 
 

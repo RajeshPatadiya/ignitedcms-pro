@@ -33,7 +33,7 @@
           </div>
       </div> 
       <!-- end breadcrumb -->
-      <?php echo validation_errors(); ?>
+      
 
       <div class="row" style="margin-left:30px; margin-right:30px;">
       	<div class="col-sm-12">
@@ -43,23 +43,39 @@
       	        
       	        <div class="panel-body">
       	        	<div class="form-group">
-      	        	    <label>Username*</label>
-      	        	    <input name="name" type="text" data-required="true" data-maxlength="100" class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top" title="Username" value="<?php echo set_value('name'); ?>">
+      	        	    <label>Username</label>
+                      <div class="errors pull-left">*</div>
+                      <div class="igs-small">Chose a suitable username no spaces please</div>
+                      
+      	        	    <input name="name" type="text"  class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top"  value="<?php echo set_value('name'); ?>">
+
+                      <div class="errors"><?php echo form_error('name'); ?> </div>
       	        	</div>
       	        	<div class="form-group">
-      	        	    <label>Email*</label>
-      	        	    <input name="email" type="text" data-type="email" data-required="true" data-maxlength="200" class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top" title="Email" value="">
+      	        	    <label>Email</label>
+                      <div class="errors pull-left">*</div>
+                      <div class="igs-small">Enter a valid email address</div>
+                      
+      	        	    <input name="email" type="text"  data-maxlength="200" class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top"  value="<?php echo set_value('email'); ?>">
+                      <div class="errors"><?php echo form_error('email'); ?> </div>
       	        	</div>
 
       	        	<div class="form-group">
-      	        	    <label>Password*</label> 
+      	        	    <label>Password</label>
+                      <div class="errors pull-left">*</div> 
+                      <div class="igs-small">Make sure password is 6 letters long and contains one number</div>
+                      
       	        	    <div  class=" btn btn-sm  btn-info btn-rounded" data-toggle="popover" data-html="true" data-placement="right" data-content="Make sure it is more than 6 characters long and contains at least one number." title="" data-original-title='<button type="button" class="close pull-right" data-dismiss="popover">&times;</button>Info'> <i class="fa fa-question"></i> <strong></strong> 
       	        	     </div>
-      	        	    <input style="margin-top:10px;" name="password" type="password" data-required="true" data-maxlength="200" class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top" title="Password" value="">
+      	        	    <input style="margin-top:10px;" name="password" type="password" d class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top"  value="<?php echo set_value('password'); ?>">
+
+                      <div class="errors"><?php echo form_error('password'); ?> </div>
       	        	</div>
 
       	        	<div class="form-group">
-      	        	    <label>Role*</label> 
+      	        	    <label>Role</label> 
+                      <div class="errors pull-left">*</div>
+
       	        	    <div class=" btn btn-sm  btn-info btn-rounded" data-toggle="popover" data-html="true" data-placement="right" data-content="Assign the user privileges. What they have <strong>access</strong> to in their dashboard." title="" data-original-title='<button type="button" class="close pull-right" data-dismiss="popover">&times;</button>Info'> <i class="fa fa-question"></i> <strong></strong> 
       	        	                    </div>
 

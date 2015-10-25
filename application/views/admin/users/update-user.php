@@ -47,7 +47,8 @@
                   
 
       	        	<div class="form-group">
-      	        	    <label>Role*</label> 
+      	        	    <label>Role</label> 
+                      <div class="errors pull-left">*</div>
       	        	    <div class=" btn btn-sm  btn-info btn-rounded" data-toggle="popover" data-html="true" data-placement="right" data-content="Assign the user privileges. What they have <strong>access</strong> to in their dashboard." title="" data-original-title='<button type="button" class="close pull-right" data-dismiss="popover">&times;</button>Info'> <i class="fa fa-question"></i> <strong></strong> 
       	        	                    </div>
 
@@ -67,8 +68,7 @@
 
       	        	<label>
       	        		<input type="checkbox" name="" value="" />
-      	        		Require password reset on first login?
-      	        	</label>
+      	        	</label> Require password reset on first login?
       	        	<br/>
 
       	        	<button type="submit" class="pull-right btn btn-purplet btn-s-xs " ><strong>Update</strong></button>

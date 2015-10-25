@@ -245,38 +245,7 @@ class Users extends CI_Controller {
 	}
 
 
-	 /**
-	  *  @Description: test the form validation with re-populate
-	  *       @Params: params
-	  *
-	  *  	 @returns: returns
-	  */
-	public function deprecated_save_user()
-	{
-		$this->form_validation->set_rules('name', 'Name', 'alpha');
-        
-
-        if ($this->form_validation->run() == FALSE)
-        {
-                $this->db->select('*');
-				$this->db->from('permission_groups');
-				$query = $this->db->get();
-				
-				$data['query'] = $query;
-
-
-				$this->load->view('admin/header');
-				$this->load->view('admin/body');
-				$this->load->view('admin/users/add-user',$data); 
-				$this->load->view('admin/footer');
-                
-        }
-        else
-        {
-                //success
-                redirect("admin/users","refresh");
-        }
-	}
+	 
 
 
 
@@ -289,48 +258,79 @@ class Users extends CI_Controller {
 	  */
 	public function save_user()
 	{
-		$name     = $this->input->post('name');
-		$email    = $this->input->post('email');
-		$password = $this->input->post('password');
-
-		$roles     = $this->input->post('roles');
-
 		
+		$this->form_validation->set_rules('name', 'Name', 'required|alpha_numeric|min_length[3]');
+		$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+		$this->form_validation->set_rules('password', 'Password', 'required');
 
-		//do sanity if ok insert into database!
-		$this->load->model('Stuff_user');
-		if ($this->Stuff_user->add_user($name,$email,$password,$roles) == "*")
+		if ($this->form_validation->run() == FALSE)
 		{
-			//success
-			$hashed_password = password_hash($password, PASSWORD_BCRYPT);
+			//error
+			$this->db->select('*');
+			$this->db->from('permission_groups');
+			$query = $this->db->get();
 			
+			$data['query'] = $query;
 
-			$object = array(
-				'name' => $name, 
-				'email' => $email,
-				'password' => $hashed_password,
-				'permissiongroup' => $roles,
-				'joindate'  => date("Y-m-d H:i:s")
-				);
-			$this->db->insert('user', $object);
 
-			$this->session->set_flashdata('type', '1');
-			$this->session->set_flashdata('msg', '<strong>Success</strong> User created!');
-			redirect("admin/users","refresh");
-
+			$this->load->view('admin/header');
+			$this->load->view('admin/body');
+			$this->load->view('admin/users/add-user',$data); 
+			$this->load->view('admin/footer');
 		}
 		else
 		{
-			//failure
-			$error_message = $this->Stuff_user->add_user($name,$email,$password,$roles);
-			$this->session->set_flashdata('type', '0');
-			$this->session->set_flashdata('msg', "<strong>Failed</strong> $error_message");
-			redirect("admin/users/add_user_view","refresh");
+			$name     = $this->input->post('name');
+			$email    = $this->input->post('email');
+			$password = $this->input->post('password');
+
+			$roles     = $this->input->post('roles');
+
+			
+
+			//do sanity if ok insert into database!
+			$this->load->model('Stuff_user');
+			if ($this->Stuff_user->add_user($name,$email,$password,$roles) == "*")
+			{
+				//success
+				$hashed_password = password_hash($password, PASSWORD_BCRYPT);
+				
+
+				$object = array(
+					'name' => $name, 
+					'email' => $email,
+					'password' => $hashed_password,
+					'permissiongroup' => $roles,
+					'joindate'  => date("Y-m-d H:i:s")
+					);
+				$this->db->insert('user', $object);
+
+				$this->session->set_flashdata('type', '1');
+				$this->session->set_flashdata('msg', '<strong>Success</strong> User created!');
+				redirect("admin/users","refresh");
+
+			}
+			else
+			{
+				//failure
+				$error_message = $this->Stuff_user->add_user($name,$email,$password,$roles);
+				$this->session->set_flashdata('type', '0');
+				$this->session->set_flashdata('msg', "<strong>Failed</strong> $error_message");
+				
+				$this->db->select('*');
+				$this->db->from('permission_groups');
+				$query = $this->db->get();
+				
+				$data['query'] = $query;
 
 
+				$this->load->view('admin/header');
+				$this->load->view('admin/body');
+				$this->load->view('admin/users/add-user',$data); 
+				$this->load->view('admin/footer');
+			}
+			
 		}
-
-		
 
 	}
 
