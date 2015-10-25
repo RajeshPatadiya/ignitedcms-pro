@@ -254,9 +254,9 @@ class Sections extends CI_Controller {
 		
 		if ($this->form_validation->run() == FALSE)
 		{
-			 $message =  validation_errors(); 
-			 $this->session->set_flashdata('type', '0');
-			 $this->session->set_flashdata('msg', "<strong>Failed</strong> $message");
+			 // $message =  validation_errors(); 
+			 // $this->session->set_flashdata('type', '0');
+			 // $this->session->set_flashdata('msg', "<strong>Failed</strong> $message");
 
 			 $this->db->select('*');
 			$this->db->from('fields');

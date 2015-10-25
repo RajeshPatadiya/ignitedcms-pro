@@ -228,9 +228,9 @@ class Field_builder extends CI_Controller {
 		
 		if ($this->form_validation->run() == FALSE)
 		{
-			 $message =  validation_errors(); 
-			 $this->session->set_flashdata('type', '0');
-			 $this->session->set_flashdata('msg', "<strong>Failed</strong> $message");
+			 // $message =  validation_errors(); 
+			 // $this->session->set_flashdata('type', '0');
+			 // $this->session->set_flashdata('msg', "<strong>Failed</strong> $message");
 
 			 $this->load->view('admin/header');
 			 $this->load->view('admin/body');

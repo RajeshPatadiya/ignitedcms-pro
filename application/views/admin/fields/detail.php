@@ -8,6 +8,7 @@
             <ul class="breadcrumb">
               <li><a href="<?php echo site_url('admin/dashboard'); ?>"><i class="fa fa-home"></i> <?php echo ('Dashboard'); ?></a></li>
               <li class='active'><a href="<?php echo site_url('admin/field_builder'); ?>"><i class="fa fa-list-ul"></i> <?php echo('Field Builder');?></a></li>
+              <li> <a href="#">Add new field</a> </li>
               
             </ul>
                   
@@ -40,7 +41,9 @@
                 <div class="inline font-bold">
                     <?php echo $title; ?> 
                   </div>
-                <div class="pull-right btn btn-sm  btn-info btn-rounded" data-toggle="popover" data-html="true" data-placement="bottom" data-content="Easily build your field type backends" title="" data-original-title='<button type="button" class="close pull-right" data-dismiss="popover">&times;</button>Info'> <i class="fa fa-question"></i> <strong></strong> 
+
+
+                <div class="pull-right btn btn-sm  btn-info btn-rounded" data-toggle="popover" data-html="true" data-placement="bottom" data-content='<?php echo anchor('admin/help/fields', 'Help', 'attributs'); ?>' title="" data-original-title='<button type="button" class="close pull-right" data-dismiss="popover">&times;</button>Info'> <i class="fa fa-question"></i> <strong></strong> 
                 </div>
             </header>
             <?php $atts= array( 'data-validate'=>'parsley'); echo form_open_multipart('admin/field_builder/save_field/1',$atts); ?>
@@ -49,6 +52,7 @@
                 <div class="panel-body">
                     <div class="form-group">
                         <label>Name</label>
+                        <div class="errors pull-left">*</div>
                         <div class="igs-small">What this field will be called in the control panel. 
                           (This <strong>MUST</strong> be unique and must not contain numbers or spaces)</div>
                         <input name="handle" type="text" 
@@ -69,6 +73,7 @@
                     </div>
                     <div class="form-group">
                         <label>Field Type</label>
+                        <div class="errors pull-left">*</div>
                         <div class="igs-small">Specify the field type</div>
                         <select name="type" class="form-control m-b" id="type">
                             <option>Please select</option>
@@ -82,6 +87,7 @@
                             <option value="date">Date</option>
                             <option value="switch">Switch</option>
                         </select>
+                        <div class='errors'><?php echo form_error('type'); ?></div>
                     </div>
                     <div class="pm-check-box" style="display:none;">
                         <!-- dynamic dropdown and checkboxes -->

@@ -48,7 +48,7 @@ class Installer extends CI_Controller {
 	{
 		if($this->check_if_written()==true)
 		{
-			redirect("admin/installer/login", "refresh");
+			redirect("login", "refresh");
 		}
 		else
 		{

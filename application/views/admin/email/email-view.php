@@ -46,12 +46,16 @@
 
 		        	<div class="form-group">
 	        		    <label>System Email Address</label>
+	        		    <div class="errors pull-left">*</div>
 	        		    <div class="igs-small">The email address IgnitedCMS will use when sending email</div>
-	        		    <input name="smtp_user" type="text" data-type="email" data-required="true" data-maxlength="100" class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top" title="" value="<?php echo $row->smtp_user; ?>">
+	        		    <input name="smtp_user" type="text"  class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top" title="" value="<?php echo $row->smtp_user; ?>">
+
+	        		    <div class="errors"><?php echo form_error('smtp_user'); ?> </div>
 		        	</div>
 
 					<div class="form-group">
       	        	    <label>Protocol Currently using <?php echo $row->protocol; ?></label>
+      	        	    <div class="errors pull-left">*</div>
       	        	    <div class="igs-small">The Email Protocol used</div>
 	      	        	<select name="roles" class="form-control m-b" id="roles">
 	                         
@@ -63,22 +67,31 @@
 	                 </div>
 
 	                 <div class="pm-protocols" style="display:none;">
-			        	<div class="form-group" style="display:none;">
+			        	<div class="form-group"  style="display:none;">
 			        	    <label>Protocol </label>
-			        	    <input name="protocol" id="proto" type="text"  data-maxlength="20" class="form-control" placeholder="smtp" data-toggle="tooltip" data-placement="top" title="Protocol" >
+
+			        	    <input name="protocol" id="proto" type="text"  data-maxlength="20" class="form-control" placeholder="" data-toggle="tooltip" data-placement="top" value="<?php echo $protocol;  ?>" >
 			        	</div>
 			        	<div class="form-group">
 			        	    <label>Smtp Host</label>
-			        	    <input name="smtp_host" type="text"  data-maxlength="200" class="form-control" placeholder="ssl://smtp.googlemail.com" data-toggle="tooltip" data-placement="top" title="smtp host" value="<?php echo $row->smtp_host; ?>">
+			        	    <div class="errors pull-left">*</div>
+			        	    <div class="igs-small">Eg. ssl://smtp.googlemail.com</div>
+			        	    <input name="smtp_host" type="text"  data-maxlength="200" class="form-control" placeholder="" data-toggle="tooltip" data-placement="top"  value="<?php echo $row->smtp_host; ?>">
+			        	    <div class="errors"><?php echo form_error('smtp_host'); ?> </div>
 			        	</div>
 			        	<div class="form-group">
 			        	    <label>Smtp Port</label>
-			        	    <input name="smtp_port" type="text"  data-maxlength="20" class="form-control" placeholder="465" data-toggle="tooltip" data-placement="top" title="port" value="<?php echo $row->smtp_port; ?>">
+			        	    <div class="errors pull-left">*</div>
+			        	    <div class="igs-small">Eg. 465</div>
+			        	    <input name="smtp_port" type="text"  data-maxlength="20" class="form-control" placeholder="" data-toggle="tooltip" data-placement="top"  value="<?php echo $row->smtp_port; ?>">
+			        	    <div class="errors"><?php echo form_error('smtp_port'); ?> </div>
 			        	</div>
 			        	
 			        	<div class="form-group">
 			        	    <label>Password</label>
-			        	    <input name="smtp_pass" type="text"  data-maxlength="100" class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top" title="Password" value="">
+			        	    <div class="errors pull-left">*</div>
+			        	    <input name="smtp_pass" type="text"  data-maxlength="100" class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top"  value="">
+			        	    <div class="errors"><?php echo form_error('smtp_pass'); ?> </div>
 			        	</div>
 		        	</div>
 

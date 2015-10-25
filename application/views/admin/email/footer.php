@@ -38,9 +38,16 @@
    
     $(document).ready(function (event) {
 
+      var tmp = "<?php echo $protocol; ?>";
+      
+      if (tmp == "smtp")
+      {
+        $('.pm-protocols').show();
+      }
+
       $('#roles').val("<?php echo $protocol; ?>");
 
-     $('.pm-protocols').hide(); 
+     
     $('#roles').change(function(){
         if($('#roles').val() == 'smtp') {
             $('.pm-protocols').slideDown();

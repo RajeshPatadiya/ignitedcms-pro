@@ -51,7 +51,7 @@
 	 <div class="row" style="margin-left:30px; margin-right:30px;">
 	   <div class="col-sm-12">
 	       <header class="panel-heading"><div class="inline font-bold">Fields</div>
-          <div class="pull-right btn btn-sm  btn-info btn-rounded" data-toggle="popover" data-html="true" data-placement="bottom" data-content="Add and edit Custom Field types here!" title="" data-original-title='<button type="button" class="close pull-right" data-dismiss="popover">&times;</button>Info'> <i class="fa fa-question"></i> <strong></strong> 
+          <div class="pull-right btn btn-sm  btn-info btn-rounded" data-toggle="popover" data-html="true" data-placement="bottom" data-content='Add and edit Custom Field types here! <br/><?php echo anchor('admin/help/fields', 'Help', 'attributs'); ?>' title="" data-original-title='<button type="button" class="close pull-right" data-dismiss="popover">&times;</button>Info'> <i class="fa fa-question"></i> <strong></strong> 
                           </div>
 
          </header>
@@ -106,11 +106,11 @@
 		           	
 		           	<div class="col-sm-2">
 		           		<div class="input-group-btn">
-                            <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown"><i class="fa fa-sort-amount-desc"> </i> <strong>Sort by Title</strong><span class="caret"></span></button>
+                            <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown"><i class="fa fa-sort-amount-desc"> </i> <strong>Sort by</strong><span class="caret"></span></button>
                             <ul class="dropdown-menu pull-right">
                               <li><a href="#">Title</a></li>
-                              <li><a href="#">URI</a></li>
-                              <li><a href="#">Post Date</a></li>
+                              <li><a href="#">Type</a></li>
+                              <li><a href="#">Date Created</a></li>
                               <li class="divider"></li>
                               <li><a href="#">Ascending</a></li>
                               <li><a href="#">Descending</a></li>

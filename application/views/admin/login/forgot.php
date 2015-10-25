@@ -35,14 +35,14 @@
                     
                         <div class="form-group">
                             <label>Username</label>
-                            <input name="name" type="text" data-required="true" data-maxlength="20" class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top" title="username" value="">
+                            <input name="name" type="text" data-required="true" data-maxlength="20" class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top"  value="">
                         </div>
                        
                    
                         
                          <button type="submit" class="btn btn-purplet btn-s-xs " style="margin-top:20px;"><strong>Send Email</strong></button>
 
-                         <a href=" <?php echo site_url("admin/installer/login"); ?>" class="pull-right">Return to Login?</a>
+                         <a href=" <?php echo site_url("login"); ?>" class="pull-right">Return to Login?</a>
 
                          
                         

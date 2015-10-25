@@ -46,12 +46,16 @@
 	              <div class="panel-body">
 	              	<div class="form-group">
 			          <label>Handle</label>
+			          <div class="errors pull-left">*</div>
 			           <div class="igs-small">The name of the section</div>
 			          <input name="name" type="text"   class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top" title="" value="<?php echo set_value('name'); ?>">
+
+			          <div class='errors'><?php echo form_error('name'); ?></div>
 			      </div>
 
 					<div class="form-group">
     	        	    <label>Section Type</label>
+    	        	    <div class="errors pull-left">*</div>
 	      	        	<select name="sectiontype" class="form-control m-b">
 	                          
 	                          <option>Single</option>
@@ -63,6 +67,7 @@
 
 			      <div class="form-group">
 			          <label>Field Types</label>
+			          <div class="errors pull-left">*</div>
 			           <div class="igs-small">Reorganise and remove the field types for this section</div>
 			           <div class="small-gap"></div>
 

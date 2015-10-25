@@ -54,3 +54,4 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['page/(:num)/(:num)'] = 'admin/test_twig/display/$1/$2';
+$route['login']				 = 'admin/installer/login';
