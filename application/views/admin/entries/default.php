@@ -99,7 +99,7 @@
 
 
 	           	<!-- search and sort -->
-              <?php $atts= array( 'data-validate'=>'parsley'); echo form_open_multipart('admin/field_buildesr/search_posts_or_delete',$atts); ?>
+              <?php $atts= array( 'data-validate'=>'parsley'); echo form_open_multipart('admin/entries/search_posts_or_delete',$atts); ?>
 	           	<div class="row" >
 	           		<div class="col-sm-2">
   	           		<div class="btn  btn-white" data-toggle="popover" data-html="true" data-placement="top" data-content='

@@ -171,23 +171,20 @@ class Sections extends CI_Controller {
 		if($this->input->post('sbm') == "search") 
 		{
 
-			// $search_term = $this->input->post('search_term');
+			$search_term = $this->input->post('search_term');
 
-			// $this->db->select('*');
-			// $this->db->from('fields');
-			// $this->db->like('name', $search_term);
-
-			// $query = $this->db->get();
+			$this->db->select('*');
+			$this->db->from('section');
+			$this->db->like('name', $search_term);
 			
-
-			// $data['query'] = $query;
+			$query = $this->db->get();
 			
+			$data['query'] = $query;
 
-
-			// $this->load->view('admin/header');
-			// $this->load->view('admin/body');
-			// $this->load->view('admin/fields/default',$data); 
-			// $this->load->view('admin/fields/footer');
+			$this->load->view('admin/header');
+			$this->load->view('admin/body');
+			$this->load->view('admin/section/default',$data); 
+			$this->load->view('admin/section/footer');
 		}
 
 		if($this->input->post('sbm') == "delete") 
@@ -239,7 +236,7 @@ class Sections extends CI_Controller {
 
 		$this->form_validation->set_rules('name', 'Handle', 'required|alpha|is_unique[section.name]'); //unique
 		$this->form_validation->set_rules('sectiontype', 'Type', 'callback_type_check');
-		
+		$this->form_validation->set_rules('dummy', 'Type', 'required');
 
 
 		$fields = rtrim($this->input->post('dummy'),",");

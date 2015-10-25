@@ -68,6 +68,8 @@
 			      <div class="form-group">
 			          <label>Field Types</label>
 			          <div class="errors pull-left">*</div>
+
+			          <div class='errors'><?php echo form_error('dummy'); ?></div>
 			           <div class="igs-small">Reorganise and remove the field types for this section</div>
 			           <div class="small-gap"></div>
 

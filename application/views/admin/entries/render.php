@@ -41,7 +41,7 @@
 
 
 	<div class="row" style="margin-left:30px; margin-right:30px;">
-		<div class="col-sm-8">
+		<div class="col-sm-9">
 		    <header class="panel-heading font-bold">Entry contents  
 		    	
 
@@ -155,7 +155,7 @@
 		    </section>
 		</div>
 
-		<div class="col-sm-4">
+		<div class="col-sm-3">
 		    <header class="panel-heading font-bold">Utilities</header>
 		    <section class="panel">
 		        
@@ -164,7 +164,7 @@
 
 		        	    <a href="<?php echo site_url("page/$entryid/$sectionid") ?>" 
 		        	    	target="_blank"
-		        	    	class="btn btn-purplet btn-lg btn-block">
+		        	    	class="btn btn-purplet  btn-block">
 			        		<i class="fa fa-eye"></i> 
 			        		<strong>Preview Page?</strong>
 		        		</a>

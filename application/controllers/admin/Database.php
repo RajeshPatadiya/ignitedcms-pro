@@ -79,7 +79,7 @@ class Database extends CI_Controller {
 	  *
 	  *  	 @returns: nothing
 	  */
-	public function replace_urls()
+	public function deprecated_replace_urls()
 	{
 		//get original url
 		$old_url = base_url();

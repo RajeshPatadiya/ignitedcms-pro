@@ -53,7 +53,10 @@
 	    	        	<div class="line"></div>
 
 
-	    	        	<strong>Permissions (Access to)</strong> <br/>
+	    	        	<label>Permissions </label> 
+	    	        	<div class="igs-small">Pick what things they will see in their dashboard</div>
+
+	    	        	<br/>
 
 	    	        	<!-- dump the permissions table -->
 	    	        	<?php foreach ($query->result() as $row): ?>

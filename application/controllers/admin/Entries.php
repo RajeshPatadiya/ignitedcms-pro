@@ -108,6 +108,17 @@ class Entries extends CI_Controller {
 
 	}
 
+	 /**
+	  *  @Description: To do ONLY delete multiple entries and not singles or globals
+	  *       @Params: params
+	  *
+	  *  	 @returns: returns
+	  */
+	public function search_posts_or_delete()
+	{
+		redirect("admin/entries","refresh");
+	}
+
 
 
 	 /**
@@ -309,26 +320,7 @@ class Entries extends CI_Controller {
 
 
 
-     /**
-      *  @Description: conveniently convert check if is a date and reformat for db
-      *       @Params: str
-      *
-      *  	 @returns: string
-      */
-
-    public function obsolete_is_date($str)
-    {
-    	if(strlen($str) == 10 && $str[2] == "-")
-    	{
-
-    		return date('Y-m-d',strtotime($str));
-    	}
-    	else{
-    		return $str;
-    	}
-
-
-    }
+    
 
 
 

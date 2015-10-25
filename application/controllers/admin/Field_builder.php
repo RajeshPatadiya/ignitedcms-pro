@@ -28,6 +28,7 @@ class Field_builder extends CI_Controller {
 
 
 
+
 	public function index()
 	{
 		$this->db->select('*');
@@ -151,8 +152,6 @@ class Field_builder extends CI_Controller {
 					$this->db->where('id', $value);
 					$this->db->delete('fields');
 
-
-
 				}
 				
 			}
@@ -178,13 +177,7 @@ class Field_builder extends CI_Controller {
 
 		$data['title'] = 'Fields';
 		
-		// $this->db->select('*');
-		// $this->db->from('fields');
-		// $query = $this->db->get();
 		
-		
-
-		//$data['query'] = $query;
 
 		$this->load->view('admin/header');
 		$this->load->view('admin/body');
@@ -207,9 +200,6 @@ class Field_builder extends CI_Controller {
 		$this->form_validation->set_rules('type', 'Type', 'callback_type_check');
 		$this->form_validation->set_rules('maxchars', 'Maxchar', 'integer|greater_than[0]');
 		$this->form_validation->set_rules('limit', 'Limt', 'integer|greater_than[0]');
-
-
-
 
 
 

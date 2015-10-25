@@ -62,11 +62,12 @@
 
       	        	<div class="form-group">
       	        	    <label>Password</label>
+                      <div  class=" btn btn-sm  btn-info btn-rounded" data-toggle="popover" data-html="true" data-placement="right" data-content="Make sure it is more than 6 characters long and contains at least one number." title="" data-original-title='<button type="button" class="close pull-right" data-dismiss="popover">&times;</button>Info'> <i class="fa fa-question"></i> <strong></strong> 
+                       </div>
                       <div class="errors pull-left">*</div> 
                       <div class="igs-small">Make sure password is 6 letters long and contains one number</div>
                       
-      	        	    <div  class=" btn btn-sm  btn-info btn-rounded" data-toggle="popover" data-html="true" data-placement="right" data-content="Make sure it is more than 6 characters long and contains at least one number." title="" data-original-title='<button type="button" class="close pull-right" data-dismiss="popover">&times;</button>Info'> <i class="fa fa-question"></i> <strong></strong> 
-      	        	     </div>
+      	        	    
       	        	    <input style="margin-top:10px;" name="password" type="password" d class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top"  value="<?php echo set_value('password'); ?>">
 
                       <div class="errors"><?php echo form_error('password'); ?> </div>
@@ -95,8 +96,8 @@
 
       	        	<label>
       	        		<input type="checkbox" name="" value="" />
-      	        		Require password reset on first login?
-      	        	</label>
+      	        		
+      	        	</label> Require password reset on first login?
       	        	<br/>
 
       	        	<button type="submit" class="pull-right btn btn-purplet btn-s-xs " ><strong>Save</strong></button>

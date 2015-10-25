@@ -801,6 +801,21 @@ if ( ! function_exists('my_field_show'))
               echo "</div>";
         }
 
+        if($row->type == "multi-line")
+        {
+            $content = my_field_content($entryid,$row->name);
+          echo "
+          <div class='form-group'>
+              <label>$row->name</label>
+              <div class='igs-small'>$row->instructions</div>
+               
+                   <textarea name='$row->name'   class='form-control' rows='5'  placeholder='Type here' data-toggle='tooltip' data-placement='top'>$content</textarea>
+
+          </div>";
+
+          echo "<div class='errors'>$errors</div>";
+        }
+
         if($row->type == "rich-text")
         {
             $content = my_field_content($entryid,$row->name);

@@ -66,6 +66,37 @@ class Stuff_fields extends CI_Model {
 
 		}
 
+		if ($type == "multi-line")
+		{
+			$xd = "max_length[".$maxchars."]";
+
+			$fields = array(
+        
+		        $handle => array(
+		        'type' => 'VARCHAR',
+		        'constraint' =>  '5000'
+        		),
+        	);
+
+        	$object = array(
+			'name' => $handle, 
+			'type' => $type, 
+			 
+			'instructions' => $instructions,
+			'maxchars' => $maxchars,
+			'formvalidation' => 'min_length[1]'
+			);
+
+			$this->db->insert('fields', $object);
+
+   			$this->dbforge->add_column('content', $fields);
+
+
+		}
+
+
+
+
 		if ($type == "number")
 		{
 			$xd = "integer|greater_than[".$min."]|less_than[".$max."]";

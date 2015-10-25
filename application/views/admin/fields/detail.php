@@ -78,6 +78,7 @@
                         <select name="type" class="form-control m-b" id="type">
                             <option>Please select</option>
                             <option value="plain-text">Plain Text</option>
+                            <option value="multi-line">Multi-line Box</option>
                             <option value="rich-text">Rich Text Box</option>
                             <option value="drop-down">Drop Down</option>
                             <option value="check-box">Check Boxes</option>
