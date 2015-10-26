@@ -933,12 +933,21 @@ if ( ! function_exists('my_field_show'))
 
         if($row->type =="switch")
         {
+          $content = my_field_content($entryid,$row->name);
+          $checked = "";
+
+          if($content == '1')
+          {
+            $checked = "checked";
+          }
+
           echo "
           <div class='form-group'>
           <label>$row->name</label>
                   <div class='igs-small'>$row->instructions</div>
             <label class='switch'>
-              <input type='checkbox' name='$row->name' >
+              <input type='hidden' value='0' name='$row->name'>
+              <input type='checkbox' value='1' name='$row->name' $checked>
               <span></span>
             </label>
           </div>";

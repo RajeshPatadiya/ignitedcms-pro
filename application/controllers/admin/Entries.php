@@ -289,10 +289,18 @@ class Entries extends CI_Controller {
 	    			$arr[$key2] = $total_contents;
 
 	    		}
+
+
+	    		
+
+
 	    		else
 	    		{
 	    			//$object = array( $key => $value  );
 	    			$arr[$key] = trim($value);
+
+	    		
+
 
 	    		}
 

@@ -170,12 +170,26 @@ class Users extends CI_Controller {
 		if($pass === "*")
 		{
 
-			$object = array(
-			'permissiongroup' => $permissiongroup
-		 	);
+			if($this->Stuff_user->is_admin($userid))
+			{
+				$this->session->set_flashdata('type', '0');
+				$this->session->set_flashdata('msg', '<strong>Failed</strong> You may not update admin rights!');
+				redirect("admin/users","refresh");
+			}
+			else
+			{
+				$object = array(
+				'permissiongroup' => $permissiongroup
+		 		);
 
-			$this->db->where('id', $userid);
-			$this->db->update('user', $object);
+				$this->db->where('id', $userid);
+				$this->db->update('user', $object);
+
+				redirect("admin/users","refresh");
+
+			}
+
+			
 
 		}
 

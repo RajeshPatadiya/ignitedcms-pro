@@ -47,12 +47,12 @@
   		        
   		        <div class="panel-body" style="padding:30px; font-size:15px; line-height:24px;">
   		        	<h3 class="purplet">Sections</h3>
-                Sections is another concept you have to understand. Essentially all they do is contain your chosen fields
+                Sections is another concept you have to understand. Essentially all they do is contain your created fields.
                 Simply drag and drop the fields you require into your section and make them required if necessary.
 
                 <br/><br/>
                 <strong>Types</strong> <br/>
-                Sections have three main types, singles, which are individual pages, multiples which can be like posts or products and globals, as the name suggest these can be accessed on any page in your templates and are useful for setting your site's main look and feel.
+                Sections have three main types, singles, which are individual pages, multiples which can be like posts or products and globals - as the name suggest these can be accessed on any page in your templates and are useful for setting your site's main look and feel.
 
                 <br/><br/>
                 <strong>Singles and Multiples</strong> <br/>
@@ -69,7 +69,7 @@
 
                 <br/><br/>
                 <strong>Globals</strong> <br/>
-                Globals are very similar to singles, in that you create the fields and section as you would normally, the only difference is you store the content by clicking on the global icon in your dashboard. 
+                Globals are very similar to singles, in that you create the fields and section as you would normally, the only difference is you store the content by clicking on the global (world) icon in your dashboard. 
 
                 <br/><br/>
                 Accessing global content in your template files is slightly different. Instead of doing : <br/>

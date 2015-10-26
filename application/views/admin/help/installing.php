@@ -57,7 +57,7 @@
                 <ul class="">
                   <li>Download the latest version from github</li>
                   <li>Extract the file and <strong>rename to ignitedcms-pro</strong> </li>
-                  <li>Put this file in your localhost environment</li>
+                  <li>Put this folder in your localhost environment</li>
                   <li>Point your web browser to http://localhost/ignitedcms-pro</li>
                   <li>And simply enter in your database credentials</li>
                 </ul>

@@ -57,11 +57,28 @@
                 can of course customise this to your own style and even include external css and js files.
                 But you MUST not rename or delete this file. It is the heart, if you like, of the main engine.
 
-                <br/><br/>
+                <br/><br/> Your _layout.html template <strong>MUST</strong> contain the following syntax, this if you like is where the dynamic content of your sections will be passed into: <br/><br/>
+                <pre><?php echo trim(my_html_escape('
+{% block content %} 
 
-                As soon a you create a section, the name of your section will form the html name. For example,
-                if you created a section called home, you need to create a html file called home.html inside your
-                custom folder. <br/><br/>
+
+
+{% endblock %}
+')); ?>
+</pre> 
+
+                As soon a you create a section, the name of your section will form the html name. For example,if you created a section called home, you need to create a html file called home.html inside your custom folder. <br/><br/>
+
+                Your section template <strong>MUST</strong> extend the _layout.html template and must contain the block syntax eg. <br/><br>
+                <pre><?php echo trim(my_html_escape('
+{% extends "_layout.html" %}
+
+{% block content %}
+
+    {# You put our content in here #}
+    
+{% endblock %}')); ?>
+</pre> 
 
                 Let's say you have a text field in your section called title. <br/><br/>
 

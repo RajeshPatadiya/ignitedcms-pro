@@ -197,37 +197,50 @@ class Permissions extends CI_Controller {
 
 	public function update_permission_groups($group_id)
 	{
-		$this->db->select('permissionID');
-		$this->db->from('permissions');
-
-		$query = $this->db->get();
 		
-		foreach ($query->result() as $row) 
+		//check if admin
+		if($group_id == '1')
 		{
-			$id = $row->permissionID;
+			$this->session->set_flashdata('type', '0');
+			$this->session->set_flashdata('msg', '<strong>Failed</strong> You may not change administrator permissions!');
 
-			if (isset($_POST[$id]))
-			{
-
-				if($this->check_duplicate($id,$group_id) == false)
-				{
-					$object = array('groupID' => $group_id, 'permissionID' => $id );
-					$this->db->insert('permission_map', $object);
-
-				}
-
-				
-			}
-			else{
-
-				$this->db->where('groupID', $group_id);
-				$this->db->where('permissionID', $id);
-				$this->db->delete('permission_map');
-			}
+			redirect("admin/permissions/update_permission_view/$group_id", "refresh");
 		}
+		else
+		{
+			$this->db->select('permissionID');
+			$this->db->from('permissions');
 
-		redirect("admin/permissions/update_permission_view/$group_id", "refresh");
+			$query = $this->db->get();
+			
+			foreach ($query->result() as $row) 
+			{
+				$id = $row->permissionID;
 
+				if (isset($_POST[$id]))
+				{
+
+					if($this->check_duplicate($id,$group_id) == false)
+					{
+						$object = array('groupID' => $group_id, 'permissionID' => $id );
+						$this->db->insert('permission_map', $object);
+
+					}
+
+					
+				}
+				else
+				{
+
+					$this->db->where('groupID', $group_id);
+					$this->db->where('permissionID', $id);
+					$this->db->delete('permission_map');
+				}
+			}
+
+			redirect("admin/permissions/update_permission_view/$group_id", "refresh");
+
+		}
 
 	}
 

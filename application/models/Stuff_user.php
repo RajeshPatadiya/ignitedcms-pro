@@ -284,6 +284,31 @@ class Stuff_user extends CI_Model {
 
       }
 
+       /**
+        *  @Description: check to see if user is admin
+        *       @Params: params
+        *
+        *  	 @returns: 1 or 0
+        */
+      public function is_admin($userid)
+      {
+
+			$this->db->select('isadmin');
+			$this->db->from('user');
+			$this->db->where('id', $userid);
+			$this->db->limit(1);
+
+			$query = $this->db->get();
+
+			$is_admin = 0;
+			foreach ($query->result() as $row) 
+			{
+				$is_admin = $row->isadmin;
+			}
+
+			return $is_admin;
+      }
+
 
 
        /**
