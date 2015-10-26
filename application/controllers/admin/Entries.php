@@ -4,17 +4,23 @@ class Entries extends CI_Controller {
 
 	public function __construct()
 	{
-		parent::__construct();
-		{
-		  	if($this->session->userdata('isloggedin')=='1')
-		  	{
-		  		//allow access
-		  	}
-		  	else
-		  	{
-		  		redirect('login','refresh');
-		  	}
-		}
+		  parent::__construct();
+		  {
+			  	if($this->session->userdata('isloggedin')=='1')
+			  	{
+			  		$this->load->model('Stuff_permissions');
+					$pass = $this->Stuff_permissions->has_permission("entries");
+
+					if($pass != true)
+					{
+						redirect('admin/dashboard','refresh');
+					}
+			  	}
+			  	else
+			  	{
+			  		redirect('admin/installer','refresh');
+			  	}
+		  }
 	}
 
 

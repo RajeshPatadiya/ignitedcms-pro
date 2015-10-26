@@ -56,10 +56,6 @@ class Test_twig extends CI_Controller {
 		 	$data['entry'][$key] = $value;
 		 }
 
-		
-
-		
-
 
 		//Pass all the global vars to view
 		$this->load->model('Stuff_globals');
@@ -71,7 +67,31 @@ class Test_twig extends CI_Controller {
 		}
 
 
+		//get base url
+		 $base_url = base_url();
+		 $data['base_url'] = $base_url;
 
+		 //get sessionid
+		 
+		 $data['session_id'] = session_id();
+		 //get username
+		 $data['username'] = $this->session->userdata('name');
+
+		 //get site title
+		 $this->db->select('site');
+		 $this->db->from('site');
+		 $this->db->where('id', '1');
+		 $this->db->limit(1);
+		 $query2 = $this->db->get();
+		 
+		 $site_name = "";
+		 foreach ($query2->result() as $row) 
+		 {
+		 	$site_name =  $row->site;
+		 }
+
+		 $data['site_name'] = $site_name;
+		 
 		
 
 		//pass all the assets to view

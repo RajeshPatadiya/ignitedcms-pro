@@ -13,5 +13,6 @@
             <li> <a href="<?php echo site_url('admin/help/entries'); ?>">Entries</a> </li>
         </ul>
     </li>
+    <li> <a href="<?php echo site_url('admin/help/global_vars'); ?>"> Global Twig template functions</a> </li>
     <li> <a href="<?php echo site_url('admin/help/wherenow'); ?>"> Where to go from here?</a> </li>
 </ul>

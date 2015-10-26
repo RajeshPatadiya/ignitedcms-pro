@@ -111,6 +111,15 @@ class Help extends CI_Controller {
 
 	}
 
+	public function global_vars()
+	{
+		$this->load->view('admin/header');
+		$this->load->view('admin/body');
+		$this->load->view('admin/help/global-vars');
+		$this->load->view('admin/footer');
+
+	}
+
 }
 
 /* End of file help.php */

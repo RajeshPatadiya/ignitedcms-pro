@@ -12,7 +12,7 @@
 
 class Stuff_template_generator extends CI_Model {
 
-
+	  
 	
 
 
