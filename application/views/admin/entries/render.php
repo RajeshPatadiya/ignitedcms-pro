@@ -131,6 +131,22 @@
 		        			</div>
 		        		</div>
 
+		        		<!-- if entry type is multiple -->
+		        		
+		        		<?php if( $type == "Multiple") {?>
+
+		        		<?php $cont = my_field_content($entryid,'entrytitle'); ?>
+		        		<div class="form-group">
+		        		    <label>Entry Title</label>
+		        		    <div class="errors pull-left">*</div>
+		        		    <input name="entrytitle" type="text"  class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top"  value="<?php echo $cont; ?>">
+		        		</div>
+
+		        		<?php } ?>
+
+
+		        		<!-- end -->
+
 		        	<?php foreach ($query->result() as $row): ?>
 
 		        		<?php  $f_name = my_field_name($row->fieldid); ?>
@@ -162,12 +178,14 @@
 		        <div class="panel-body">
 		        	<div class="form-group">
 
-		        	    <a href="<?php echo site_url("page/$entryid/$sectionid") ?>" 
+		        		<?php if($type != "Multiple") { ?>
+		        	    <a href="<?php echo site_url($section_name); ?>" 
 		        	    	target="_blank"
 		        	    	class="btn btn-purplet  btn-block">
 			        		<i class="fa fa-eye"></i> 
 			        		<strong>Preview Page?</strong>
 		        		</a>
+		        		<?php } ?>
 		        	</div>
 
 		        	<div class="form-group">

@@ -93,6 +93,30 @@ class Entries extends CI_Controller {
 
 	public function render_section($sectionid,$entryid)
 	{
+		
+		//get the section name
+		$this->db->select('*');
+		$this->db->from('section');
+		$this->db->where('id', $sectionid);
+		$this->db->limit(1);
+
+		$query2 = $this->db->get();
+		
+		$section_name = "";
+		$type = "";
+		foreach ($query2->result() as $row) 
+		{
+			$section_name =  $row->name;
+			$type = $row->sectiontype;
+		}
+		
+		$data['section_name'] = $section_name;
+		$data['type'] = $type;
+
+
+
+
+
 		$this->db->select('*');
 		$this->db->from('section_layout');
 		$this->db->where('sectionid', $sectionid);
@@ -175,6 +199,16 @@ class Entries extends CI_Controller {
     		if ($this->startsWith($key, "chk-"))
     		{
     			//skip
+    		}
+    		elseif ($key == "entrytitle")
+    		{
+    			$rule2 =  array(
+	                'field' => $key,
+	                'label' => $key,
+	                'rules' => 'required'
+	        	);
+
+	        	$config[$counter] = $rule2;
     		}
     		else
     		{

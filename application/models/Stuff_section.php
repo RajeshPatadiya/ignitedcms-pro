@@ -70,6 +70,12 @@ class Stuff_section extends CI_Model {
 
 			$entryid = $this->db->insert_id();
 
+			//dynamically generate le route!
+			$this->load->model('Stuff_routes');
+			$this->Stuff_routes->save_new_route($sectionid,$entryid);
+
+
+
 			$object4 = array('entryid' => $entryid );
 			$this->db->insert('content', $object4);
 
