@@ -244,7 +244,12 @@ class Login extends CI_Controller {
       }
 
 
-
+       /**
+        *  @Description: Installer validate details
+        *       @Params: _POST site name, email, password
+        *
+        *     @returns: returns
+        */
       public function validate_details()
       {
             //$url = site_url();
@@ -252,52 +257,68 @@ class Login extends CI_Controller {
             //  POST vars
             //-------------------------------
             $site = $this->input->post('site');
-            $password = $this->input->post('password1');
+            $password1 = $this->input->post('password1');
+            $password2 = $this->input->post('password2');
             $email = $this->input->post('email');
 
 
-            
+            $this->form_validation->set_rules('site', 'Site', 'trim|required');
+            $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email');
+            $this->form_validation->set_rules('password1', 'First Password', 'trim|required');
+            $this->form_validation->set_rules('password2', 'Second Password', 'trim|required|matches[password1]');
 
-            //check if password is secure
-            if($this->check_password($password)==false)
+            if ($this->form_validation->run() == FALSE)
             {
-              $data['errors'] =
-                  'Password is too simple <br/> 
-                   Password must contain a number and Uppercase letter!<br/>
-                   Password must be at least 6 characters long';
-
-                   $this->load->view('admin/header');
-                   $this->load->view('admin/body-installer');
-                   $this->load->view('admin/installer/installer-3', $data);
-                   $this->load->view('admin/footer');
-
+              //failed
+                $this->load->view('admin/header');
+                $this->load->view('admin/body-installer');
+                $this->load->view('admin/installer/installer-3');
+                $this->load->view('admin/footer');
             }
-            else{
+            else
+            {
+                 //check if password is secure
+                  if($this->check_password($password1)==false)
+                  {
+                    $data['errors'] =
+                        'Password is too simple <br/> 
+                         Password must contain a number and Uppercase letter!<br/>
+                         Password must be at least 6 characters long';
 
-            $hashed_password = password_hash($password, PASSWORD_BCRYPT);
-             
+                         $this->load->view('admin/header');
+                         $this->load->view('admin/body-installer');
+                         $this->load->view('admin/installer/installer-3', $data);
+                         $this->load->view('admin/footer');
 
-            $data = array(
-               'name' => 'admin' ,
-               'password' => $hashed_password ,
-               'isadmin' => '1',
-               'email'   => $email,
-               'permissiongroup' => '1',
-               'joindate'  => date("Y-m-d H:i:s")
-            );
+                  }
+                  else
+                  {
 
-            //insert into the db
-            $this->db->insert('user', $data);
+                      $hashed_password = password_hash($password1, PASSWORD_BCRYPT);
+                       
 
-            //update site title
+                      $data = array(
+                         'name' => 'admin' ,
+                         'password' => $hashed_password ,
+                         'isadmin' => '1',
+                         'email'   => $email,
+                         'permissiongroup' => '1',
+                         'joindate'  => date("Y-m-d H:i:s")
+                      );
 
-            $object = array('site' => $site );
-            $this->db->where('id', '1');
-            $this->db->update('site', $object);
+                      //insert into the db
+                      $this->db->insert('user', $data);
+
+                      //update site title
+
+                      $object = array('site' => $site );
+                      $this->db->where('id', '1');
+                      $this->db->update('site', $object);
 
 
-            redirect('admin/installer/set_time_local','refresh'); 
-          }
+                      redirect('admin/installer/set_time_local','refresh'); 
+                  }
+              }
   
       }
 

@@ -93,17 +93,20 @@ class Installer extends CI_Controller {
 		$database = $this->input->post('database');
 		$prefix   = $this->input->post('prefix');
 
-		$this->form_validation->set_rules('database', 'Database', 'trim|required|alpha');
+		$this->form_validation->set_rules('database', 'Database', 'trim|required|alpha_dash|max_length[64]');
+		$this->form_validation->set_rules('hostname', 'Servername', 'trim|required');
+		$this->form_validation->set_rules('username', 'Username', 'trim|required');
+		$this->form_validation->set_rules('prefix', 'Prefix', 'trim|required|alpha_dash');
 		
 
 		if ($this->form_validation->run() == FALSE)
 		{
-			 $data2['errors'] = 'Make sure database name contains only letters!';
+			  $data2['errors'] = 'Failed!';
 
-		  $this->load->view('admin/header');
-		  $this->load->view('admin/body-installer');
-		  $this->load->view('admin/installer/installer', $data2);
-		  $this->load->view('admin/footer');
+			  $this->load->view('admin/header');
+			  $this->load->view('admin/body-installer');
+			  $this->load->view('admin/installer/installer', $data2);
+			  $this->load->view('admin/footer');
 		}
 		else{		
 

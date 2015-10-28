@@ -23,22 +23,31 @@
                     
                     <div class="form-group">
                         <label>Site Title</label>
-                        <input name="site" type="text" data-required="true" data-maxlength="40" class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top"  value="">
+                        <div class="errors pull-left">*</div>
+                        <input name="site" type="text"  class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top"  value="<?php echo set_value('site'); ?>">
+                        <div class="errors"> <?php echo form_error('site'); ?>  </div>
                     </div>
 
                     <div class="form-group">
                         <label>Email</label>
-                        <input name="email" type="text" data-type="email" data-required="true" data-maxlength="100" class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top"  value="">
+                        <div class="errors pull-left">*</div>
+                        <div class="igs-small">This needs to be a valid email account that your have access to</div>
+                        <input name="email" type="text"  class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top"  value="<?php echo set_value('email'); ?>">
+                        <div class="errors"> <?php echo form_error('email'); ?>  </div>
                     </div>
 
                    <div class="form-group pull-in">
                           <div class="col-sm-6">
-                            <label>Enter admin password *</label>
-                            <input type="password" name="password1" class="form-control" data-required="true" data-minlength="6" id="pwd">   
+                            <label>Enter admin password</label>
+                            <div class="errors pull-left">*</div>
+                            <input type="password" name="password1" class="form-control"  id="pwd" value="<?php echo set_value('password1'); ?>"> 
+                            <div class="errors"> <?php echo form_error('password1'); ?>  </div>  
                           </div>
                           <div class="col-sm-6">
                             <label>Confirm admin password</label>
-                            <input type="password" name="password2" class="form-control" data-equalto="#pwd" data-required="true" data-minlength="6">      
+                            <div class="errors pull-left">*</div> 
+                            <input type="password" name="password2" class="form-control" value="<?php echo set_value('password2'); ?>" >
+                            <div class="errors"> <?php echo form_error('password2'); ?>  </div>      
                           </div>   
                         </div>
                         

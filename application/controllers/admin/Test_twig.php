@@ -27,6 +27,37 @@ class Test_twig extends CI_Controller {
 	}
 
 
+     /**
+      *  @Description: test looping through all entries with a section section type
+      *       @Params: params
+      *
+      *  	 @returns: returns
+      */
+
+     public function test_all()
+     {
+
+     	/*
+	     	{% for entry in entry.entriesFieldHandle %}
+    		...
+			{% endfor %}
+		*/
+
+
+     	$this->db->select('*');
+     	$this->db->from('entry');
+     	$this->db->where('sectionid', '223');
+     	$query = $this->db->get();
+     	
+     	foreach ($query->result() as $row) 
+     	{
+     		echo anchor("page/$row->id/223", 'linkname', 'attributs');
+     		echo br();
+     	}
+     	
+     }
+
+
 
 	 /**
 	  *  @Description: Displays the template file
