@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'enter';
-$route['404_override'] = '';
+$route['404_override'] = 'My_404';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['page/(:num)/(:num)'] = 'admin/test_twig/display/$1/$2';
