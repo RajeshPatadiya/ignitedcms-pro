@@ -53,46 +53,5 @@ $route['default_controller'] = 'enter';
 $route['404_override'] = 'My_404';
 $route['translate_uri_dashes'] = FALSE;
 
-//$route['page/(:num)/(:num)'] = 'admin/test_twig/display/$1/$2';
+
 $route['login']				 = 'admin/installer/login';
-
-
-/////////////////////////////////////////
-//
-//    Dynamically create page routes
-//    for better seo using database
-//    
-//    Author: IgnitedCMS
-//
-//
-//////////////////////////////////////////
-
-require_once( BASEPATH .'database/DB'. '.php' );
-$db =& DB();
-
-$db->select('*');
-$db->from('routes');
-$query = $db->get();
-
-if($query->num_rows() > 0)
-{
-	//if db entries then loop through and generate routes
-	foreach ($query->result() as $row) 
-	{
-		$route[$row->route] = $row->controller;
-	}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-

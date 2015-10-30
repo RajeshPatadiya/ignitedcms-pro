@@ -36,10 +36,6 @@
   <script src="<?php echo(base_url()."resources") ?>/js/wysiwyg/demo.js" type="text/javascript"></script>
   <!-- markdown -->
 
-   <!-- Sortable -->
-  <script src="<?php echo(base_url()."resources") ?>/js/sortable/jquery.sortable.js"></script>
-  <script src="<?php echo(base_url()."resources") ?>/js/nestable/jquery.nestable.js" cache="false"></script>
-  <script src="<?php echo(base_url()."resources") ?>/js/nestable/demo.js" cache="false"></script>
 
   
 
