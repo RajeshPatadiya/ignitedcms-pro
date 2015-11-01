@@ -88,18 +88,14 @@ class Field_builder extends CI_Controller {
 	{
 		$data['title'] = 'Fields';
 		
-		// $this->db->select('*');
-		// $this->db->from('fields');
-		// $query = $this->db->get();
-		
-		
+		$data['type'] = 'plain-text';
 
-		//$data['query'] = $query;
+		$data['counter'] = 0;
 
 		$this->load->view('admin/header');
 		$this->load->view('admin/body');
 		$this->load->view('admin/fields/detail',$data); 
-		$this->load->view('admin/fields/footer');
+		$this->load->view('admin/fields/footer',$data);
 
 	}
 
@@ -163,28 +159,263 @@ class Field_builder extends CI_Controller {
 	}
 
 
-
 	 /**
-	  *  @Description: load the field page set type
-	  *       @Params: field id
+	  *  @Description: load the view to update fields
+	  *       @Params: fieldid
 	  *
 	  *  	 @returns: nothing
 	  */
-
-	public function show_field_page($id)
+	public function update_field_view($fieldid)
 	{
-		
-
 		$data['title'] = 'Fields';
+		$data['fieldid'] = $fieldid;
+
+
+		$this->load->model('Stuff_fields');
+		$query = $this->Stuff_fields->get_field_params($fieldid);
+		$type = $this->Stuff_fields->get_field_type($fieldid);
+		$arr = $this->Stuff_fields->get_opts($fieldid);
 		
+		$data['query'] = $query;
+		$data['type'] = $type;
+		$data['arr']  = $arr;
 		
+		$data['counter'] = count($arr);
 
 		$this->load->view('admin/header');
 		$this->load->view('admin/body');
-		$this->load->view('admin/fields/detail',$data); 
-		$this->load->view('admin/fields/footer');
+		$this->load->view('admin/fields/update',$data); 
+		$this->load->view('admin/fields/footer',$data);
+
 
 	}
+
+	 /**
+	  *  @Description: update field id (this is destructive)
+	  *       @Params: fieldid
+	  *
+	  *  	 @returns: nothing
+	  */
+	public function update_field($fieldid)
+	{
+		$this->form_validation->set_rules('handle', 'Handle', 'required|alpha'); 
+		$this->form_validation->set_rules('type', 'Type', 'required');
+		
+
+		$handle = $this->input->post('handle');
+		$type = $this->input->post('type');
+		$opts = "";
+		$instructions = $this->input->post('instructions');
+		$maxchars = $this->input->post('maxchars');
+		$limitamount = $this->input->post('limit');
+		$formvalidation = $this->input->post('filetypes');
+		$min = $this->input->post('min');
+		$max = $this->input->post('max');
+
+		$pass = FALSE;
+
+		//if plain-text
+		if($type === 'plain-text')
+		{
+			$this->form_validation->set_rules('maxchars', 'Maxchar', 'integer|greater_than[0]|required');
+			if ($this->form_validation->run() == FALSE)
+			{
+				$data['title'] = 'Fields';
+				$data['fieldid'] = $fieldid;
+
+
+				$this->load->model('Stuff_fields');
+				$query = $this->Stuff_fields->get_field_params($fieldid);
+				$type = $this->Stuff_fields->get_field_type($fieldid);
+				$arr = $this->Stuff_fields->get_opts($fieldid);
+				
+				$data['query'] = $query;
+				$data['type'] = $type;
+				$data['arr']  = $arr;
+				
+				$data['counter'] = count($arr);
+
+				$this->load->view('admin/header');
+				$this->load->view('admin/body');
+				$this->load->view('admin/fields/update',$data); 
+				$this->load->view('admin/fields/footer',$data);
+
+			}
+			else
+			{
+				$pass = TRUE;
+			}
+		}
+
+		
+		if($type === 'multi-line')
+		{
+			$pass = TRUE;
+		}
+		if($type === 'rich-text')
+		{
+			$pass = TRUE;
+		}
+		if($type === 'drop-down')
+		{
+			$pass = TRUE;
+		}
+		if($type === 'drop-down')
+		{
+			$pass = TRUE;
+		}
+		if($type === 'check-box')
+		{
+			$pass = TRUE;
+		}
+		if($type === 'color')
+		{
+			$pass = TRUE;
+		}
+		if($type === 'file-upload')
+		{
+			$this->form_validation->set_rules('limit', 'Limt', 'integer|greater_than[0]|required');
+			$this->form_validation->set_rules('filetypes', 'File Type', 'trim|required');
+			if ($this->form_validation->run() == FALSE)
+			{
+				$data['title'] = 'Fields';
+				$data['fieldid'] = $fieldid;
+
+
+				$this->load->model('Stuff_fields');
+				$query = $this->Stuff_fields->get_field_params($fieldid);
+				$type = $this->Stuff_fields->get_field_type($fieldid);
+				$arr = $this->Stuff_fields->get_opts($fieldid);
+				
+				$data['query'] = $query;
+				$data['type'] = $type;
+				$data['arr']  = $arr;
+				
+				$data['counter'] = count($arr);
+
+				$this->load->view('admin/header');
+				$this->load->view('admin/body');
+				$this->load->view('admin/fields/update',$data); 
+				$this->load->view('admin/fields/footer',$data);
+
+			}
+			else
+			{
+				$pass = TRUE;
+			}
+		}
+		if($type === 'number')
+		{
+			
+			$this->form_validation->set_rules('min', 'Min', "integer|less_than[$max]|required");
+			$this->form_validation->set_rules('max', 'Max', "integer|required|greater_than_equal_to[$min]");
+			if ($this->form_validation->run() == FALSE)
+			{
+				$data['title'] = 'Fields';
+				$data['fieldid'] = $fieldid;
+
+
+				$this->load->model('Stuff_fields');
+				$query = $this->Stuff_fields->get_field_params($fieldid);
+				$type = $this->Stuff_fields->get_field_type($fieldid);
+				$arr = $this->Stuff_fields->get_opts($fieldid);
+				
+				$data['query'] = $query;
+				$data['type'] = $type;
+				$data['arr']  = $arr;
+				
+				$data['counter'] = count($arr);
+
+				$this->load->view('admin/header');
+				$this->load->view('admin/body');
+				$this->load->view('admin/fields/update',$data); 
+				$this->load->view('admin/fields/footer',$data);
+
+			}
+			else
+			{
+				$pass = TRUE;
+			}
+		}
+		if($type === 'date')
+		{
+			$pass = TRUE;
+		}
+		if($type === 'switch')
+		{
+			$pass = TRUE;
+		}
+		
+		if($pass)
+		{
+			if ($this->form_validation->run() == FALSE)
+			{
+				
+				$data['title'] = 'Fields';
+				$data['fieldid'] = $fieldid;
+
+
+				$this->load->model('Stuff_fields');
+				$query = $this->Stuff_fields->get_field_params($fieldid);
+				$type = $this->Stuff_fields->get_field_type($fieldid);
+				$arr = $this->Stuff_fields->get_opts($fieldid);
+				
+				$data['query'] = $query;
+				$data['type'] = $type;
+				$data['arr']  = $arr;
+				
+				$data['counter'] = count($arr);
+
+				$this->load->view('admin/header');
+				$this->load->view('admin/body');
+				$this->load->view('admin/fields/update',$data); 
+				$this->load->view('admin/fields/footer',$data);
+
+				
+			}
+			else
+			{
+
+				foreach($_POST as $key => $value) 
+	    		{
+	    			if($this->startsWith($key, "opts"))
+	    			{
+	    				$opts = $opts . $value . ",";
+	    			}
+	    			
+	    		}
+
+	    		$opts =  trim($opts,",");
+	    		//pass this in as a comma delimited string!
+
+
+				//successful
+				$this->load->model('Stuff_fields');
+				$this->Stuff_fields->update_field($fieldid,$handle,$type,$opts,$instructions,$maxchars,$limitamount,$formvalidation,$min,$max);
+
+
+
+
+				$message = "Field Updated!";
+				$this->session->set_flashdata('type', '1');
+				$this->session->set_flashdata('msg', "<strong>Success</strong> $message");
+
+				$this->db->select('*');
+				$this->db->from('fields');
+				$query = $this->db->get();
+
+				$data['query'] = $query;
+
+				$this->load->view('admin/header');
+				$this->load->view('admin/body');
+				$this->load->view('admin/fields/default',$data); 
+				$this->load->view('admin/fields/footer');
+			}
+
+		}
+
+	}
+
 
 	 /**
 	  *  @Description: validate and save the post field into db
@@ -197,11 +428,8 @@ class Field_builder extends CI_Controller {
 	{
 
 		$this->form_validation->set_rules('handle', 'Handle', 'required|alpha|is_unique[fields.name]'); //unique
-		$this->form_validation->set_rules('type', 'Type', 'callback_type_check');
-		$this->form_validation->set_rules('maxchars', 'Maxchar', 'integer|greater_than[0]');
-		$this->form_validation->set_rules('limit', 'Limt', 'integer|greater_than[0]');
-
-
+		$this->form_validation->set_rules('type', 'Type', 'required');
+		
 
 		$handle = $this->input->post('handle');
 		$type = $this->input->post('type');
@@ -210,61 +438,156 @@ class Field_builder extends CI_Controller {
 		$maxchars = $this->input->post('maxchars');
 		$limitamount = $this->input->post('limit');
 		$formvalidation = $this->input->post('filetypes');
-
-
 		$min = $this->input->post('min');
 		$max = $this->input->post('max');
-		
-		
-		if ($this->form_validation->run() == FALSE)
+
+		$pass = FALSE;
+
+		//if plain-text
+		if($type === 'plain-text')
 		{
-			 // $message =  validation_errors(); 
-			 // $this->session->set_flashdata('type', '0');
-			 // $this->session->set_flashdata('msg', "<strong>Failed</strong> $message");
+			$this->form_validation->set_rules('maxchars', 'Maxchar', 'integer|greater_than[0]|required');
+			if ($this->form_validation->run() == FALSE)
+			{
+				$data['type'] = $type;
 
-			 $this->load->view('admin/header');
-			 $this->load->view('admin/body');
-			 $this->load->view('admin/fields/detail'); 
-			 $this->load->view('admin/fields/footer');
+				 $this->load->view('admin/header');
+				 $this->load->view('admin/body');
+				 $this->load->view('admin/fields/detail'); 
+				 $this->load->view('admin/fields/footer',$data);
+			}
+			else
+			{
+				$pass = TRUE;
+			}
 		}
-		else
+
+		
+		if($type === 'multi-line')
 		{
-
-			foreach($_POST as $key => $value) 
-    		{
-    			if($this->startsWith($key, "opts"))
-    			{
-    				$opts = $opts . $value . ",";
-    			}
-    			
-    		}
-
-    		$opts =  trim($opts,",");
-    		//pass this in as a comma delimited string!
-
-
-			//successful
-			$this->load->model('Stuff_fields');
-			$this->Stuff_fields->add_new_field($handle,$type,$opts,$instructions,$maxchars,$limitamount,$formvalidation,$min,$max);
-
-
-
-
-			$message = "Field Added!";
-			$this->session->set_flashdata('type', '1');
-			$this->session->set_flashdata('msg', "<strong>Success</strong> $message");
-
-			$this->db->select('*');
-			$this->db->from('fields');
-			$query = $this->db->get();
-
-			$data['query'] = $query;
-
-			$this->load->view('admin/header');
-			$this->load->view('admin/body');
-			$this->load->view('admin/fields/default',$data); 
-			$this->load->view('admin/fields/footer');
+			$pass = TRUE;
 		}
+		if($type === 'rich-text')
+		{
+			$pass = TRUE;
+		}
+		if($type === 'drop-down')
+		{
+			$pass = TRUE;
+		}
+		if($type === 'drop-down')
+		{
+			$pass = TRUE;
+		}
+		if($type === 'check-box')
+		{
+			$pass = TRUE;
+		}
+		if($type === 'color')
+		{
+			$pass = TRUE;
+		}
+		if($type === 'file-upload')
+		{
+			$this->form_validation->set_rules('limit', 'Limt', 'integer|greater_than[0]|required');
+			$this->form_validation->set_rules('filetypes', 'File Type', 'trim|required');
+			if ($this->form_validation->run() == FALSE)
+			{
+				$data['type'] = $type;
+
+				 $this->load->view('admin/header');
+				 $this->load->view('admin/body');
+				 $this->load->view('admin/fields/detail'); 
+				 $this->load->view('admin/fields/footer',$data);
+			}
+			else
+			{
+				$pass = TRUE;
+			}
+		}
+		if($type === 'number')
+		{
+			
+			$this->form_validation->set_rules('min', 'Min', "integer|less_than[$max]|required");
+			$this->form_validation->set_rules('max', 'Max', "integer|required|greater_than_equal_to[$min]");
+			if ($this->form_validation->run() == FALSE)
+			{
+				$data['type'] = $type;
+
+				 $this->load->view('admin/header');
+				 $this->load->view('admin/body');
+				 $this->load->view('admin/fields/detail'); 
+				 $this->load->view('admin/fields/footer',$data);
+			}
+			else
+			{
+				$pass = TRUE;
+			}
+		}
+		if($type === 'date')
+		{
+			$pass = TRUE;
+		}
+		if($type === 'switch')
+		{
+			$pass = TRUE;
+		}
+		
+		if($pass)
+		{
+			if ($this->form_validation->run() == FALSE)
+			{
+				
+
+				$data['type'] = $type;
+
+				 $this->load->view('admin/header');
+				 $this->load->view('admin/body');
+				 $this->load->view('admin/fields/detail'); 
+				 $this->load->view('admin/fields/footer',$data);
+			}
+			else
+			{
+
+				foreach($_POST as $key => $value) 
+	    		{
+	    			if($this->startsWith($key, "opts"))
+	    			{
+	    				$opts = $opts . $value . ",";
+	    			}
+	    			
+	    		}
+
+	    		$opts =  trim($opts,",");
+	    		//pass this in as a comma delimited string!
+
+
+				//successful
+				$this->load->model('Stuff_fields');
+				$this->Stuff_fields->add_new_field($handle,$type,$opts,$instructions,$maxchars,$limitamount,$formvalidation,$min,$max);
+
+
+
+
+				$message = "Field Added!";
+				$this->session->set_flashdata('type', '1');
+				$this->session->set_flashdata('msg', "<strong>Success</strong> $message");
+
+				$this->db->select('*');
+				$this->db->from('fields');
+				$query = $this->db->get();
+
+				$data['query'] = $query;
+
+				$this->load->view('admin/header');
+				$this->load->view('admin/body');
+				$this->load->view('admin/fields/default',$data); 
+				$this->load->view('admin/fields/footer');
+			}
+
+		}
+
+		
 
 	}
 
@@ -279,27 +602,6 @@ class Field_builder extends CI_Controller {
 	     $length = strlen($needle);
 	     return (substr($haystack, 0, $length) === $needle);
 	}
-
-
-	 /**
-	  *  @Description: Custom call back function to see if a drop down has been chosen
-	  *       @Params: params
-	  *
-	  *  	 @returns: returns
-	  */
-
-	public function type_check($str)
-    {
-            if ($str == 'Please select')
-            {
-                    $this->form_validation->set_message('type_check', 'Please choose a Field Type');
-                    return FALSE;
-            }
-            else
-            {
-                    return TRUE;
-            }
-    }
 
 
 

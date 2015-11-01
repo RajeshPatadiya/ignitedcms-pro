@@ -43,7 +43,7 @@
    
     $(document).ready(function (event) {
 
-      var counter = 0;
+      var counter = "<?php echo $counter; ?>"
 
       
       // dropbox
@@ -65,9 +65,19 @@
                  
         });
 
+      var tmp = "<?php echo $type; ?>";
+      var tmp2 = ".pm-" + tmp;
+      
+      
+      $('#type').val(tmp);
+     
+
+      $(tmp2).show();
+            
+
 
     
-    $('#type').change(function(){
+      $('#type').change(function(){
         if($('#type').val() == 'plain-text') {
             $('.pm-plain-text').slideDown();
             

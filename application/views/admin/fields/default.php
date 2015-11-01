@@ -140,7 +140,7 @@
                     		<tr>
 		                        <td><input type="checkbox" name="chosen[]" value="<?php echo $id; ?>"></td>
 		                        <td>
-		                        	<a href="#"><?php echo $row->name; ?></a>
+		                        	<a href="<?php echo site_url("admin/field_builder/update_field_view/$id"); ?>"><?php echo $row->name; ?></a>
 		                        </td>
 		                        <td> <?php echo $row->type; ?></td>
 		                        <td><?php //echo my_pretty_date($row->blog_date); ?></td>

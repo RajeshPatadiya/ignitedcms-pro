@@ -8,7 +8,7 @@
             <ul class="breadcrumb">
               <li><a href="<?php echo site_url('admin/dashboard'); ?>"><i class="fa fa-home"></i> <?php echo ('Dashboard'); ?></a></li>
               <li class='active'><a href="<?php echo site_url('admin/field_builder'); ?>"><i class="fa fa-list-ul"></i> <?php echo('Field Builder');?></a></li>
-              <li> <a href="#">Add new field</a> </li>
+              <li> <a href="#">Update field</a> </li>
               
             </ul>
                   
@@ -39,14 +39,17 @@
         <div class="col-sm-12">
             <header class="panel-heading ">
                 <div class="inline font-bold">
-                    <?php echo $title; ?> 
+                    Update Field 
                   </div>
 
 
                 <div class="pull-right btn btn-sm  btn-info btn-rounded" data-toggle="popover" data-html="true" data-placement="bottom" data-content='<?php echo anchor('admin/help/fields', 'Help', 'attributs'); ?>' title="" data-original-title='<button type="button" class="close pull-right" data-dismiss="popover">&times;</button>Info'> <i class="fa fa-question"></i> <strong></strong> 
                 </div>
             </header>
-            <?php $atts= array( 'data-validate'=>'parsley'); echo form_open_multipart('admin/field_builder/save_field/1',$atts); ?>
+            <?php $atts= array( 'data-validate'=>'parsley'); echo form_open_multipart("admin/field_builder/update_field/$fieldid",$atts); ?>
+            <?php foreach ($query->result() as $row): ?>
+                
+            
             
             <section class="panel">
                 <div class="panel-body">
@@ -59,7 +62,7 @@
                          
                         class="form-control" placeholder="Type here" 
                         data-toggle="tooltip" data-placement="top" 
-                         value="<?php echo set_value('handle'); ?>"> 
+                         value="<?php echo $row->name; ?>" readonly> 
                     </div>
                     <div class='errors'><?php echo form_error('handle'); ?></div>
                     <div class="form-group">
@@ -69,10 +72,10 @@
                          
                         class="form-control" placeholder="Type here"
                          data-toggle="tooltip" data-placement="top" 
-                         title="" value="<?php echo set_value('instructions'); ?>"> 
+                         title="" value="<?php echo $row->instructions; ?>"> 
                     </div>
                     <div class="form-group">
-                        <label>Field Type</label>
+                        <label>Field Type (Warning changing this will result in loss of data!!!)</label>
                         <div class="errors pull-left">*</div>
                         <div class="igs-small">Specify the field type</div>
                         <select name="type" class="form-control m-b" id="type">
@@ -101,8 +104,30 @@
                             data-maxlength="200" class="form-control" 
                             placeholder="Type option here" 
                             data-toggle="tooltip" 
-                            data-placement="top" title="" value=""> </div>
-                        <div id="my-content2"> </div>
+                            data-placement="top" title="" value="<?php echo $arr[0]; ?>"> </div>
+                        <div id="my-content2"> 
+
+                            <?php $counter1 = 0; ?>
+
+                            <?php foreach ($arr as $key): ?>
+                              
+                            <?php if ($counter1 > 0): ?>
+
+
+                            <div class="form-group">
+                           
+                            <input name="<?php echo ("opts-name$counter1"); ?>" type="text" 
+                            data-maxlength="200" class="form-control" 
+                            placeholder="Type option here" 
+                            data-toggle="tooltip" 
+                            data-placement="top" title="" value="<?php echo $key; ?>"> </div>
+
+                            <?php endif; $counter1++;?>
+                               
+                           <?php endforeach; ?>
+
+
+                        </div>
                     </div>
                     <div class="pm-drop-down" style="display:none;">
                         <!-- dynamic dropdown and checkboxes -->
@@ -115,9 +140,33 @@
                             data-maxlength="200" class="form-control" 
                             placeholder="Type option here" 
                             data-toggle="tooltip" 
-                            data-placement="top" title="" value=""> </div>
-                        <div id="my-content"> </div>
+                            data-placement="top" title="" value="<?php echo $arr[0]; ?>"> </div>
+                        <div id="my-content"> 
+                           
+                           <?php $counter1 = 0; ?>
+
+                            <?php foreach ($arr as $key): ?>
+                             
+                            <?php if ($counter1 > 0): ?>
+
+
+                            <div class="form-group">
+                            
+                            <input name="<?php echo ("opts-name$counter1"); ?>" type="text" 
+                            data-maxlength="200" class="form-control" 
+                            placeholder="Type option here" 
+                            data-toggle="tooltip" 
+                            data-placement="top" title="" value="<?php echo $key; ?>"> </div>
+
+                            <?php endif; $counter1++;?>
+                               
+                           <?php endforeach; ?>
+
+
+                        </div>
                     </div>
+
+                   
                     <div class="pm-plain-text" style="display:none;">
                         <div class="form-group">
                             <label>Max Length </label>
@@ -125,7 +174,7 @@
                             <input name="maxchars" id="maxchars" type="text" 
                             data-maxlength="20" class="form-control" 
                             placeholder="" data-toggle="tooltip" 
-                            data-placement="top" title="" value="<?php echo set_value('maxchars'); ?>"> 
+                            data-placement="top" title="" value="<?php echo $row->maxchars; ?>"> 
                             <div class='errors'><?php echo form_error('maxchars'); ?></div>
                         </div>
                     </div>
@@ -137,7 +186,7 @@
                             type="text" data-maxlength="20" 
                             class="form-control" 
                             placeholder="gif|jpg|png" data-toggle="tooltip" 
-                            data-placement="top" title="" value="<?php echo set_value('filetypes'); ?>">
+                            data-placement="top" title="" value="<?php echo $row->formvalidation; ?>">
                             <div class='errors'><?php echo form_error('filetypes'); ?></div> 
                         </div>
                         <div class="form-group">
@@ -146,7 +195,7 @@
                             <input name="limit" type="text" data-maxlength="200"
                              class="form-control" placeholder="Type here" 
                              data-toggle="tooltip" data-placement="top" 
-                             title="" value="<?php echo set_value('limit'); ?>"> 
+                             title="" value="<?php echo $row->limitamount; ?>"> 
                              <div class='errors'><?php echo form_error('limit'); ?></div>
                          </div>
                     </div>
@@ -172,7 +221,9 @@
                             <div class='errors'><?php echo form_error('max'); ?></div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-purplet btn-s-xs "><strong>Save</strong>
+
+                    <?php endforeach; ?>
+                    <button type="submit" class="btn btn-purplet btn-s-xs "><strong>Update</strong>
                     </button>
 
                     <?php echo form_close(); ?>

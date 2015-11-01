@@ -89,7 +89,7 @@
                   <pre><?php echo trim(my_html_escape('
 {% for a in assets.fieldHandle %}
    {{a.url}}
-{% end for %}
+{% endfor %}
 ')); ?>
 </pre> 
                   <br/><strong>Drop Downs</strong> <br/> 
