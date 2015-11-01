@@ -101,7 +101,7 @@
                         <div class="form-group">
                             <label>Check Box values</label>
                             <input name="opts-name" type="text" 
-                            data-maxlength="200" class="form-control" 
+                             class="form-control" 
                             placeholder="Type option here" 
                             data-toggle="tooltip" 
                             data-placement="top" title="" value="<?php echo $arr[0]; ?>"> </div>
@@ -117,7 +117,7 @@
                             <div class="form-group">
                            
                             <input name="<?php echo ("opts-name$counter1"); ?>" type="text" 
-                            data-maxlength="200" class="form-control" 
+                             class="form-control" 
                             placeholder="Type option here" 
                             data-toggle="tooltip" 
                             data-placement="top" title="" value="<?php echo $key; ?>"> </div>
@@ -137,7 +137,7 @@
                         <div class="form-group">
                             <label>Drop Down values</label>
                             <input name="opts-name" type="text"  
-                            data-maxlength="200" class="form-control" 
+                             class="form-control" 
                             placeholder="Type option here" 
                             data-toggle="tooltip" 
                             data-placement="top" title="" value="<?php echo $arr[0]; ?>"> </div>
@@ -153,7 +153,7 @@
                             <div class="form-group">
                             
                             <input name="<?php echo ("opts-name$counter1"); ?>" type="text" 
-                            data-maxlength="200" class="form-control" 
+                             class="form-control" 
                             placeholder="Type option here" 
                             data-toggle="tooltip" 
                             data-placement="top" title="" value="<?php echo $key; ?>"> </div>
@@ -172,7 +172,7 @@
                             <label>Max Length </label>
                             <div class="igs-small">The maximum length of characters the field is allowed to have.</div>
                             <input name="maxchars" id="maxchars" type="text" 
-                            data-maxlength="20" class="form-control" 
+                             class="form-control" 
                             placeholder="" data-toggle="tooltip" 
                             data-placement="top" title="" value="<?php echo $row->maxchars; ?>"> 
                             <div class='errors'><?php echo form_error('maxchars'); ?></div>
@@ -183,16 +183,16 @@
                             <label>Select Allowed File types </label>
                             <div class="igs-small">Choose the file types which are allowed.</div>
                             <input name="filetypes" id="filetypes" 
-                            type="text" data-maxlength="20" 
+                            type="text"  
                             class="form-control" 
                             placeholder="gif|jpg|png" data-toggle="tooltip" 
-                            data-placement="top" title="" value="<?php echo $row->formvalidation; ?>">
+                            data-placement="top" title="" value="<?php echo my_html_escape($row->formvalidation); ?>">
                             <div class='errors'><?php echo form_error('filetypes'); ?></div> 
                         </div>
                         <div class="form-group">
                             <label>Limit</label>
                             <div class="igs-small">Limit the number of uploads </div>
-                            <input name="limit" type="text" data-maxlength="200"
+                            <input name="limit" type="text" 
                              class="form-control" placeholder="Type here" 
                              data-toggle="tooltip" data-placement="top" 
                              title="" value="<?php echo $row->limitamount; ?>"> 
@@ -204,20 +204,20 @@
                             <label>Min Value </label>
                             <div class="igs-small">Minimum</div>
                             <input name="min" id="min" type="text" 
-                            data-maxlength="20" class="form-control" 
+                             class="form-control" 
                             placeholder="" data-toggle="tooltip" 
-                            data-placement="top" title="" value="<?php echo set_value('min'); ?>"> 
+                            data-placement="top" title="" value=""> 
                             <div class='errors'><?php echo form_error('min'); ?></div>
                         </div>
                         <div class="form-group">
                             <label>Max Value</label>
                             <div class="igs-small">Maximum </div>
                             <input name="max" type="text" 
-                            data-maxlength="200" 
+                            
                             class="form-control" 
                             placeholder="Type here" 
                             data-toggle="tooltip" 
-                            data-placement="top" title="" value="<?php echo set_value('max'); ?>"> 
+                            data-placement="top" title="" value=""> 
                             <div class='errors'><?php echo form_error('max'); ?></div>
                         </div>
                     </div>
