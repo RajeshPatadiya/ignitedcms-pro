@@ -112,6 +112,24 @@ class Stuff_fields extends CI_Model {
 		//now dynamically add columns to the content table
 		//for the twig templating engine to easily reference!
 
+
+		//first clear the fields!
+		$arr_clear = array(
+			'type' => "",
+			'opts'=> "",
+			'instructions'=> "",
+			'maxchars'=> "0",
+			'limitamount'=> "0",
+			'formvalidation'=> "",
+			'max'=> "0",
+			'min'=> "0"
+
+
+			);
+		$this->db->where('id', $fieldid);
+		$this->db->update('fields', $arr_clear);
+
+
 		if ($type == "plain-text")
 		{
 			$xd = "max_length[".$maxchars."]";
@@ -136,8 +154,8 @@ class Stuff_fields extends CI_Model {
         	$this->db->where('id', $fieldid);
         	$this->db->update('fields', $object);
 			
-
-   			//$this->dbforge->add_column('content', $fields);
+        	$this->remove_field_keep_layout($fieldid);
+   			$this->dbforge->add_column('content', $fields);
 
 
 		}
@@ -166,7 +184,8 @@ class Stuff_fields extends CI_Model {
 			$this->db->where('id', $fieldid);
         	$this->db->update('fields', $object);
 
-   			//$this->dbforge->add_column('content', $fields);
+   			$this->remove_field_keep_layout($fieldid);
+   			$this->dbforge->add_column('content', $fields);
 
 
 		}
@@ -189,7 +208,8 @@ class Stuff_fields extends CI_Model {
         	$object = array(
 			'name' => $handle, 
 			'type' => $type, 
-			
+			'min'  => $min,
+			'max'  => $max,
 			'instructions' => $instructions,
 			'maxchars' => $maxchars,
 			'formvalidation' => $xd
@@ -198,7 +218,8 @@ class Stuff_fields extends CI_Model {
 			$this->db->where('id', $fieldid);
         	$this->db->update('fields', $object);
 
-   			//$this->dbforge->add_column('content', $fields);
+   			$this->remove_field_keep_layout($fieldid);
+   			$this->dbforge->add_column('content', $fields);
 
 
 		}
@@ -227,7 +248,8 @@ class Stuff_fields extends CI_Model {
 			$this->db->where('id', $fieldid);
         	$this->db->update('fields', $object);
 
-   			//$this->dbforge->add_column('content', $fields);
+   			$this->remove_field_keep_layout($fieldid);
+   			$this->dbforge->add_column('content', $fields);
 
 
 		}
@@ -256,7 +278,8 @@ class Stuff_fields extends CI_Model {
 			$this->db->where('id', $fieldid);
         	$this->db->update('fields', $object);
 
-   			//$this->dbforge->add_column('content', $fields);
+   			$this->remove_field_keep_layout($fieldid);
+   			$this->dbforge->add_column('content', $fields);
 
 
 		}
@@ -286,7 +309,8 @@ class Stuff_fields extends CI_Model {
 			$this->db->where('id', $fieldid);
         	$this->db->update('fields', $object);
 
-   			//$this->dbforge->add_column('content', $fields);
+   			$this->remove_field_keep_layout($fieldid);
+   			$this->dbforge->add_column('content', $fields);
 
 		}
 
@@ -313,7 +337,8 @@ class Stuff_fields extends CI_Model {
 			$this->db->where('id', $fieldid);
         	$this->db->update('fields', $object);
 
-   			//$this->dbforge->add_column('content', $fields);
+   			$this->remove_field_keep_layout($fieldid);
+   			$this->dbforge->add_column('content', $fields);
 
 		}
 
@@ -340,7 +365,8 @@ class Stuff_fields extends CI_Model {
 			$this->db->where('id', $fieldid);
         	$this->db->update('fields', $object);
 
-   			//$this->dbforge->add_column('content', $fields);
+   			$this->remove_field_keep_layout($fieldid);
+   			$this->dbforge->add_column('content', $fields);
 
 			
 		}
@@ -367,7 +393,8 @@ class Stuff_fields extends CI_Model {
 			$this->db->where('id', $fieldid);
         	$this->db->update('fields', $object);
 
-   			//$this->dbforge->add_column('content', $fields);
+        	$this->remove_field_keep_layout($fieldid);
+   			$this->dbforge->add_column('content', $fields);
 			
 		}
 		if($type == "file-upload")
@@ -392,7 +419,8 @@ class Stuff_fields extends CI_Model {
 			$this->db->where('id', $fieldid);
         	$this->db->update('fields', $object);
 
-   			//$this->dbforge->add_column('content', $fields);
+   			$this->remove_field_keep_layout($fieldid);
+   			$this->dbforge->add_column('content', $fields);
 
 			
 		}
@@ -487,7 +515,8 @@ class Stuff_fields extends CI_Model {
         	$object = array(
 			'name' => $handle, 
 			'type' => $type, 
-			
+			'min'  => $min,
+			'max'  => $max,
 			'instructions' => $instructions,
 			'maxchars' => $maxchars,
 			'formvalidation' => $xd
@@ -690,6 +719,35 @@ class Stuff_fields extends CI_Model {
 	}
 
 	 /**
+	  *  @Description: same as below but keep layout!
+	  *       @Params: fieldid
+	  *
+	  *  	 @returns: nothing
+	  */		
+	public function remove_field_keep_layout($fieldid)
+	{
+		//get the column name
+		$this->db->select('name');
+		$this->db->from('fields');
+		$this->db->where('id', $fieldid);
+		$this->db->limit(1);
+
+		$query = $this->db->get();
+		
+		$column_name = "";
+		foreach ($query->result() as $row) 
+		{
+			$column_name = $row->name;
+		}
+		
+
+		$this->dbforge->drop_column('content',$column_name);
+
+	}
+
+
+
+	 /**
 	  *  @Description: to do dynamically remove columns from content table!
 	  *       @Params: fieldid
 	  *
@@ -698,6 +756,11 @@ class Stuff_fields extends CI_Model {
 	public function remove_field($fieldid)
 	{
 		
+		//first remove any field with the section
+		$this->db->where('fieldid', $fieldid);
+		$this->db->delete('section_layout');
+
+
 		//get the column name
 		$this->db->select('name');
 		$this->db->from('fields');

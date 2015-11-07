@@ -71,7 +71,7 @@ class Asset_files extends CI_Controller {
 	          
 
 	        $config['allowed_types'] = $formvalidation;
-	        $config['encrypt_name'] = TRUE;
+	        //$config['encrypt_name'] = TRUE;
 	        
 
 	        $this->load->library('upload', $config);
@@ -97,106 +97,163 @@ class Asset_files extends CI_Controller {
 	        //successful
 	        else
 	        {
-	        	
-	        	//careful only apply thumbnails to image types todo!!
-
 
 	        	$mytry = $this->upload->data();
 	            $filename = $mytry['raw_name'].$mytry['file_ext'];
 
-	            //create a thumbnail
-	   			$config['image_library'] = 'gd2';
-				$config['source_image']	= "./assets/uploads/$filename";
-				$config['create_thumb'] = TRUE;
-				
-				$config['maintain_ratio'] = TRUE;
-				
-				$config['width']	= 200;
-				$config['height']	= 200;
-				
+	            //careful only apply thumbnails to image types todo!!
+
+	            if($mytry['is_image'])
+	            {
 
 
-				$this->image_lib->initialize($config);
-
-				$this->image_lib->resize();
-				
-
-				
-				$thumb = $mytry['raw_name'] . '_thumb' . $mytry['file_ext'];
-
-				$this->image_lib->clear();
-
-
-				//make square image
-				$config2['image_library'] = 'gd2';
-				$config2['source_image']	= "./assets/uploads/$thumb";
-				$config2['create_thumb'] = FALSE;
-				$config2['maintain_ratio'] = FALSE;
-				$config2['x_axis']  =5;
-				$config2['y_axis']  =5;
-				$config2['quality'] =100;
-				$config2['width']	= 40;
-				$config2['height']	= 40;
+		            //create a thumbnail
+		   			$config['image_library'] = 'gd2';
+					$config['source_image']	= "./assets/uploads/$filename";
+					$config['create_thumb'] = TRUE;
+					
+					$config['maintain_ratio'] = TRUE;
+					
+					$config['width']	= 200;
+					$config['height']	= 200;
+					
 
 
-				$this->image_lib->initialize($config2); 
+					$this->image_lib->initialize($config);
 
-				$this->image_lib->crop();
+					$this->image_lib->resize();
+					
+
+					
+					$thumb = $mytry['raw_name'] . '_thumb' . $mytry['file_ext'];
+
+					$this->image_lib->clear();
 
 
+					//make square image
+					$config2['image_library'] = 'gd2';
+					$config2['source_image']	= "./assets/uploads/$thumb";
+					$config2['create_thumb'] = FALSE;
+					$config2['maintain_ratio'] = FALSE;
+					$config2['x_axis']  =5;
+					$config2['y_axis']  =5;
+					$config2['quality'] =100;
+					$config2['width']	= 40;
+					$config2['height']	= 40;
 
-				
-				//now crop
 
+					$this->image_lib->initialize($config2); 
+					//now crop
+					$this->image_lib->crop();
 
-				$fullsize = $mytry['raw_name'] .  $mytry['file_ext'];
+					$fullsize = $mytry['raw_name'] .  $mytry['file_ext'];
 
-				$url = base_url('assets/uploads') . "/" . $mytry['file_name'];
-				$thumb = base_url('assets/uploads') . "/" . $thumb;
+					$url = base_url('assets/uploads') . "/" . $mytry['file_name'];
+					$thumb = base_url('assets/uploads') . "/" . $thumb;
 
-				$arrayName = array(
-					'entryid'     =>  $entryid, 
-					'filename'    =>   $mytry['file_name'] ,
-					'kind'        =>   $mytry['file_ext'] ,
-					'width'       =>   $mytry['image_width'] ,
-					'height'      =>   $mytry['image_height'] ,
-					'size'        =>   $mytry['file_size'] ,
-					'datecreated' =>   date("Y-m-d H:i:s") ,
-					'fieldname'     =>  $fieldname,
-					'url'         =>  $url,
-					'thumb'   =>  $thumb     
+					$arrayName = array(
+						'entryid'     =>  $entryid, 
+						'filename'    =>   $mytry['file_name'] ,
+						'kind'        =>   $mytry['file_ext'] ,
+						'width'       =>   $mytry['image_width'] ,
+						'height'      =>   $mytry['image_height'] ,
+						'size'        =>   $mytry['file_size'] ,
+						'datecreated' =>   date("Y-m-d H:i:s") ,
+						'fieldname'     =>  $fieldname,
+						'url'         =>  $url,
+						'thumb'   =>  $thumb     
 
-					);
+						);
 
-				$this->db->insert('assetfields', $arrayName);
+					$this->db->insert('assetfields', $arrayName);
 
-				//get insert id and save to content
-				$insert_id = $this->db->insert_id();
+					//get insert id and save to content
+					$insert_id = $this->db->insert_id();
 
-				
+					
 
-				//get the original
-				$this->db->select($fieldname);
-				$this->db->from('content');
-				$this->db->where('entryid', $entryid);
+					//get the original
+					$this->db->select($fieldname);
+					$this->db->from('content');
+					$this->db->where('entryid', $entryid);
 
-				$query = $this->db->get();
-				
-				$orig = "";
-				foreach ($query->result() as $row) 
-				{
-					$orig =  $row->$fieldname;
+					$query = $this->db->get();
+					
+					$orig = "";
+					foreach ($query->result() as $row) 
+					{
+						$orig =  $row->$fieldname;
+					}
+					
+					//append to comma delimited string
+					$orig = $orig . "," .$insert_id;
+					$orig = ltrim($orig,",");
+
+					$object = array($fieldname => $orig );
+
+					$this->db->where('entryid', $entryid);
+					$this->db->update('content', $object);
+
 				}
+				else
+				{
+					//non image file types
+					$url = base_url('assets/uploads') . "/" . $mytry['file_name'];
+					$thumb = base_url('img/file.jpg');
+
+					$arrayName = array(
+						'entryid'     =>  $entryid, 
+						'filename'    =>   $mytry['file_name'] ,
+						'kind'        =>   $mytry['file_ext'] ,
+						'width'       =>   '' ,
+						'height'      =>   '' ,
+						'size'        =>   $mytry['file_size'] ,
+						'datecreated' =>   date("Y-m-d H:i:s") ,
+						'fieldname'     =>  $fieldname,
+						'url'         =>  $url,
+						'thumb'   =>  $thumb     
+
+						);
+
+					$this->db->insert('assetfields', $arrayName);
+
+					//get insert id and save to content
+					$insert_id = $this->db->insert_id();
+
+					
+
+					//get the original
+					$this->db->select($fieldname);
+					$this->db->from('content');
+					$this->db->where('entryid', $entryid);
+
+					$query = $this->db->get();
+					
+					$orig = "";
+					foreach ($query->result() as $row) 
+					{
+						$orig =  $row->$fieldname;
+					}
+					
+					//append to comma delimited string
+					$orig = $orig . "," .$insert_id;
+					$orig = ltrim($orig,",");
+
+					$object = array($fieldname => $orig );
+
+					$this->db->where('entryid', $entryid);
+					$this->db->update('content', $object);
+
+
+
+				}
+
+
 				
-				//append to comma delimited string
-				$orig = $orig . "," .$insert_id;
-				$orig = ltrim($orig,",");
+				
 
-				$object = array($fieldname => $orig );
 
-				$this->db->where('entryid', $entryid);
-				$this->db->update('content', $object);
-
+				
 
 				$this->session->set_flashdata('type', '1');
 				$this->session->set_flashdata('msg', '<strong>Success</strong> Image uploaded');

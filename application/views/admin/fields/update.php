@@ -186,7 +186,7 @@
                             type="text"  
                             class="form-control" 
                             placeholder="gif|jpg|png" data-toggle="tooltip" 
-                            data-placement="top" title="" value="<?php echo my_html_escape($row->formvalidation); ?>">
+                            data-placement="top" title="" value="">
                             <div class='errors'><?php echo form_error('filetypes'); ?></div> 
                         </div>
                         <div class="form-group">
@@ -206,7 +206,7 @@
                             <input name="min" id="min" type="text" 
                              class="form-control" 
                             placeholder="" data-toggle="tooltip" 
-                            data-placement="top" title="" value=""> 
+                            data-placement="top" title="" value="<?php echo $row->min; ?>"> 
                             <div class='errors'><?php echo form_error('min'); ?></div>
                         </div>
                         <div class="form-group">
@@ -217,7 +217,7 @@
                             class="form-control" 
                             placeholder="Type here" 
                             data-toggle="tooltip" 
-                            data-placement="top" title="" value=""> 
+                            data-placement="top" title="" value="<?php echo $row->max; ?>"> 
                             <div class='errors'><?php echo form_error('max'); ?></div>
                         </div>
                     </div>
