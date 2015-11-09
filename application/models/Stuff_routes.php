@@ -41,6 +41,34 @@ class Stuff_routes extends CI_Model {
 
 	}
 
+	 /**
+	  *  @Description: Remove the route if section is deleted
+	  *       @Params: sectionid
+	  *
+	  *  	 @returns: returns
+	  */
+	public function remove_route($sectionid)
+	{
+		//first get the sectionHandle
+		$this->db->select('name');
+		$this->db->from('section');
+		$this->db->where('id', $sectionid);
+		$this->db->limit(1);
+		$query = $this->db->get();
+		
+		$handle = "";
+		foreach ($query->result() as $row) 
+		{
+			$handle = $row->name;
+		}
+
+		$this->db->where('route', $handle);
+		$this->db->delete('routes');
+		
+
+
+	}
+
 
 }
 

@@ -202,6 +202,11 @@ class Sections extends CI_Controller {
 					
 
 					//delete the sections in the db
+					//delete the route entry
+					$this->load->model('Stuff_routes');
+					$this->Stuff_routes->remove_route($value);
+
+					
 					$this->db->where('id', $value);
 					$this->db->delete('section');
 
@@ -210,6 +215,8 @@ class Sections extends CI_Controller {
 
 					$this->db->where('sectionid', $value);
 					$this->db->delete('entry');
+
+					
 
 
 

@@ -78,9 +78,19 @@
 ')); ?>
 </pre>   <br/>You would do: <br/>
 <pre><?php echo trim(my_html_escape('
-{{sectionName.fieldHandle}}
+{{globalName.fieldHandle}}
 ')); ?>
-</pre>   <br/> The beauty about globals is that they can be accessed on any page in your template.
+</pre>   
+<br/> To access global assets simply do
+<pre><?php echo trim(my_html_escape('
+{ % for a in globalName.fieldHandle %}
+  {{a.url}}
+{ % endfor %}
+')); ?>
+</pre>   
+
+
+<br/> The beauty about globals is that they can be accessed on any page in your template.
 
 
 
