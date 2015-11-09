@@ -53,11 +53,6 @@ class Entries extends CI_Controller {
 		$this->db->from('entry');
 		$this->db->join('section', 'section.id = entry.sectionid', 'left');
 		$this->db->where('section.sectiontype', 'Single');
-		
-
-		
-
-		
 
 		$query = $this->db->get();
 		
@@ -71,8 +66,6 @@ class Entries extends CI_Controller {
 		
 		$data['query2'] = $query2;
 		
-
-
 		$this->load->view('admin/header');
 		$this->load->view('admin/body');
 		$this->load->view('admin/entries/default',$data); 
@@ -133,8 +126,6 @@ class Entries extends CI_Controller {
 
 
 
-
-
 		$this->db->select('*');
 		$this->db->from('section_layout');
 		$this->db->where('sectionid', $sectionid);
@@ -167,11 +158,11 @@ class Entries extends CI_Controller {
 		//check if search or delete
 		if($this->input->post('sbm') == "search") 
 		{
-			////////////////////////////
+			///////////////////////////////////////////
 			//
 			//  Doesn't work need to do another join
 			//
-			///////////////////////////
+			///////////////////////////////////////////
 			$search_term = $this->input->post('search_term');
 
 			$this->db->select('entry.id AS eid,section.name,entry.sectionid,entry.type');
@@ -367,9 +358,6 @@ class Entries extends CI_Controller {
 			$data['type'] = $type;
 
 
-
-
-
 			$this->db->select('*');
 			$this->db->from('section_layout');
 			$this->db->where('sectionid', $sectionid);
@@ -410,7 +398,8 @@ class Entries extends CI_Controller {
 	    			if (isset($_POST[$key])) 
 					{
 						//loop through each post and build comma delimited string
-						foreach ($_POST[$key] as $b => $value) {
+						foreach ($_POST[$key] as $b => $value) 
+						{
 							$total_contents = $total_contents .",". $value;
 						}
 					    
@@ -423,25 +412,27 @@ class Entries extends CI_Controller {
 
 	    		}
 
-
-	    		
-
-
 	    		else
 	    		{
 	    			//$object = array( $key => $value  );
 	    			$arr[$key] = trim($value);
 
-	    		
-
-
 	    		}
 
 	    	}
 
+
 	    	//update the content table NOT insertd
 	    	$this->db->where('entryid', $entryid);
 	    	$this->db->update('content', $arr);
+
+	    	//if multiple save new route!!
+	    	if($this->input->post('entrytitle'))
+	    	{
+	    		$entrytitle = $this->input->post('entrytitle');
+	    		$this->load->model('Stuff_routes');
+	    		$this->Stuff_routes->save_multiple_route($sectionid,$entryid,$entrytitle);
+	    	}
 
 	    	redirect("admin/entries/render_section/$sectionid/$entryid", "refresh");
 		}
@@ -458,11 +449,6 @@ class Entries extends CI_Controller {
 	     $length = strlen($needle);
 	     return (substr($haystack, 0, $length) === $needle);
 	}
-
-
-
-    
-
 
 
 }

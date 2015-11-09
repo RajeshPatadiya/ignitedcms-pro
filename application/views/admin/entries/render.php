@@ -179,14 +179,16 @@
 		        <div class="panel-body">
 		        	<div class="form-group">
 
-		        		<?php if($type != "Multiple") { ?>
-		        	    <a href="<?php echo site_url($section_name); ?>" 
+		        		
+		        		<?php my_friendly_url("admin/test_twig/display/$entryid/$sectionid"); ?>
+
+		        	    <a href="<?php echo site_url(my_friendly_url("admin/test_twig/display/$entryid/$sectionid")); ?>" 
 		        	    	target="_blank"
 		        	    	class="btn btn-purplet  btn-block">
 			        		<i class="fa fa-eye"></i> 
 			        		<strong>Preview Page?</strong>
 		        		</a>
-		        		<?php } ?>
+		        		
 		        	</div>
 
 		        	<div class="form-group">

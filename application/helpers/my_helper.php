@@ -74,6 +74,8 @@ if ( ! function_exists('my_username'))
 }
 
 
+
+
 /**
   *  @Description: renders user dashboard depending on permissions
   *       @Params: none
@@ -128,6 +130,33 @@ if ( ! function_exists('my_render_dashboard'))
 }
 
 
+
+/**
+  *  @Description: get the friendly url from route
+  *       @Params: string eg admin/test_twig/display/3/2
+  *
+  *     @returns: returns
+  */
+if ( ! function_exists('my_friendly_url'))
+{
+    function my_friendly_url($string)
+    {
+      $CI =& get_instance();
+      $CI->db->select('route');
+      $CI->db->from('routes');
+      $CI->db->where('controller', $string);
+      $CI->db->limit(1);
+
+      $query = $CI->db->get();
+      $url = "";
+      foreach ($query->result() as $row) 
+      {
+        $url = $row->route;
+      }
+      return $url;
+
+    }   
+}
 
 
 /**
