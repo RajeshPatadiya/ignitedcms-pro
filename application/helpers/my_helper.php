@@ -128,240 +128,7 @@ if ( ! function_exists('my_render_dashboard'))
 }
 
 
-/**
-  *  @Description: get theme color
-  *       @Params: none
-  *
-  *     @returns: hex val of color
-  */
 
-
-if ( ! function_exists('my_theme_color'))
-{
-    function my_theme_color()
-    {
-      $CI =& get_instance();
-      $CI->db->select('color');
-      $CI->db->from('site');
-      $CI->db->where('id', '1');
-      $CI->db->limit(1);
-
-      $query = $CI->db->get();
-      $color = "";
-      foreach ($query->result() as $row) 
-      {
-        $color = $row->color;
-      }
-      return "#".$color;
-
-    }   
-}
-
-/**
-  *  @Description: get theme color
-  *       @Params: none
-  *
-  *     @returns: hex val of color
-  */
-
-
-if ( ! function_exists('my_footer_color'))
-{
-    function my_footer_color()
-    {
-      $CI =& get_instance();
-      $CI->db->select('footercolor');
-      $CI->db->from('site');
-      $CI->db->where('id', '1');
-      $CI->db->limit(1);
-
-      $query = $CI->db->get();
-      $footercolor = "";
-      foreach ($query->result() as $row) 
-      {
-        $footercolor = $row->footercolor;
-      }
-      return "#".$footercolor;
-
-    }   
-}
-
-/**
-  *  @Description: get theme color
-  *       @Params: none
-  *
-  *     @returns: hex val of color
-  */
-
-
-if ( ! function_exists('my_footer_font_color'))
-{
-    function my_footer_font_color()
-    {
-      $CI =& get_instance();
-      $CI->db->select('footerfontcolor');
-      $CI->db->from('site');
-      $CI->db->where('id', '1');
-      $CI->db->limit(1);
-
-      $query = $CI->db->get();
-      $footerfontcolor = "";
-      foreach ($query->result() as $row) 
-      {
-        $footerfontcolor = $row->footerfontcolor;
-      }
-      return "#".$footerfontcolor;
-
-    }   
-}
-
-
-/**
-  *  @Description: get theme body font
-  *       @Params: none
-  *
-  *     @returns: 
-  */
-
-
-if ( ! function_exists('my_body_font'))
-{
-    function my_body_font()
-    {
-      $CI =& get_instance();
-      $CI->db->select('font');
-      $CI->db->from('site');
-      $CI->db->where('id', '1');
-      $CI->db->limit(1);
-
-      $query = $CI->db->get();
-      $font = "";
-      foreach ($query->result() as $row) 
-      {
-        $font = $row->font;
-      }
-      return $font;
-
-    }   
-}
-
-/**
-  *  @Description: get footer1
-  *       @Params: none
-  *
-  *     @returns: 
-  */
-
-
-if ( ! function_exists('my_footer1'))
-{
-    function my_footer1()
-    {
-      $CI =& get_instance();
-      $CI->db->select('footer1');
-      $CI->db->from('site');
-      $CI->db->where('id', '1');
-      $CI->db->limit(1);
-
-      $query = $CI->db->get();
-      $footer1 = "";
-      foreach ($query->result() as $row) 
-      {
-        $footer1 = $row->footer1;
-      }
-      return $footer1;
-
-    }   
-}
-
-/**
-  *  @Description: get footer2
-  *       @Params: none
-  *
-  *     @returns: 
-  */
-
-
-if ( ! function_exists('my_footer2'))
-{
-    function my_footer2()
-    {
-      $CI =& get_instance();
-      $CI->db->select('footer2');
-      $CI->db->from('site');
-      $CI->db->where('id', '1');
-      $CI->db->limit(1);
-
-      $query = $CI->db->get();
-      $footer2 = "";
-      foreach ($query->result() as $row) 
-      {
-        $footer2 = $row->footer2;
-      }
-      return $footer2;
-
-    }   
-}
-
-/**
-  *  @Description: get footer3
-  *       @Params: none
-  *
-  *     @returns: 
-  */
-
-
-if ( ! function_exists('my_footer3'))
-{
-    function my_footer3()
-    {
-      $CI =& get_instance();
-      $CI->db->select('footer3');
-      $CI->db->from('site');
-      $CI->db->where('id', '1');
-      $CI->db->limit(1);
-
-      $query = $CI->db->get();
-      $footer3 = "";
-      foreach ($query->result() as $row) 
-      {
-        $footer3 = $row->footer3;
-      }
-      return $footer3;
-
-    }   
-}
-
-
-
-
-
- /**
-  *  @Description: show the site logo
-  *       @Params: params
-  *
-  *     @returns: returns
-  */
-if ( ! function_exists('my_show_logo'))
-{
-    function my_show_logo()
-    {
-      $CI =& get_instance();
-      $CI->db->select('logo');
-      $CI->db->from('site');
-      $CI->db->where('id', '1');
-      $CI->db->limit(1);
-
-      $query = $CI->db->get();
-      $logo = "";
-      foreach ($query->result() as $row) 
-      {
-        $logo = $row->logo;
-      }
-      return $logo;
-
-    }   
-}
 
 /**
   *  @Description: show the site title
@@ -419,32 +186,6 @@ if ( ! function_exists('my_role'))
 
 
 
-/**
-  *  @Description: show the page name
-  *       @Params: params
-  *
-  *     @returns: returns
-  */
-if ( ! function_exists('my_page_name'))
-{
-    function my_page_name($id)
-    {
-      $CI =& get_instance();
-      $CI->db->select('name');
-      $CI->db->from('pages');
-      $CI->db->where('id', $id);
-      $CI->db->limit(1);
-
-      $query = $CI->db->get();
-      $name = "";
-      foreach ($query->result() as $row) 
-      {
-        $name = $row->name;
-      }
-      return $name;
-
-    }   
-}
 
 
 /**
@@ -473,6 +214,48 @@ if ( ! function_exists('my_field_name'))
 
     }   
 }
+
+
+/**
+  *  @Description: get the content
+  *       @Params: params
+  *
+  *     @returns: returns
+  */
+
+if ( ! function_exists('my_multiple_title'))
+{
+    function my_multiple_title($id)
+    {
+
+         //use ci active record
+      $CI =& get_instance();
+      $CI->db->select('entrytitle');
+      $CI->db->from('content');
+      $CI->db->where('entryid', $id);
+
+      $CI->db->limit(1);
+
+      $query = $CI->db->get();
+
+      $entrytitle = "";
+      foreach ($query->result() as $row) 
+      {
+        $entrytitle = $row->entrytitle;
+      }
+      
+      if(strlen($entrytitle) > 0)
+      {
+        return $entrytitle;
+      }
+      else
+      {
+        return "No Title";
+      }
+      
+    }
+}
+
 
 
 

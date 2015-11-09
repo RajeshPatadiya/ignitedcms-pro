@@ -1,3 +1,4 @@
+<!-- add another multiple entry view -->
 <?php 
 
    /**
@@ -38,7 +39,10 @@
  	         <!-- .breadcrumb -->
  	         <ul class="breadcrumb">
  	           <li><a href="<?php echo site_url('admin/dashboard'); ?>"><i class="fa fa-home"></i> <?php echo ('Dashboard'); ?></a></li>
- 	           <li class='active'><a href="#"><i class="fa fa-list-ul"></i> <?php echo('Entries');?></a></li>
+ 	           <li ><a href="<?php echo site_url("admin/entries"); ?>"><i class="fa fa-list-ul"></i> <?php echo('Entries');?></a></li>
+             <li class='active'><a href="#"><i class="fa fa-list-ul"></i> <?php $tmp = $this->uri->segment(4, 0); 
+            echo  my_section_name($tmp);
+            ?></a></li>
  	           
  	         </ul>
  	               
@@ -50,8 +54,8 @@
 
 	 <div class="row" style="margin-left:30px; margin-right:30px;">
 	   <div class="col-sm-12">
-	       <header class="panel-heading"><div class="inline font-bold">Entries (Singles and Multiples)</div>
-          <div class="pull-right btn btn-sm  btn-info btn-rounded" data-toggle="popover" data-html="true" data-placement="bottom" data-content="Actual save data to your sections" title="" data-original-title='<button type="button" class="close pull-right" data-dismiss="popover">&times;</button>Info'> <i class="fa fa-question"></i> <strong></strong> 
+	       <header class="panel-heading"><div class="inline font-bold">Multiples</div>
+          <div class="pull-right btn btn-sm  btn-info btn-rounded" data-toggle="popover" data-html="true" data-placement="bottom" data-content="Save your multipes" title="" data-original-title='<button type="button" class="close pull-right" data-dismiss="popover">&times;</button>Info'> <i class="fa fa-question"></i> <strong></strong> 
                           </div>
 
          </header>
@@ -67,27 +71,12 @@
                         <div class="col-sm-2">
                             
                             <div class="btn-group pull-right">
-                              <button class="btn btn-purplet dropdown-toggle" data-toggle="dropdown"><i class="fa fa-plus"></i> <strong>Add another</strong> <span class="caret"></span></button>
-                              <ul class="dropdown-menu">
-                                <!-- loop throug the multiples here -->
-
-                                <?php foreach ($query2->result() as $row): ?>
-                                 
-                                  <?php $sectionid = $row->id;
-                                        $type      = $row->sectiontype;
-
-
-                                   ?>
-
-                                  <li><a href="<?php echo site_url("admin/entries/add_multiple_entry/$sectionid/$type"); ?>"><?php echo $row->name; ?></a></li>
-
-                                <?php endforeach; ?>
-                                
-                                
-                             
-                              </ul>
+                            	<a href="<?php echo site_url("admin/entries/add_multiple_entry/$sect_id/Multiple"); ?>">
+                              <div class="btn btn-purplet " >
+                              	<i class="fa fa-plus"></i> <strong>Add another</strong> </div>
+                              
                             </div>
-
+                            </a>
                              
                                
                             
@@ -99,7 +88,7 @@
 
 
 	           	<!-- search and sort -->
-              <?php $atts= array( 'data-validate'=>'parsley'); echo form_open_multipart('admin/entries/search_posts_or_delete',$atts); ?>
+              <?php $atts= array( 'data-validate'=>'parsley'); echo form_open_multipart("admin/entries/search_posts_or_delete/$sect_id",$atts); ?>
 	           	<div class="row" >
 	           		<div class="col-sm-2">
   	           		<div class="btn  btn-white" data-toggle="popover" data-html="true" data-placement="top" data-content='
@@ -158,16 +147,16 @@
                     </thead>
                     <tbody>
                     	<?php foreach ($query->result() as $row): ?>
-                    		<?php $sectionid = $row->sectionid;
+                    	<?php $sectionid = $row->sectionid;
                               $id = $row->eid;
 
-                         ?>
+                    		?>
                     		<tr>
 		                        <td><input type="checkbox" name="chosen[]" value="<?php echo $id; ?>"></td>
 		                        <td>
-		                        	<a href="<?php echo site_url("admin/entries/render_section/$sectionid/$id"); ?> "><?php echo $row->name; ?></a>
+		                        	<a href="<?php echo site_url("admin/entries/render_section/$sectionid/$id"); ?> "><?php echo my_multiple_title($id); ?></a>
 		                        </td>
-		                        <td> <?php echo $row->type; ?> ( <?php echo $row->name; ?> Entry)</td>
+		                        <td> <?php echo $row->name; ?> </td>
 		                        <td><?php //echo my_pretty_date($row->blog_date); ?></td>
                       		</tr>
                     	<?php endforeach ?>

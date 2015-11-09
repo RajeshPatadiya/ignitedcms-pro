@@ -140,6 +140,7 @@
 		        		    <label>Entry Title</label>
 		        		    <div class="errors pull-left">*</div>
 		        		    <input name="entrytitle" type="text"  class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top"  value="<?php echo $cont; ?>">
+		        		    <div class='errors'><?php echo form_error('entrytitle'); ?></div>
 		        		</div>
 
 		        		<?php } ?>

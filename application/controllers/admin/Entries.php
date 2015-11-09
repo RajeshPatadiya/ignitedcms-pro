@@ -25,7 +25,7 @@ class Entries extends CI_Controller {
 
 
 
-	 /**
+	/**
 	  *  @Description: special function to add a type of 'multiple'
 	  *       @Params: params
 	  *
@@ -42,30 +42,30 @@ class Entries extends CI_Controller {
 		$object4 = array('entryid' => $entryid );
 		$this->db->insert('content', $object4);
 
-		redirect("admin/entries","refresh");
+		redirect("admin/entries/show_multiple_view/$sectionid","refresh");
 
 	}
 
 
 	public function index()
 	{
-		//main entry point!
 		$this->db->select('entry.id AS eid,section.name,entry.sectionid,entry.type');
 		$this->db->from('entry');
 		$this->db->join('section', 'section.id = entry.sectionid', 'left');
 		$this->db->where('section.sectiontype', 'Single');
-		$this->db->or_where('section.sectiontype', 'Multiple');
+		
+
+		
+
 		
 
 		$query = $this->db->get();
 		
-
 		$data['query'] = $query;
 
-		//now just get the multiples
 		$this->db->select('*');
 		$this->db->from('section');
-		$this->db->where('sectiontype', 'Multiple');
+		$this->db->where('sectiontype','Multiple');
 
 		$query2 = $this->db->get();
 		
@@ -73,13 +73,31 @@ class Entries extends CI_Controller {
 		
 
 
-
-
 		$this->load->view('admin/header');
 		$this->load->view('admin/body');
 		$this->load->view('admin/entries/default',$data); 
 		$this->load->view('admin/entries/footer');
 
+
+	}
+
+	public function show_multiple_view($sectionid)
+	{
+		$this->db->select('entry.id AS eid,section.name,entry.sectionid,entry.type');
+		$this->db->from('entry');
+		$this->db->join('section', 'section.id = entry.sectionid', 'left');
+		$this->db->where('section.id', $sectionid);
+
+		$query = $this->db->get();
+		
+		$data['query'] = $query;
+		$data['sect_id'] = $sectionid;
+		
+
+		$this->load->view('admin/header');
+		$this->load->view('admin/body');
+		$this->load->view('admin/entries/add',$data); 
+		$this->load->view('admin/entries/footer');
 
 
 	}
@@ -140,13 +158,63 @@ class Entries extends CI_Controller {
 
 	 /**
 	  *  @Description: To do ONLY delete multiple entries and not singles or globals
-	  *       @Params: params
+	  *       @Params: sectionid
 	  *
 	  *  	 @returns: returns
 	  */
-	public function search_posts_or_delete()
+	public function search_posts_or_delete($sectionid)
 	{
-		redirect("admin/entries","refresh");
+		//check if search or delete
+		if($this->input->post('sbm') == "search") 
+		{
+			////////////////////////////
+			//
+			//  Doesn't work need to do another join
+			//
+			///////////////////////////
+			$search_term = $this->input->post('search_term');
+
+			$this->db->select('entry.id AS eid,section.name,entry.sectionid,entry.type');
+			$this->db->from('entry');
+			$this->db->join('section', 'section.id = entry.sectionid', 'left');
+			$this->db->where('section.id', $sectionid);
+			$this->db->like('name', $search_term);
+
+			$query = $this->db->get();
+			
+			$data['query'] = $query;
+			$data['sect_id'] = $sectionid;
+			
+
+			$this->load->view('admin/header');
+			$this->load->view('admin/body');
+			$this->load->view('admin/entries/add',$data); 
+			$this->load->view('admin/entries/footer');
+		}
+
+		if($this->input->post('sbm') == "delete") 
+		{
+			
+			$this->load->model('Stuff_entries');
+
+			//iterate over selected items and delete
+			if (isset($_POST['chosen']))
+			{
+				$arrayName = $_POST['chosen'];
+
+				foreach ($arrayName as $key => $value) 
+				{
+					
+					$this->Stuff_entries->del_entry($value);
+
+				}
+				
+			}
+			
+			//return to page view
+			redirect("admin/entries/show_multiple_view/$sectionid","refresh");
+		
+		}
 	}
 
 
@@ -209,6 +277,7 @@ class Entries extends CI_Controller {
 	        	);
 
 	        	$config[$counter] = $rule2;
+	        	$counter++;
     		}
     		else
     		{
@@ -269,12 +338,36 @@ class Entries extends CI_Controller {
 
 		$this->form_validation->set_rules($config);
 
+		// echo '<pre>';
+		// print_r($config);
+		// echo '</pre>';
+
 		if ($this->form_validation->run() == FALSE)
 		{
 
 			//failed
 
+			//get the section name
+			$this->db->select('*');
+			$this->db->from('section');
+			$this->db->where('id', $sectionid);
+			$this->db->limit(1);
+
+			$query2 = $this->db->get();
 			
+			$section_name = "";
+			$type = "";
+			foreach ($query2->result() as $row) 
+			{
+				$section_name =  $row->name;
+				$type = $row->sectiontype;
+			}
+			
+			$data['section_name'] = $section_name;
+			$data['type'] = $type;
+
+
+
 
 
 			$this->db->select('*');
@@ -293,7 +386,7 @@ class Entries extends CI_Controller {
 			$this->load->view('admin/header');
 			$this->load->view('admin/body');
 			$this->load->view('admin/entries/render',$data); 
-			$this->load->view('admin/entries/footer');
+			$this->load->view('admin/entries/footer',$data);
 
 		}
 		else

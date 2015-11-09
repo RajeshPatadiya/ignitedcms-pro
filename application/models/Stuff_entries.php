@@ -3,6 +3,24 @@
 class Stuff_entries extends CI_Model {
 
 	 
+
+
+	 /**
+	  *  @Description: delete the multiple entry only
+	  *       @Params: entryid
+	  *
+	  *  	 @returns: nothing
+	  */		
+
+	public function del_entry($entryid)
+	{
+		$this->db->where('id', $entryid);
+		$this->db->delete('entry');
+
+	} 
+
+
+
 	 /**
 	  *  @Description: description
 	  *       @Params: assetid
