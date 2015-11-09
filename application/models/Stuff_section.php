@@ -84,6 +84,16 @@ class Stuff_section extends CI_Model {
 
 		}
 
+		if($sectiontype === "Multiple")
+		{
+			//create a route for the index.html file
+			$this->load->model('Stuff_routes');
+			$this->Stuff_routes->save_multiple_index($handle);
+
+
+
+		}
+
 		//if sectiontype is equal to global
 		if ($sectiontype == "Global")
 		{

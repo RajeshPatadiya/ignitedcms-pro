@@ -57,6 +57,41 @@ class Test_twig extends CI_Controller {
      	
      }
 
+      /**
+       *  @Description: special case for the multiple index page
+       *       @Params: section_name
+       *
+       *  	 @returns: returns
+       */
+     public function index_page($section_name)
+     {
+
+     	////////////////////////////////////////
+     	//
+     	//
+     	//  To do need to pass in more twig vars
+     	//  and store all section content in array
+     	//
+     	//////////////////////////////////////////
+
+ 		
+     	$data['somedata'] = 'somedata';
+
+ 		//get section name
+		$this->load->library('twig');
+		//$section_name = $this->Stuff_template_generator->get_section_name($sectionid);
+
+
+		//twig template go backwards, so you call the child first and the parent 
+		//get to access the same variables passed into it!
+
+		//in short, always call the child template!!
+		
+		// Load our Twig template
+		$this->twig->parse("custom/$section_name/index.html", $data);
+
+     }
+
 
 
 	 /**
@@ -136,7 +171,7 @@ class Test_twig extends CI_Controller {
 
 			//get section name
 			$this->load->library('twig');
-			$secion_name = $this->Stuff_template_generator->get_section_name($sectionid);
+			$section_name = $this->Stuff_template_generator->get_section_name($sectionid);
 
 
 			//twig template go backwards, so you call the child first and the parent 
@@ -145,13 +180,13 @@ class Test_twig extends CI_Controller {
 			//in short, always call the child template!!
 			
 			// Load our Twig template
-			$this->twig->parse("custom/$secion_name/_entry.html", $data);
+			$this->twig->parse("custom/$section_name/_entry.html", $data);
 		}
 		else
 		{
 			//is Single type
 			$this->load->library('twig');
-			$secion_name = $this->Stuff_template_generator->get_section_name($sectionid);
+			$section_name = $this->Stuff_template_generator->get_section_name($sectionid);
 
 			
 			//twig template go backwards, so you call the child first and the parent 
@@ -160,7 +195,7 @@ class Test_twig extends CI_Controller {
 			//in short, always call the child template!!
 			
 			// Load our Twig template
-			$this->twig->parse("custom/$secion_name.html", $data);
+			$this->twig->parse("custom/$section_name.html", $data);
 		}
 	}
 

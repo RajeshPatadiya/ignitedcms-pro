@@ -79,6 +79,24 @@ class Stuff_routes extends CI_Model {
 	}
 
 
+	 /**
+	  *  @Description: Save the route for the multiple index file
+	  *       @Params: section_name
+	  *
+	  *  	 @returns: nothing
+	  */
+	public function save_multiple_index($section_name)
+	{
+		$route = $section_name;
+
+		$controller = "admin/test_twig/index_page/$section_name";
+
+		$object = array('controller' => $controller, 'route' => $route );
+		$this->db->insert('routes', $object);
+
+	}
+
+
 
 
 	 /**

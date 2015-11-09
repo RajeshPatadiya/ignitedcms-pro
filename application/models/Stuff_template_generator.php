@@ -120,6 +120,18 @@ class Stuff_template_generator extends CI_Model {
 			{
 			    //echo 'File written!';
 			}
+
+			if ( ! write_file("./application/views/custom/$folder/index.html", $string))
+			{
+			    echo 'Unable to write the file, check you have right permissions';
+			}
+			else
+			{
+			    //echo 'File written!';
+			}
+
+
+
 		}
 		else
 		{

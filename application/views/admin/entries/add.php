@@ -65,7 +65,8 @@
 
 	           	<div class="row">
                         <div class="col-sm-10">
-                            
+                          <?php $tmp = my_section_name($sect_id); ?>
+                           <?php echo anchor($tmp, 'Preview Blog index page?', 'attributs'); ?> 
                           
                         </div>
                         <div class="col-sm-2">
