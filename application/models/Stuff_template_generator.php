@@ -12,7 +12,100 @@
 
 class Stuff_template_generator extends CI_Model {
 
-	  
+	   /**
+	    *  @Description: A way to loop through all the entries that are multiples
+	    *                so that they can be passed into the twig template builder
+	    *       @Params: none
+	    *
+	    *  	 @returns: An array of multiples
+	    */
+	  public function get_all_sections()
+	  {
+	  	$this->db->select('section.name,entry.id,entry.sectionid');
+	  	$this->db->from('section');
+	  	$this->db->join('entry', 'section.id = entry.sectionid', 'left');
+	  	$this->db->where('entry.type', 'Multiple');
+
+	  	
+
+	  	$query = $this->db->get();
+	  	
+	  	//display($entryid,$sectionid)
+
+	  	$arr = array();
+	  	$counter = 0;
+	  	foreach ($query->result() as $row) 
+	  	{
+	  		
+	  		$url = $this->get_route($row->id,$row->sectionid);
+	  		
+	  		$section_name = $row->name;
+
+	  		$a['url'] =  $url;
+	  		$a['title'] = $this->get_title($row->id,$row->sectionid);
+	  		$arr[$section_name][$counter] = $a;
+	  		$counter++;
+	  	}
+	  	return $arr;
+
+	  }
+
+	   /**
+	    *  @Description: swap the controller for the url friendly route
+	    *       @Params: params
+	    *
+	    *  	 @returns: returns
+	    */
+	  public function get_route($entryid,$sectionid)
+	  {
+	  	$string = "admin/test_twig/display/$entryid/$sectionid";
+
+	  	$this->db->select('route');
+	  	$this->db->from('routes');
+	  	$this->db->where('controller', $string);
+	  	$this->db->limit(1);
+
+	  	$query = $this->db->get();
+	  	
+	  	$route = "";
+	  	foreach ($query->result() as $row) 
+	  	{
+	  		$route =  $row->route;
+	  	}
+	  	
+	  	return $route;
+
+	  }
+
+	   /**
+	    *  @Description: grabs the multiple title
+	    *       @Params: entryid, sectionid
+	    *
+	    *  	 @returns: string title
+	    */
+	  public function get_title($entryid,$sectionid)
+	  {
+	  	$string = "admin/test_twig/display/$entryid/$sectionid";
+
+	  	$this->db->select('route');
+	  	$this->db->from('routes');
+	  	$this->db->where('controller', $string);
+	  	$this->db->limit(1);
+
+	  	$query = $this->db->get();
+	  	
+	  	$route = "";
+	  	foreach ($query->result() as $row) 
+	  	{
+	  		$route =  $row->route;
+	  	}
+	  	
+	  	$tmp = explode("/", $route);
+	  	return $tmp[1];
+	  	
+
+
+	  }
 	
 
 
@@ -110,6 +203,21 @@ class Stuff_template_generator extends CI_Model {
 
 {% endblock %}";
 
+			$string2 =
+"{% extends \"_layout.html\" %}
+
+{% block content %}
+
+{# You put our content in here #}
+	{% for entry in multiples.$folder %}
+		<a href=\"{{entry.url}}\">{{entry.title}}</a>
+		<br/>
+
+	{% endfor %}
+
+{% endblock %}";
+
+
 
 			
 			if ( ! write_file("./application/views/custom/$folder/_entry.html", $string))
@@ -121,7 +229,7 @@ class Stuff_template_generator extends CI_Model {
 			    //echo 'File written!';
 			}
 
-			if ( ! write_file("./application/views/custom/$folder/index.html", $string))
+			if ( ! write_file("./application/views/custom/$folder/index.html", $string2))
 			{
 			    echo 'Unable to write the file, check you have right permissions';
 			}

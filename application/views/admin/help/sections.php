@@ -61,11 +61,24 @@
                 <pre><?php echo trim(my_html_escape('
 -- blog(Folder)
 ---- _entry.html(File)
+---- index.html(File)
 ')); ?>
 </pre>   
 
                 <br/><br/>
                 If you are unsure of the folder and file layout of a multiple, simply click the boiler plate template generator and it will generate the folder structure and files in your view file. Then you can simply inspect them with your favourite text editor (we recommend either sublime or atom) and edit these files.
+
+                <br/><br/>
+                When you create a new 'Multiple' section you can loop through all the entries in the index.html file by using the following syntax.<br/><br/>
+<pre><?php echo trim(my_html_escape('
+{% for entry in multiples.sectionName %}
+    <a href="{{entry.url}}">{{entry.title}}</a>
+    <br/>
+
+{% endfor %}
+')); ?>
+</pre>   
+
 
                 <br/><br/>
                 <strong>Globals</strong> <br/>

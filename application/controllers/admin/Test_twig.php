@@ -34,7 +34,7 @@ class Test_twig extends CI_Controller {
       *  	 @returns: returns
       */
 
-     public function test_all()
+     public function deprecated_test_all()
      {
 
      	/*
@@ -47,20 +47,10 @@ class Test_twig extends CI_Controller {
 		$menu = $this->Stuff_menu->make_menu();
 
 
+		$this->load->model('Stuff_template_generator');
+		$this->Stuff_template_generator->get_all_sections();
 
 
-     	$this->db->select('*');
-     	$this->db->from('entry');
-     	$this->db->where('sectionid', '21');
-     	$query = $this->db->get();
-
-     	echo $menu;
-     	
-     	foreach ($query->result() as $row) 
-     	{
-     		echo anchor("page/$row->id/21", 'linkname', 'attributs');
-     		echo br();
-     	}
      	
      }
 
@@ -81,8 +71,56 @@ class Test_twig extends CI_Controller {
      	//
      	//////////////////////////////////////////
 
+     	//Pass all the global vars to view
+		$this->load->model('Stuff_globals');
+
+		$x = $this->Stuff_globals->dump_globals();
+
+		foreach ($x as $key => $value) {
+			$data[$key] = $value;
+		}
+
+		//dump the menu structure
+		$this->load->model('Stuff_menu');
+		$menu = $this->Stuff_menu->make_menu();
+
+
+		$data['menu'] = $menu;
+
+		//get base url
+		 $base_url = base_url();
+		 $data['base_url'] = $base_url;
+
+		 //get sessionid
+		 
+		 $data['session_id'] = session_id();
+		 //get username
+		 $data['username'] = $this->session->userdata('name');
+
+		 //get site title
+		 $this->db->select('site');
+		 $this->db->from('site');
+		 $this->db->where('id', '1');
+		 $this->db->limit(1);
+		 $query2 = $this->db->get();
+		 
+		 $site_name = "";
+		 foreach ($query2->result() as $row) 
+		 {
+		 	$site_name =  $row->site;
+		 }
+
+		 $data['site_name'] = $site_name;
+		 
+
  		
-     	$data['somedata'] = 'somedata';
+     	
+
+     	$this->load->model('Stuff_template_generator');
+		$x = $this->Stuff_template_generator->get_all_sections();
+
+
+		$data['multiples'] = $x;
 
  		//get section name
 		$this->load->library('twig');
@@ -139,6 +177,12 @@ class Test_twig extends CI_Controller {
 			$data[$key] = $value;
 		}
 
+		//dump the menu structure
+		$this->load->model('Stuff_menu');
+		$menu = $this->Stuff_menu->make_menu();
+
+
+		$data['menu'] = $menu;
 
 		//get base url
 		 $base_url = base_url();

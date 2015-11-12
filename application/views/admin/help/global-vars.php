@@ -51,19 +51,23 @@
  <pre><?php echo trim(my_html_escape('
 {{base_url}}
 ')); ?>
-</pre> Returns the site's base url, useful when including your own css and js files in a separate directory
+</pre> Returns the site's base url, useful when including your own css and js files in a separate directory. <br/><br/>
 
 <pre><?php echo trim(my_html_escape('
 {{session_id}}
 ')); ?>
-</pre>  Returns the session id useful when you want to use sessions for example, in an online shop.
+</pre>  Returns the session id useful when you want to use sessions for example, in an online shop.<br/><br/>
 
 <pre><?php echo trim(my_html_escape('
 {{site_name}}
-')); ?> </pre> Returns the site name.
+')); ?> </pre> Returns the site name.<br/><br/>
+
+<pre><?php echo trim(my_html_escape('
+{{menu}}
+')); ?> </pre> Echos the menu as an unordered list.
 
 
-</pre>          
+      
 
                     
 
