@@ -43,15 +43,22 @@ class Test_twig extends CI_Controller {
 			{% endfor %}
 		*/
 
+		$this->load->model('Stuff_menu');
+		$menu = $this->Stuff_menu->make_menu();
+
+
+
 
      	$this->db->select('*');
      	$this->db->from('entry');
-     	$this->db->where('sectionid', '223');
+     	$this->db->where('sectionid', '21');
      	$query = $this->db->get();
+
+     	echo $menu;
      	
      	foreach ($query->result() as $row) 
      	{
-     		echo anchor("page/$row->id/223", 'linkname', 'attributs');
+     		echo anchor("page/$row->id/21", 'linkname', 'attributs');
      		echo br();
      	}
      	

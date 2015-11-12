@@ -63,7 +63,7 @@
                         <div class="panel">
                           <div class="panel-heading">
                             <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                              <strong>Pages</strong>
+                              <strong>Sections</strong>
                             </a>
                           </div>
                           <div id="collapseOne" class="panel-collapse collapse" style="height: 0px;">
@@ -83,14 +83,11 @@
                                   <?php endforeach; ?>
 
 
-                                  <button type="submit" class="pull-right btn btn-purplet btn-s-xs " ><strong>Add pages to menu</strong></button>
+                                  <button type="submit" class="pull-right btn btn-purplet btn-s-xs " ><strong>Add Sections to menu</strong></button>
                                   
                                   <?php echo form_close(); ?>
 
-                                  <!-- 
-                                  <button type="submit" class="btn btn-white btn-s-xs " id="pullfromdatabase">
-                                    <i class="fa fa-refresh"></i> Remove and add all pages?
-                                  </button>-->
+                                  
                                    
                                    
                                 

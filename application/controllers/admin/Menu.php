@@ -47,7 +47,7 @@ class Menu extends CI_Controller {
 
 		//get all the pages
 		$this->db->select('*');
-		$this->db->from('pages');
+		$this->db->from('section');
 
 		$query2 = $this->db->get();
 		
@@ -73,7 +73,7 @@ class Menu extends CI_Controller {
 	 {
 	 	//loop through all pages and check if page id is passed
 	 	$this->db->select('*');
-		$this->db->from('pages');
+		$this->db->from('section');
 
 		$query = $this->db->get();
 		

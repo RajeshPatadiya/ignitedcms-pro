@@ -281,14 +281,14 @@ class Stuff_menu extends CI_Model {
 
 		$menu3 = ('</div></div>');
 
-		$brap =  $this->make_tree($query_array,"null");	
+		$content =  $this->make_tree($query_array,"null");	
         
         //to remove the menu bug
 		//remove first <ul> and replace with <ul class="sf-menu">
-		$brap =  preg_replace('/<ul>/', '<ul class="sf-menu">', $brap, 1);
+		//$content =  preg_replace('/<ul>/', '<ul class="sf-menu">', $content, 1);
 
 
-        $menu4 = $menu2 . $brap . $menu3;
+        $menu4 = $menu2 . $content . $menu3;
 
         return $menu4;
 
@@ -389,15 +389,15 @@ class Stuff_menu extends CI_Model {
 
   	  /**
   	   *  @Description: returns the site url
-  	   *       @Params: pageid
+  	   *       @Params: sectionid
   	   *
   	   *  	 @returns: url
   	   */
-  	 public function get_url($pageid)
+  	 public function get_url($sectionid)
   	 {
-  	 	$this->db->select('*');
-  	 	$this->db->from('pages');
-  	 	$this->db->where('id', $pageid);
+  	 	$this->db->select('name');
+  	 	$this->db->from('section');
+  	 	$this->db->where('id', $sectionid);
   	 	$this->db->limit(1);
 
   	 	$query = $this->db->get();
@@ -406,18 +406,11 @@ class Stuff_menu extends CI_Model {
   	 	$url = "";
   	 	foreach ($query->result() as $row) 
   	 	{
-  	 		$controller = $row->controller;
-  	 		$url = $row->path;
+  	 		$url = $row->name;
 
   	 	}
 
-  	 	if($controller == 0)
-  	 	{
-  	 		return "site_preview/preview_page/$pageid";
-  	 	}
-  	 	else{
-  	 		return "$url";
-  	 	}
+  	 	return $url;
   	 	
 
 

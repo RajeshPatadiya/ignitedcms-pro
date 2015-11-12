@@ -13,7 +13,7 @@
   <script src="<?php echo(base_url()."resources") ?>/js/bootstrap.js" type="text/javascript"></script>
 
   <!-- jqueryui -->
-    <script src="<?php echo(base_url()."resources") ?>/js/jquery-ui-1.10.3.custom.min.js.js" type="text/javascript"></script>
+    <script src="<?php echo(base_url()."resources") ?>/js/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
   <!-- app -->
   <script src="<?php echo(base_url()."resources") ?>/js/app.js" type="text/javascript"></script>
   <script src="<?php echo(base_url()."resources") ?>/js/app.plugin.js" type="text/javascript"></script>
@@ -57,22 +57,7 @@
 
         });
 
-        $('#pullfromdatabase').click(function (event) {
-          $.ajax({
-              type: "POST",
-              url: "<?php echo site_url('admin/menu/pull_all_pages'); ?>",
-              
-              dataType: "html",
-              
-              success: function(result) {
-
-                  location.reload();
-
-              }
-            });
-
-
-        });
+       
 
         
 
