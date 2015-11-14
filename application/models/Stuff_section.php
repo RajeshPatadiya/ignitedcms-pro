@@ -3,6 +3,51 @@
 class Stuff_section extends CI_Model {
 
 	 
+	 /**
+	  *  @Description: deletes the section
+	  *       @Params: params
+	  *
+	  *  	 @returns: returns
+	  */
+	public function delete_section($sectionid)
+	{
+		//delete the sections in the db
+		//delete the route entry
+		$this->load->model('Stuff_routes');
+		$this->Stuff_routes->remove_route($sectionid);
+
+		//delete the template file or folder
+		$this->load->model('Stuff_template_generator');
+		$file_name = $this->Stuff_template_generator->get_section_name($sectionid);
+
+		if($this->Stuff_template_generator->is_multiple($sectionid))
+		{
+			delete_files("./application/views/custom/$file_name", TRUE);
+			//delete the now empty folder
+			rmdir("./application/views/custom/$file_name");
+		}
+		else
+		{
+			//delete the file
+			unlink("./application/views/custom/$file_name.html");
+		}
+
+			
+
+		
+		$this->db->where('id', $sectionid);
+		$this->db->delete('section');
+
+		$this->db->where('sectionid', $sectionid);
+		$this->db->delete('section_layout');
+
+		$this->db->where('sectionid', $sectionid);
+		$this->db->delete('entry');
+
+
+	}
+
+
 
 	 /**
 	  *  @Description: updates the sections fields

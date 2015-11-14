@@ -151,7 +151,7 @@ class Stuff_routes extends CI_Model {
 			$handle = $row->name;
 		}
 
-		$this->db->where('route', $handle);
+		$this->db->like('route', $handle, 'after'); 
 		$this->db->delete('routes');
 		
 

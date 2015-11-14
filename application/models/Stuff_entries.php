@@ -14,8 +14,17 @@ class Stuff_entries extends CI_Model {
 
 	public function del_entry($entryid)
 	{
+		
+		//delete the routes
+		
+
+
 		$this->db->where('id', $entryid);
 		$this->db->delete('entry');
+
+		
+
+
 
 	} 
 
