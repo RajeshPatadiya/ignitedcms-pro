@@ -18,6 +18,17 @@ class Blocks extends CI_Controller {
 		$this->load->view('admin/blocks/footer');
 	}
 
+	public function rich()
+	{
+		$unique_id = random_string('alnum', 16);
+		$data['uid'] = $unique_id;
+		//echo $unique_id;
+
+		
+
+		$this->load->view('admin/blocks/chunk',$data);
+	}
+
 }
 
 /* End of file Blocks.php */

@@ -43,21 +43,44 @@
    
     $(document).ready(function (event) {
 
+      //important to use on for dynamic builder
+      $('.pertain').on('click', '.green-block', function (event) {
+      
+        $(".green-block").removeClass("highlight");
+        $(this).addClass('highlight');
+      });
+
+      $("#block-add").click(function (event) {
+
+
+
+        data = '<div class="green-block"> <div class="green-block-title">(blank)</div> </div>';
+        $('.pertain').append(data);
+
+       
+         $.ajax({
+                    url: '<?php echo site_url("admin/blocks/rich"); ?>',
+                    type: 'post',
+                    data: {richText:'richText'},
+                  
+                    success: function (data) {
+                        $('.tepid').append(data);
+
+                    }
+                });
+
+        
+      });
+
       var counter = "<?php echo $counter; ?>"
 
       
-      $("#block-add").click(function (event) {
-        alert('block added');
-      });
-
 
       // dropbox
       $('#add-block').click(function (event) {
             counter++;
             data = '<div class="form-group"><input name="opts-name'+counter+'" type="text"  data-maxlength="200" class="form-control" placeholder="Type option here" data-toggle="tooltip" data-placement="top" title="" value=""></div>';
               $('#my-content').append(data);
-
-
                  
         });
 
@@ -80,9 +103,8 @@
       $(tmp2).show();
             
 
-
-    
-      $('#type').change(function(){
+      $('.tepid').on('change', '#type', function (event) {
+      
         if($('#type').val() == 'plain-text') {
             $('.pm-plain-text').slideDown();
             

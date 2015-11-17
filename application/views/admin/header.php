@@ -353,6 +353,32 @@
         }
         
 
+        .green-block
+        {
+            background-color: #eee;
+            border-top: 1px solid #C5C5C5;
+            border-left: 1px solid #C5C5C5;
+            border-right:1px solid #C5C5C5;
+            min-height: 50px;
+            cursor: pointer;
+
+        }
+        /*highlights chosen block*/
+        .highlight
+        {
+            background-color: #DCEAE9;
+        }
+
+        .green-block-title{
+            position: relative;
+            margin-top: 10px;
+            margin-left: 10px;
+            color: #999;
+            font-size: 12px;
+            line-height: 20px;
+
+        }
+
        
         
     </style>
