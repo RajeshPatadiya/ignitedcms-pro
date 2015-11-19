@@ -124,6 +124,7 @@ CREATE TABLE `fields` (
   `maxchars` varchar(50) NOT NULL,
   `limitamount` int(11) NOT NULL,
   `formvalidation` text NOT NULL,
+  `settings` text NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=286 DEFAULT CHARSET=latin1;
@@ -255,7 +256,20 @@ CREATE TABLE `site` (
   `footer3` varchar(5000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+#
+# TABLE STRUCTURE FOR: blocks
+#
 
+DROP TABLE IF EXISTS `blocks`;
+
+CREATE TABLE `blocks` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `fieldid` int(11) NOT NULL,
+  `typeid` int(11) NOT NULL,
+  `sortorder` int(11) NOT NULL,
+  `datecreated` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
 #

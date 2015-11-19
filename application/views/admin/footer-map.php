@@ -1,4 +1,4 @@
-<div class="pm-footer" >
+<!-- <div class="pm-footer" >
     <div class="pm-bb" >
         <div class="row" style="margin-left:auto; margin-right:auto; max-width:1170px;  ">
             <div class="col-sm-12" style="margin-top:10px; margin-bottom:20px;">
@@ -11,4 +11,4 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->

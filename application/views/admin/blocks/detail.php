@@ -42,6 +42,9 @@
             <section class="panel">
 
                 <div class="panel-body">
+                 
+        
+                    
                       <div class="pertain">
                          
                       </div>
@@ -50,20 +53,39 @@
                    
 
                     <div class="form-group" style="margin-top:10px;">
-                       <div type="submit" class="btn btn-purplet btn-s-xs" id="block-add" ><strong>Add new field</strong></div>
+                       <div  class="btn btn-purplet btn-s-xs" id="block-add" ><strong>Add new field</strong></div>
                        
                     </div>
                 </div>
             </section>
         </div>
-        
+         
+         <?php  echo form_open_multipart('admin/blocks/validate'); ?>
+         <div class="col-sm-8">
+             <header class="panel-heading font-bold">Block Name</header>
+             <section class="panel">
+                 
+                 <div class="panel-body">
+                  <div class="form-group">
+                      <label>Block Name</label>
+                      <input name="block-name" type="text"  class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top"  value="">
+                  </div>
+                 </div>
+             </section>
+         </div>
+         
         <div class="tepid">
-        
+         
+          
             
-               <?php //$this->load->view('admin/blocks/chunk'); ?>
-              
+               
+
             
        
         </div>
+        <button type="submit" class="btn btn-purplet btn-s-xs"><strong>Save</strong></button>
+               
+          
+        <?php echo form_close(); ?>
     </div>
 </div>
