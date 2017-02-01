@@ -7,30 +7,19 @@
 
 		        <div class="panel-body">
 		        	
-		        	<div class="row my-pad" >
+		        	<div class="row " >
 		        		
 		        		<?php echo my_render_dashboard(); ?>
 
 		        		
-		        		<!-- <a href="<?php echo site_url('product_admin'); ?>">
-			        		<div class="col-sm-4 my-pad-top">
-			        			<div class="my-blk">
-			        				 <i class="fa fa-shopping-cart big "></i>
-			        				 <div class="my-info">Products</div>
-
-			        			</div>
-			        		   
-			        		</div>
-		        		</a> -->
+		        		<?php  $file_path = base_url("img/dashboard") . "/help.svg"; ?>
 
 		        		<a href="<?php echo site_url('admin/help'); ?>">
-			        		<div class="col-sm-4 my-pad-top">
-			        			<div class="my-blk">
-			        				 <i class="fa fa-question big "></i>
-			        				 <div class="my-info">Help</div>
+			        		<div class="col-sm-2 my-pad-top">
+			        			<img class='img-responsive my-center' src='<?php echo $file_path; ?>' alt='image'>
+			        				 <div class="igs-label">Help</div>
 
-			        			</div>
-			        		   
+			        			
 			        		</div>
 		        		</a>
 		        		

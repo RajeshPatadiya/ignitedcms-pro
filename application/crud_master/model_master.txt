@@ -1,0 +1,69 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+class {{table}}_model extends CI_Model {
+
+	public function get_all()
+	{
+		$this->db->select('*');
+		$this->db->from('{{table}}');
+        
+		$query = $this->db->get();
+		
+		return $query;
+
+	}
+
+
+    public function add_{{table}}({{args}})
+    {
+    	$object = array(
+    		{{array}}
+
+
+    		);
+    	$this->db->insert('{{table}}', $object);
+
+
+    }
+
+    public function edit_{{table}}($id,{{args}})
+    {
+
+    	$object = array(
+    		{{array}}
+
+
+    		);
+
+    	$this->db->where('id', $id);
+    	$this->db->update('{{table}}', $object);
+
+
+    }
+
+    public function get_{{table}}($id)
+    {
+
+    	$this->db->select('*');
+    	$this->db->from('{{table}}');
+    	$this->db->where('id', $id);
+
+    	$query = $this->db->get();
+    		
+    	return $query;
+
+
+    }
+
+    public function delete_{{table}}($id)
+    {
+    	$this->db->where('id', $id);
+    	$this->db->delete('{{table}}');
+
+    }
+
+
+}
+
+/* End of file {{table}}_model.php */
+/* Location: ./application/models/crud/{{table}}_model.php */

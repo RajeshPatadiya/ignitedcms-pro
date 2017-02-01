@@ -82,6 +82,62 @@
       	
       </div>
 
+      <div class="row" style="margin-left:30px; margin-right:30px;">
+           
+          <div class="col-sm-6">
+
+          </div>
+
+           <div class="col-sm-6">
+               <header class="panel-heading font-bold">User Details
+                 <div class="pull-right btn btn-sm  btn-info btn-rounded" data-toggle="popover" data-html="true" data-placement="top" data-content="Any information with this user" title="" data-original-title="<button type=&quot;button&quot; class=&quot;close pull-right&quot; data-dismiss=&quot;popover&quot;>×</button>Info"> <i class="fa fa-question"></i> <strong></strong> 
+                     </div>
+               </header>
+               <section class="panel">
+                   
+                   <div class="panel-body">
+
+                     <h3 class="purplet">Internal User Details</h3>
+
+                      <div class="form-group">
+                          <label>Department</label>
+                          <div class="igs-small"></div>
+                          <input name="name" type="text"  class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top"  value="Purchasing">
+                      </div>
+
+                      <div class="form-group">
+                          <label>Full Name</label>
+                          <div class="igs-small"></div>
+                          <input name="name" type="text"  class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top"  value="">
+                      </div>
+
+                      <div class="form-group">
+                          <label>Email</label>
+                          <div class="igs-small"></div>
+                          <input name="name" type="text"  class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top"  value="">
+                      </div>
+
+                      <div class="form-group">
+                          <label>Permissions</label>
+                          <div class="igs-small">What Icons the user has access to on the system</div>
+                          <input name="name" type="text"  class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top"  value="Manager">
+                      </div>
+
+                      <button type="submit" class="btn btn-purplet btn-s-xs pull-right" id="">
+                            <i class="fa fa-check"></i> <strong>save</strong>
+                      </button>
+                      
+                      
+
+
+                   </div>
+               </section>
+           </div>
+           
+      </div>
+
 
 
 </div>
+
+<div class="gap"></div>

@@ -1,1 +1,0 @@
-<?php //Your customer controllers should go here only! ?>

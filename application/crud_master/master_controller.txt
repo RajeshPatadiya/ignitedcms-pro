@@ -1,0 +1,177 @@
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+
+class {{table}} extends CI_Controller {
+
+	public function index()
+	{
+
+		$this->load->model('{{table}}/{{table}}_model');
+		$query = $this->{{table}}_model->get_all();
+		
+		$data['query'] = $query;
+
+
+		$this->load->view('admin/header');
+        $this->load->view('admin/body');
+        $this->load->view('{{table}}/index',$data);
+        $this->load->view('admin/footer');
+	}
+
+
+
+	 /**
+	  *  @Description: new {{table}} view
+	  *       @Params: params
+	  *
+	  *  	 @returns: returns
+	  */
+	public function new_{{table}}_view()
+	{
+		$this->load->view('admin/header');
+        $this->load->view('admin/body');
+        $this->load->view('{{table}}/new');
+        $this->load->view('admin/footer');
+
+
+	}
+
+
+	//validate and add the entry to the db
+	public function new_{{table}}()
+	{
+
+		{{post}}
+
+
+		/////////////////////////////////////////////////////////////////////////////////
+		//   validataion
+
+		$this->form_validation->set_rules('xxx', 'xxx', '');
+		{{validation}}
+
+
+
+		/////////////////////////////////////////////////////////////////////////////////
+
+		if ($this->form_validation->run() == FALSE)
+		{
+			$this->session->set_flashdata('type', '0');
+			$this->session->set_flashdata('msg', '<strong>Error</strong> Failed');
+
+
+			$this->load->view('admin/header');
+	        $this->load->view('admin/body');
+	        $this->load->view('{{table}}/new');
+	        $this->load->view('admin/footer');
+			
+		}
+		else
+		{
+			//successful
+
+			$this->load->model('{{table}}/{{table}}_model');
+			$this->{{table}}_model->add_{{table}}({{args}});
+
+			$this->session->set_flashdata('type', '1');
+			$this->session->set_flashdata('msg', '<strong>Added</strong> ');
+
+			redirect("admin/{{table}}","refresh");
+		}
+
+
+	}
+
+
+	//comment delete the entry
+	public function delete_{{table}}($id)
+	{
+
+		$this->load->model('{{table}}/{{table}}_model');
+		$this->{{table}}_model->delete_{{table}}($id);
+
+		$this->session->set_flashdata('type', '1');
+		$this->session->set_flashdata('msg', '<strong>Entry removed</strong> ');
+
+		redirect("admin/{{table}}","refresh");
+
+
+	}
+
+
+	 /**
+	  *  @Description: to edit the existing entry
+	  *       @Params: id
+	  *
+	  *  	 @returns: returns
+	  */
+	public function edit_{{table}}_view($id)
+	{
+
+		$this->load->model('{{table}}/{{table}}_model');
+		$query = $this->{{table}}_model->get_{{table}}($id);
+
+
+		$data['query'] = $query;
+		$data['id']    = $id;
+
+		$this->load->view('admin/header');
+        $this->load->view('admin/body');
+        $this->load->view("{{table}}/edit",$data);
+        $this->load->view('admin/footer');
+
+	}
+
+
+	 /**
+	  *  @Description: edit {{table}} view
+	  *       @Params: id
+	  *
+	  *  	 @returns: returns
+	  */
+	public function edit_{{table}}($id)
+	{
+		{{post}}
+
+
+		////////////////////////////////////////////////////////////////////////
+
+		$this->form_validation->set_rules('xxx', 'xxx', 'xxx');
+		{{validation}}
+
+
+		////////////////////////////////////////////////////////////////////////
+		
+		if ($this->form_validation->run() == FALSE)
+		{
+			$this->session->set_flashdata('type', '0');
+			$this->session->set_flashdata('msg', '<strong>Error</strong> Failed');
+
+
+			$this->load->view('admin/header');
+	        $this->load->view('admin/body');
+	        $this->load->view('{{table}}/new');
+	        $this->load->view('admin/footer');
+			
+		}
+		else
+		{
+			//successful
+
+			$this->load->model('{{table}}/{{table}}_model');
+			$this->{{table}}_model->edit_{{table}}($id,{{args}});
+
+			$this->session->set_flashdata('type', '1');
+			$this->session->set_flashdata('msg', '<strong>Updated</strong> message');
+
+			redirect("admin/{{table}}","refresh");
+		}
+
+	}
+
+
+
+
+}
+
+/* End of file {{table}}.php */
+/* Location: ./application/controllers/admin/{{table}}.php */

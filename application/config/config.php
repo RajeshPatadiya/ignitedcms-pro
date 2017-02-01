@@ -39,8 +39,8 @@ else
 | environments.
 |
 */
-//$config['base_url'] = 'http://localhost:8888/ignitedcms-pro/';
-$config['base_url'] = 'http://localhost/ignitedcms-pro/';
+$config['base_url'] = 'http://localhost:8888/ignitedcrud-builder/';
+
 
 /*
 |--------------------------------------------------------------------------
@@ -328,7 +328,7 @@ $config['cache_query_string'] = FALSE;
 | http://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'dfaee9a5ecc343b47ba1f1808ca44bcd';
 
 /*
 |--------------------------------------------------------------------------
@@ -381,9 +381,9 @@ $config['encryption_key'] = '';
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'ci_session';
 $config['sess_expiration'] = 7200;
-$config['sess_save_path'] = NULL;
+$config['sess_save_path'] = APPPATH .'/assets';
 $config['sess_match_ip'] = FALSE;
-$config['sess_time_to_update'] = 300;
+$config['sess_time_to_update'] = 7200;
 $config['sess_regenerate_destroy'] = FALSE;
 
 /*

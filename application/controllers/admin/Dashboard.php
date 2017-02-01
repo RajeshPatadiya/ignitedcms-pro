@@ -28,9 +28,25 @@ class Dashboard extends CI_Controller {
 
 		$this->load->view('admin/header');
 		$this->load->view('admin/body');
-		$this->load->view('admin/dashboard/dashboard_view');
+		$this->load->view('admin/dashboard/new-dashboard');
 		$this->load->view('admin/footer');
 		
+	}
+
+
+	 /**
+	  *  @Description: the original used for admin to for example set permissions
+	  *       @Params: params
+	  *
+	  *  	 @returns: returns
+	  */
+	public function original()
+	{
+		$this->load->view('admin/header');
+		$this->load->view('admin/body');
+		$this->load->view('admin/dashboard/dashboard_view');
+		$this->load->view('admin/footer');
+
 	}
 
 

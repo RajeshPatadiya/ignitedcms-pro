@@ -132,17 +132,23 @@ a:hover .caret-white {
   display: block;
 }
 .form-control {
-  border: none;
+  border: solid 1px #a6b8d5;
+
+  
   border-radius: 2px;
   box-shadow: 0 0 2px rgba(51, 170, 255, 0), inset 0 0 0 1px rgba(0, 0, 0, 0.1), inset 0 2px 4px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(51, 170, 255, 0);
+
 }
 
 .form-control:focus {
- /* -webkit-box-shadow: none;
-  box-shadow: none;*/
-  border: solid 1px;
-  border-color: #B9D9F3;
+   -webkit-box-shadow: none;
+  box-shadow: none;
+  /*border: solid 2px;
+  border-color: red;*/
+  
 }
+
+
 .input-s-sm {
   width: 120px;
 }
@@ -276,6 +282,10 @@ a:hover .caret-white {
   font-size: 13px;
   margin: -10px -15px -11px;
   border: none;
+
+
+
+
 }
 .panel-heading .nav > li > a {
   border-radius: 0;
@@ -295,6 +305,11 @@ a:hover .caret-white {
 }
 .panel-heading .nav-tabs > li > a {
   line-height: 1.5;
+
+
+  /*my shizzle*/
+  font-weight: bold;
+  font-size: 14px;
 }
 .panel-heading .nav-tabs > li > a:hover,
 .panel-heading .nav-tabs > li > a:focus {
@@ -641,6 +656,9 @@ a:hover .caret-white {
 .header .nav-tabs,
 .footer .nav-tabs {
   border: none;
+
+
+
   margin-left: -15px;
   margin-right: -15px;
 }
@@ -672,7 +690,7 @@ a:hover .caret-white {
 .header .nav-tabs.nav-white > li.active a:hover,
 .footer .nav-tabs.nav-white > li.active a,
 .footer .nav-tabs.nav-white > li.active a:hover {
-  background-color: #fff;
+  background-color: #000;
 }
 .header.navbar,
 .footer.navbar {
