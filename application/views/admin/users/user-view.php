@@ -98,7 +98,7 @@
 		           		  		
 	                      <input type="text" name="search_term" class="input-sm form-control" placeholder="Search">
 	                      <span class="input-group-btn">
-	                        <button class="btn btn-sm btn-purplet" type="submit" name="sbm" value="search"> <i class="fa fa-search"> </i></button>
+	                        <button class="btn btn-sm btn-white" type="submit" name="sbm" value="search"> <i class="fa fa-search"> </i></button>
 	                      </span>
 	                      
                     	</div>

@@ -26,8 +26,6 @@ class Users extends CI_Controller {
 
 				if($pass != true)
 				{
-					$this->session->set_flashdata('type', '0');
-	              	$this->session->set_flashdata('msg', 'No Access, speak with administrator to change ');
 					redirect('admin/dashboard','refresh');
 				}
 		  	}

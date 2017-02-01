@@ -9,10 +9,10 @@
 
       <div class="head" id="tidy">
         <div class="logo visible-lg visible-md">
-          <img src="<?php echo base_url("img/mb.svg"); ?>" class="img-responsive my-center" style="position:relative; margin-top:10px;" width="250px">
+       
         </div>
 
-       
+        <div class="logo-text">Ignited CMS Pro</div>
         
       </div> <!-- end class head-->
   </div> <!-- end head-outer -->

@@ -1,13 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-
- 
-
-
-
-
-
-
  /**
   *  @Description: A better html entities handles £ sign
   *       @Params: $var
@@ -118,16 +110,17 @@ if ( ! function_exists('my_render_dashboard'))
         foreach ($access as $key) {
           //get the icon
           $icon = $CI->Stuff_permissions->get_icon($key);
-          $name = $CI->Stuff_permissions->get_name($key);
-          $file_path = base_url("img/dashboard") . "/$key.svg";
 
-          // echo("<a href=". site_url("admin/$key").">
-          //         <div class='col-sm-2 my-pad-top'>
-          //              <img class='img-responsive my-center' src='$file_path' alt='image'>
-          //              <div class='igs-label'>".($name)."</div>
+          echo("<a href=". site_url("admin/$key").">
+                  <div class='col-sm-4 my-pad-top'>
+                    <div class='my-blk'>
+                       <i class='$icon'></i>
+                       <div class='my-info'>".humanize($key)."</div>
 
-          //         </div>
-          //       </a>");
+                    </div>
+                     
+                  </div>
+                </a>");
 
 
         }

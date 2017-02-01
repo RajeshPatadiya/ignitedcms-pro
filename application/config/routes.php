@@ -55,18 +55,3 @@ $route['translate_uri_dashes'] = FALSE;
 
 
 $route['login']				 = 'admin/installer/login';
-require_once( BASEPATH .'database/DB'. '.php' );
-// $db =& DB();
-
-// $db->select('*');
-// $db->from('routes');
-// $query = $db->get();
-
-// if($query->num_rows() > 0)
-// {
-// 	//if db entries then loop through and generate routes
-// 	foreach ($query->result() as $row) 
-// 	{
-// 		$route[$row->route] = $row->controller;
-// 	}
-// }

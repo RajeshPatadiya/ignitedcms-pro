@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Crud Builder</title>
-    <meta name="description" content="">
+    <title>Ignited CMS</title>
+    <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <style>
         .file-input-wrapper {
@@ -38,20 +38,12 @@
     <link rel="stylesheet" href="<?php echo (base_url()."resources")?>/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="<?php echo (base_url()."resources")?>/css/font.css" type="text/css" cache="false">
     <link rel="stylesheet" href="<?php echo (base_url()."resources")?>/js/fuelux/fuelux.css" type="text/css">
-    <link rel="stylesheet" href="<?php echo (base_url()."resources")?>/js/datatables/datatables.css" type="text/css">
     <link rel="stylesheet" href="<?php echo (base_url()."resources")?>/js/datepicker/datepicker.css" type="text/css">
     <link rel="stylesheet" href="<?php echo (base_url()."resources")?>/js/nestable/nestable.css" type="text/css" cache="false" />
     <link rel="stylesheet" href="<?php echo (base_url()."resources")?>/css/plugin.css" type="text/css">
     <link rel="stylesheet" href="<?php echo (base_url()."resources")?>/css/app.css" type="text/css">
     <link rel="stylesheet" href="<?php echo (base_url()."resources")?>/css/superfish.css" media="screen">
-
-    <!-- growl -->
-    <link rel="stylesheet" href="<?php echo (base_url()."resources")?>/jquery.growl/stylesheets/jquery.growl.css" media="screen">
     
-
-     <!-- responsive lightbox -->
-   <link rel="stylesheet" type="text/css" href="<?php echo (base_url())?>Responsive-Lightbox/jquery.lightbox.css">
-    <link rel="stylesheet" href="<?php echo (base_url())?>Responsive-Lightbox/demo/demo.css">
 
     <!--[if lt IE 9]>
     <script src="<?php echo (base_url()."resources")?>/js/ie/respond.min.js" cache="false"></script>
@@ -60,393 +52,21 @@
   <![endif]-->
     <style type="text/css">
 
-      
-
-
-        /*for the datatable pagination*/
-        .paginate_disabled_previous{
-
-            margin-top: 5px;
-            padding: 5px;
-            color: #ffffff;
-            border-radius: 2px;
-            background-color: #289df2;
-            border:  1px solid;
-            border-color: rgb(13, 116, 185);
-            font-weight: bold;
-            font-size: 12px;
-            cursor: pointer;
-
-        }
-
-        .paginate_disabled_next{
-            margin-top: 5px;
-            margin-left: 5px;
-            padding: 5px;
-            color: #ffffff;
-            border-radius: 2px;
-            background-color: #289df2;
-            border:  1px solid;
-            border-color: rgb(13, 116, 185);
-            font-weight: bold;
-            font-size: 12px;
-            cursor: pointer;
-        }
-
-
-        /*overwrite table headers*/
-
-        .table > tbody + 
-        tbody {
-             border-top: 0px solid #ddd; 
-        }
-
-
-        .table > thead > tr > th,
-        .table > tbody > tr > th,
-        .table > tfoot > tr > th,
-        .table > thead > tr > td,
-        .table > tbody > tr > td,
-        .table > tfoot > tr > td {
-          padding: 4px;
-          line-height: 25px;
-          vertical-align: top;
-          border-top: 1px solid #ddd;
-
-
-        }
-
-        .panel .table-striped > thead th {
-          background: -webkit-linear-gradient(#fff, #f4faff);
-            background: linear-gradient(#fff, #f4faff);
-          border-right: 1px solid #ddd;
-          color: #999;
-        }
-
-
-
-
-
-
-        /*end*/
-
-
-        /*light green shading*/
-        .m-lg
-        {
-            background-color: #dbf2db;
-            padding:2px;
-
-        }
-
-        .t-s{
-            font-size: 12px;
-            line-height: 20px;
-        }
-
-        /*small right padding*/
-        .m-r{
-
-            margin-right: 5px;
-        }
-
-        /*small left padding*/
-        .m-l{
-
-            margin-left: 50px;
-        }
-
-        .m-t{
-            margin-top: 30px;
-        }
-
-
-        /*overwrite table styles*/
-        .text-sm{
-            font-size: 14px;
-            font-weight: bold;
-            color: #666;
-
-        }
-
-        /*overright form control text size*/
-        .form-control{
-            font-size: 16px;
-        }
-
-
-       .datepicker{
-            z-index: 1100;
-        }
-
-        .text-bold{
-            font-weight: bold;
-        }
- 
-
-        /*draw top left and bottom border for tabs*/
-
-        .m-borders{
-            border-left:  solid 2px #cacaca;
-            border-right:  solid 2px #cacaca;
-            border-bottom: solid 2px #cacaca;
-
-        }
-
-
-        .m-lb{
-
-            background-color: #f6f9fc;
-        }
-
-
-
-        /*for teh spec on the artwork page*/
-       .m-slide{
-
-
-
-       }
-
-       /*the actual prod description*/
-       .m-slide-show{
-
-        margin-top: 20px;
-        background-color: #edf1f7;
-        padding:10px;
-        border-radius: 5px;
-        font-size: 15px;
-        /*color: rgb(13, 116, 185);*/
-
-         color: #333;
-        border: dashed 1px rgb(13, 116, 185);
-
-
-
-       }
-
-
-       /*the actual prod description*/
-       .m-slide-show-2{
-
-        margin-top: 20px;
-        background-color: #edf1f7;
-        padding:10px;
-        border-radius: 5px;
-        font-size: 15px;
-        /*color: rgb(13, 116, 185);*/
-
-         color: #333;
-        border: dashed 1px rgb(13, 116, 185);
-
-
-
-       }
-
-       /*the actual prod description*/
-       .m-slide-show-3{
-
-        margin-top: 20px;
-        background-color: #edf1f7;
-        padding:10px;
-        border-radius: 5px;
-        font-size: 15px;
-        /*color: rgb(13, 116, 185);*/
-
-         color: #333;
-        border: dashed 1px rgb(13, 116, 185);
-
-
-       }
-
-
-
-       /*the actual prod description*/
-       .m-slide-show-4{
-
-        margin-top: 20px;
-        background-color: #edf1f7;
-        padding:10px;
-        border-radius: 5px;
-        font-size: 15px;
-        /*color: rgb(13, 116, 185);*/
-
-         color: #333;
-        border: dashed 1px rgb(13, 116, 185);
-
-
-
-       }
-
-
-
-
-       .quantity-b{
-        background-color: #dce4f0;
-        padding:10px;
-        border-radius: 10px;
-        
-       /* color:#2895F1;*/
-
-
-       }
-
-       .fancy-btn
-       {
-            /*color: #fff !important;*/
-            color: #007ee5 !important;;
-            border-color: #007ee5;
-            background-color: #fff;
-            background: -webkit-linear-gradient(#fff, #f4faff);
-            background: linear-gradient(#fff, #f4faff);
-
-
-
-       }
-
-       /*the edit supplier box*/
-       #edit-suppliers{
-        margin-top: 5px;
-        padding: 5px;
-        color: #ffffff;
-        border-radius: 2px;
-        background-color: #5dcff3;
-        border:  1px solid;
-        border-color: rgb(13, 116, 185);
-        font-weight: bold;
-
-       }
-
-
-       #var-opts{
-
-       
-        padding: 30px;
-        color: #ffffff;
-        border-radius: 2px;
-        background-color: rgb(1, 138, 223);
-        border:  1px solid;
-        border-color: rgb(13, 116, 185);
-        min-height: 400px;
-
-
-
-
-
-       }
-
-       /*push the text down on artwork management*/
-       .push-down{
-
-         padding-top: 50px;
-
-       }
-
-
-       /*for the indesign icons on artwork history*/
-       .smal{
-        width: 90px;
-         display:inline;
-
-       }
-
-
-       /*for the username*/
-       .menu-options{
-
-          cursor: pointer;
-       }
-
        
         pre{
             
-            color: #4486b8;
+            color: #246D66;
             font-size: 14px;
-            background-color: #eef9fc;
+            background-color: #DCEAE9;
         }
 
         /*small label text*/
         .igs-small{
-            color: #47525d;
+            color: #999;
             font-size: 12px;
             line-height: 20px;
             
-            
 
-        }
-
-
-        /*the suppliers style box*/
-       .sup-box{
-
-        background-color: #edf1f7;
-        padding:10px;
-        border-radius: 5px;
-        min-height: 300px;
-        color:#333;
-        border: solid 1px rgb(13, 116, 185);
-
-
-       }
-
-       .sup-contacts{
-
-        background-color: #edf1f7;
-        padding:10px;
-        border-radius: 5px;
-        min-height: 100px;
-        color:#333;
-        border: solid 1px rgb(13, 116, 185);
-        font-size: 16px;
-
-
-       }
-        
-
-
-        .igs-label
-        {
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .breadcrumb{
-           /* -webkit-box-shadow: 4px 6px 11px -2px rgba(136,157,189,1);
-            -moz-box-shadow: 4px 6px 11px -2px rgba(136,157,189,1);
-            box-shadow: 4px 6px 11px -2px rgba(136,157,189,1);*/
-            border-color: #cacaca;
-            font-weight: bold;
-        }
-
-        .top-bar{
-
-            /*for the menu bar*/
-
-            margin-left:auto; 
-            margin-right:auto; 
-            margin-top:30px; 
-            max-width:1170px; 
-            background-color:#fff; 
-            padding:10px;
-            padding-top: 20px; 
-            border-radius:2px;
-            border: solid 1px #ccc;
-
-           /* -webkit-box-shadow: 4px 34px 74px -42px rgba(102,102,107,0.54);
-            -moz-box-shadow: 4px 34px 74px -42px rgba(102,102,107,0.54);
-            box-shadow: 4px 34px 74px -42px rgba(102,102,107,0.54);*/
-        }
-
-        .btn-info {
-            color: #fff !important;
-             background-color: rgb(1, 138, 223);
-             border-color: rgb(13, 116, 185);
-        }
-
-        .btn-info:hover, .btn-info:focus, .btn-info:active, .btn-info.active, .open .dropdown-toggle.btn-info {
-            color: #fff;
-           background-color: rgb(1, 138, 223);
-             border-color: rgb(13, 116, 185);
         }
 
 
@@ -454,17 +74,6 @@
         .big{
             font-size: 30px;
             
-        }
-
-        .big-red{
-            font-size: 30px;
-            color:#f55b5e;
-            
-        }
-
-        .big-green{
-            font-size: 30px;
-            color:#4caf50;
         }
 
         .my-pad{
@@ -486,7 +95,7 @@
             border-radius: 10px;
         }
         .my-info{
-            /*display:inline-block;*/
+            display:inline-block;
             margin-left: 10px;
             font-weight: bold;
         }
@@ -497,7 +106,7 @@
 
         }
         #tidy {
-            max-width: 1080px;
+            max-width: 1170px;
             margin: 0 auto;
         }
 
@@ -507,49 +116,24 @@
         .gap {
             margin-top: 50px;
         }
-
-        .large-gap{
-            margin-top:150px;
-        }
         body {
-            /*old #dee5ea;*/
-            background-color: #e4eaf2;
-            font-family:  'Open Sans',sans-serif;
-            font-size: 16px;
-            line-height: 25px;
-            color: #222;
+            background-color: #ebedef;
+            font-family: 'Open sans', sans-serif;
+            font-size: 14px;
+            line-height: 24px;
+            color: #444;
             -webkit-font-smoothing: antialiased;
             /* Fix for webkit rendering */
         }
-
-        .panel
-        {
-            -webkit-box-shadow: 4px 34px 74px -42px rgba(102,102,107,0.54);
-            -moz-box-shadow: 4px 34px 74px -42px rgba(102,102,107,0.54);
-            box-shadow: 4px 34px 74px -42px rgba(102,102,107,0.54);
-
-            border-color: #cacaca;
-        }
-
-        .panel-heading{
-            border-top:  1px solid #cacaca;
-            border-left: 1px solid #cacaca;
-            border-right:1px solid #cacaca;
-            
-        }
-        
-
         .shorttag {
             /*display:none;*/
         }
         .pm-footer {
-            background-color: #fff;
-            min-height: 400px;
+            background-color: #222222;
             bottom: 0px;
         }
         .footer-brand {
-            color: #666;
-
+            color: #fff;
         }
         .phone-number-bar {
             position: relative;
@@ -573,11 +157,11 @@
             margin-top: 5px;
         }
         .tab-content {
-            background-color: #e4eaf2;
+            background-color: #ebedef;
         }
         .pmf-container {
             position: relative;
-            max-width: 1270px;
+            max-width: 1170px;
         }
         .pm-header {
             min-height: 150px;
@@ -603,35 +187,25 @@
         }
         .head-outer {
             position: relative;
-            background-color: #fff;
+            background-color: #363636;
             /*box-shadow: 0 4px 4px rgba(0, 0, 0, .11);*/
             min-height: 90px;
             z-index: 999;
-
-            -webkit-box-shadow: 4px 6px 11px -2px rgba(136,157,189,1);
-            -moz-box-shadow: 4px 6px 11px -2px rgba(136,157,189,1);
-            box-shadow: 4px 6px 11px -2px rgba(136,157,189,1);
-
-
-
         }
         .head {
             height: 80px;
-            background-color: #fff;
-            color: #333;
-            max-width: 180px;
+            background-color: #363636;
+            color: #fff;
+            min-width: 205px;
         }
         a {
-            color: #2895F1;
+            color: #2E8C7A;
             /*text-decoration: underline;*/
         }
         /*for the login button on menu*/
         a.stop:hover {
-            background-color: rgb(1, 138, 223);
+            background-color: #2E8C7A;
         }
-
-
-
         .red{
             color:#811607;
         }
@@ -639,39 +213,15 @@
 
         .purplet {
             /*color: #bc8dbe; */
-            color: rgb(1, 138, 223);
+            color: #2E8C7A;
         }
         .bg-purplet {
-            background-color: rgb(1, 138, 223);
-            color:#ffffff;
+            background-color: #2E8C7A;
         }
-        /*
-        .Rounded_Rectangle_1 {
-          border-width: 1px;
-          border-color: rgb(13, 116, 185);
-          border-style: solid;
-          border-radius: 2px;
-          background-color: rgb(1, 138, 223);
-          position: absolute;
-          left: 216px;
-          top: 39px;
-          width: 136px;
-          height: 34px;
-          z-index: 4;
-        }*/
-
-
-        /*style the tabs as white*/
-        .m-white{
-
-            background-color: #fff;
-        }
-
-
         .btn-purplet {
             color: #fff !important;
-            background-color: rgb(1, 138, 223);
-             border-color: rgb(13, 116, 185);
+            background-color: #2E8C7A;
+            border-color: #2E8C7A;
         }
 
         .btn-black{
@@ -726,34 +276,25 @@
             float: left;
             color: #ffffff;
         }
-
-
-        #wrap .popover {
-             width: 600px;
-            }
-
         .popover{
             min-width: 150px;
-          /* min-width: 500px;*/
-         
         }
         .popover-title{
             color:#333;
         }
         .popover-content{
             color:#333;
-
         }
         .pm-hidden{
             display:none;
         }
         .datepicker td.active, .datepicker td.active:hover, .datepicker td.active:hover.active, .datepicker td.active.active {
-            background-color: rgb(1, 138, 223);
+            background-color: #2E8C7A;
 
         }
 
         .switch input:checked + span {
-            background-color: rgb(1, 138, 223);
+            background-color: #2E8C7A;
         }
 
         .list-group-item {
@@ -779,7 +320,7 @@
           }
 
           #sortable2 {
-            border: 2px dashed rgb(1, 138, 223);
+            border: 2px dashed #2E8C7A;
             width: 220px;
             min-height: 80px;
             list-style-type: none;
@@ -802,7 +343,7 @@
           }
 
           .m-required{
-            background-color: rgb(1, 138, 223);
+            background-color: #2E8C7A;
 
           }
 

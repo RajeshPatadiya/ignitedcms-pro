@@ -7,7 +7,7 @@ class Enter extends CI_Controller {
 
 	public function index()
 	{
-		redirect("crud/crud_generator");	
+		redirect("admin/dashboard");	
 	}
 }
 

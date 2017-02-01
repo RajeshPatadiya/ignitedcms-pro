@@ -172,18 +172,6 @@ class Stuff_user extends CI_Model {
 
 
 			$this->load->model('Stuff_email');
-
-
-			//Do the prettier email
-
-
-
-			$this->load->helper('file');
-
-			$body = read_file('./application/views/admin/email/template.php');
-
-
-
 			$this->Stuff_email->my_email($email,"Me", 'Password Reset',$body);
 
 

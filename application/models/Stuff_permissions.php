@@ -112,69 +112,6 @@ class Stuff_permissions extends CI_Model {
 
 	}
 
-
-	 /**
-	  *  @Description: return a prettier name for the controller
-	  *       @Params: controller name
-	  *
-	  *  	 @returns: returns
-	  */
-	public function get_name($controller)
-	{
-		if($controller == "users")
-		{
-			return "Users";
-		}
-		
-		if($controller == "permissions")
-		{
-			return "Permissions";
-		}
-		
-		if($controller == "profile")
-		{
-			return "Profile";
-		}
-		
-		if($controller == "email")
-		{
-			return "Email System ";
-		}
-		if($controller == "help")
-		{
-			return "Help";
-		}
-		if($controller == "mbl_artwork")
-		{
-			return "Artwork";
-		}
-		if($controller == "mbl_enquiry")
-		{
-			return "Enquiry";
-		}
-		if($controller == "mbl_purchase")
-		{
-			return "Purchase Orders";
-		}
-		if($controller == "mbl_suppliers")
-		{
-			return "Suppliers";
-		}
-		if($controller == "mbl_reports")
-		{
-			return "Reports";
-		}
-		if($controller == "mbl_dealers")
-		{
-			return "Dealers";
-		}
-
-
-
-
-	}
-
-
 	 /**
 	  *  @Description: returns the icon for the controller name
 	  *       @Params: controller name
@@ -188,19 +125,53 @@ class Stuff_permissions extends CI_Model {
 		{
 			return "fa fa-users big";
 		}
-		
+		if($controller == "site_settings")
+		{
+			return "fa fa-gear big";
+		}
+		if($controller == "assets")
+		{
+			return "fa fa-picture-o big";
+		}
+		if($controller == "blog")
+		{
+			return "fa fa-pencil big";
+		}
+		if($controller == "field_builder")
+		{
+			return "fa fa-bars big";
+		}
+		if($controller == "sections")
+		{
+			return "fa fa-pencil-square-o big";
+		}
+		if($controller == "entries")
+		{
+			return "fa fa-pencil big";
+		}
+
+		if($controller == "globals")
+		{
+			return "fa fa-globe big";
+		}
 
 
 		if($controller == "permissions")
 		{
 			return "fa fa-lock big";
 		}
-		
+		if($controller == "menu")
+		{
+			return "fa fa-tasks big";
+		}
 		if($controller == "profile")
 		{
 			return "fa fa-user big";
 		}
-		
+		if($controller == "pages")
+		{
+			return "fa fa-book big";
+		}
 		if($controller == "email")
 		{
 			return "fa fa-envelope big";
@@ -209,7 +180,18 @@ class Stuff_permissions extends CI_Model {
 		{
 			return "fa fa-question big";
 		}
-		
+		if($controller == "database")
+		{
+			return "fa fa-random big";
+		}
+		if($controller == "product_admin")
+		{
+			return "fa fa-shopping-cart big";
+		}
+		if($controller == "categories")
+		{
+			return "fa fa-tag big";
+		}
 	}
 
 }

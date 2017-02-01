@@ -208,7 +208,7 @@ class Email extends CI_Controller {
 		$this->load->model('Stuff_user');
 		$email = $this->Stuff_user->get_user_email($userid);
 
-		$this->Stuff_email->my_email($email,'admin@mblordering.com','Test from MBL Ordering System',"Congratulations,your email works");
+		$this->Stuff_email->my_email($email,'admin@ignitedcms.com','Test from IgnitedCMS',"Congratulations,your email works");
 
 		$this->session->set_flashdata('type', '1');
 		$this->session->set_flashdata('msg', '<strong>Please check your email.</strong>');

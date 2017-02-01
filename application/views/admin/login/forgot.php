@@ -1,10 +1,10 @@
 <div class="row">
     <div class="mainvcontainer" style="background-image:url('<?php echo base_url('img/bg.jpg'); ?>'); backround-repeat: no-repeat; 
         background-size:100%; min-height:900px;">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
             <section class="panel" style="margin-top:90px;padding:50px; 
-           
+            box-shadow: 4px 12px 85px rgba(0,0,0,.9);
             border: 1px solid #ccc;
             border-radius: 10px;
             ">
@@ -40,13 +40,9 @@
                        
                    
                         
-                         <button type="submit" class="btn btn-purplet btn-s-xs pull-right" id="">
-                                 <i class="fa fa-envelope"></i> <strong>Send email</strong>
-                         </button>
-                         
-                         
+                         <button type="submit" class="btn btn-purplet btn-s-xs " style="margin-top:20px;"><strong>Send Email</strong></button>
 
-                         <a href=" <?php echo site_url("login"); ?>" class="pull-left">Return to Login?</a>
+                         <a href=" <?php echo site_url("login"); ?>" class="pull-right">Return to Login?</a>
 
                          
                         
@@ -56,6 +52,6 @@
                 </div>
             </section>
         </div>
-        <div class="col-sm-4"></div>
+        <div class="col-sm-3"></div>
     </div>
 </div>
