@@ -41,7 +41,7 @@ class Asset_lib extends CI_Controller {
 
 		foreach($formValues as $key => $value) 
 		{
-		    echo $key;
+		    //echo $key;
 		   	//unlink(filename)
 			//first get the file path
 
@@ -68,8 +68,8 @@ class Asset_lib extends CI_Controller {
 			unlink($path2);
 
 
-			$this->db->where('id', $key);
-			$this->db->delete('assetfields');
+			$this->load->model('stuff_entries');
+			$arr = $this->stuff_entries->del_asset($key);
 
 
 
