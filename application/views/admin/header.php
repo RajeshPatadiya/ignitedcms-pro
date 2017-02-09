@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Ignited CMS</title>
-    <meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav">
+    <title>Ignited CMS Pro</title>
+    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <style>
         .file-input-wrapper {
@@ -51,6 +51,32 @@
     <script src="<?php echo (base_url()."resources")?>/js/ie/fix.js" cache="false"></script>
   <![endif]-->
     <style type="text/css">
+
+
+        /*styling for the assets*/
+        .one-asset{
+
+            position: relative;
+            margin-left: 20px;
+            
+            max-width: 110px;
+            min-height: 100px;
+            padding:10px;
+            float: left;
+
+
+        }
+
+        .bot{
+
+            position: absolute;
+            bottom: 1px;
+            
+            margin-left: 10px;
+
+        }
+
+        
 
        
         pre{

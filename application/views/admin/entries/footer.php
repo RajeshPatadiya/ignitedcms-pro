@@ -118,7 +118,7 @@
          var handle = $(this).attr("uid");
          
          
-         $("a.fudge").attr("href", $("a.fudge").attr("href")+"/"+handle);
+       
 
          $("#fieldname").val(handle);
 

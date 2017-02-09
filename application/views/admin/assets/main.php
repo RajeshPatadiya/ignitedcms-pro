@@ -47,9 +47,22 @@
 
   		        	<?php foreach ($query->result() as $key): ?>
 
-  		        		<img src="<?= $key->url; ?>" alt="nada" width="100px" />
-  		        		<input type="checkbox" name="<?= $key->id; ?>" value="" />
-  		        		<div class="inline"><?= $key->fieldname  ?></div>
+                  <div class="one-asset">
+
+                     <img class="img-responsive my-center" src="<?=$key->url ?>" alt="image" />
+
+                    
+
+                    <div class="bot">
+                         <input  class="m-l"   type="checkbox" name="<?= $key->id; ?>" value="" /> <strong>Delete</strong>
+                    </div>
+               
+                  
+
+
+                  </div>
+
+  		        		
 
 
 

@@ -60,15 +60,31 @@
                         
                         <div class="col-sm-12">
 
-                        	<?php foreach ($query3->result() as $key ):  ?>
+                        	<!-- show the image lib -->
+                        	<?php foreach ($query3->result() as $key): ?>
 
-                        	<a class="fudge" href="<?php echo site_url("admin/asset_files/add_from_lib/$entryid/$sectionid/$key->id/"); ?>"><?= $key->fieldname; ?></a>
+			                  <div class="one-asset">
 
-                        	<?php endforeach; ?>
+			                     <img class="img-responsive my-center" src="<?=$key->url ?>" alt="image" />
+
+			                    
+
+			                    <div class="bot">
+			                         <input  class="m-l"   type="checkbox" name="<?= $key->id; ?>" value="" /> <strong>Add</strong>
+			                    </div>
+			               
+			                  
+
+
+			                  </div>
+			              <?php endforeach; ?>
+
                         	
                         	
                         		
-                        	
+                        	<!-- end image lib -->
+
+                        	<div class="clearfix"></div>
 
                             <?php $atts = array( 'data-validate'=>'parsley'); 
                                   echo form_open_multipart('admin/asset_files/do_upload',$atts); ?>
