@@ -49,43 +49,29 @@
   		        	<h3 class="purplet">Templating</h3>
                 Once you familiarise yourself with the concepts of fields, sections and entries you
                 can start writing your own front end templates. At the heart of the ignitedcms engine is
-                Twig. A front end way of getting data out and dumping it to your views.
+                a simplified php template engine. A front end way of getting data out and dumping it to your views.
 
                 <br/><br/>
-                There are only a few rules. You must not rename _layout.html which lives in the root of
-                the views folder. This is the parent template and extends all your child templates. You 
+                There are only a few rules. You must include a _layout.php and _footer.php file which lives in the root of
+                the views folder.  You 
                 can of course customise this to your own style and even include external css and js files.
                 But you MUST not rename or delete this file. It is the heart, if you like, of the main engine.
 
-                <br/><br/> Your _layout.html template <strong>MUST</strong> contain the following syntax, this if you like is where the dynamic content of your sections will be passed into: <br/><br/>
+
+                As soon a you create a section, the name of your section will form the php name. For example,if you created a section called home, you need to create a php file called home.php inside your custom folder. <br/><br/>
+
+                Your section template <strong>MUST</strong> contain a file called _layout.php template and a footer file called _footer.php both placed at the <strong>root</strong> of the views folder Typically the header will call all the css styles and the footer will contain the javascript files. <br/><br>
                 <pre><?php echo trim(my_html_escape('
-{% block content %} 
-
-
-
-{% endblock %}
-')); ?>
-</pre> 
-
-                As soon a you create a section, the name of your section will form the html name. For example,if you created a section called home, you need to create a html file called home.html inside your custom folder. <br/><br/>
-
-                Your section template <strong>MUST</strong> extend the _layout.html template and must contain the block syntax eg. <br/><br>
-                <pre><?php echo trim(my_html_escape('
-{% extends "_layout.html" %}
-
-{% block content %}
-
-    {# You put our content in here #}
-    
-{% endblock %}')); ?>
+<?php $this->load->view("_layout"); ?>
+<?php $this->load->view("_footer"); ?>')); ?>
 </pre> 
 
                 Let's say you have a text field in your section called title. <br/><br/>
 
-                To output this in home.html all you would do is write <br/><br/>
+                To output this in home.php all you would do is write <br/><br/>
 
                 <pre><?php echo trim(my_html_escape('
-{{entry.title}}
+<?= $title ?>
 ')); ?>
 </pre> 
   		      <br/>And this will dump the content of that field into the home template. Pretty nifty!
@@ -102,3 +88,4 @@
   </div>
 </div>
 <div class="gap"></div>
+

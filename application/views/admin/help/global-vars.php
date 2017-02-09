@@ -46,24 +46,24 @@
   		    <section class="panel">
   		        
   		        <div class="panel-body" style="padding:30px; font-size:15px; line-height:24px;">
-  		        	<h3 class="purplet">Global Twig Variables</h3>
-                    IgnitedCMS comes with a few global twig variables which you will find useful. You can access this on any page in your templates. They are: <br/> <br/>
+  		        	<h3 class="purplet">Global Variables</h3>
+                    IgnitedCMS comes with a few global variables which you will find useful. You can access this on any page in your templates. They are: <br/> <br/>
  <pre><?php echo trim(my_html_escape('
-{{base_url}}
+<?= $base_url ?>
 ')); ?>
 </pre> Returns the site's base url, useful when including your own css and js files in a separate directory. <br/><br/>
 
 <pre><?php echo trim(my_html_escape('
-{{session_id}}
+<?= session_id ?>
 ')); ?>
 </pre>  Returns the session id useful when you want to use sessions for example, in an online shop.<br/><br/>
 
 <pre><?php echo trim(my_html_escape('
-{{site_name}}
+<?= site_name ?>
 ')); ?> </pre> Returns the site name.<br/><br/>
 
 <pre><?php echo trim(my_html_escape('
-{{menu}}
+<?= menu ?>
 ')); ?> </pre> Echos the menu as an unordered list.
 
 

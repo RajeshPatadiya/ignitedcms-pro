@@ -220,7 +220,7 @@ class Stuff_template_generator extends CI_Model {
 
 
 			
-			if ( ! write_file("./application/views/custom/$folder/_entry.html", $string))
+			if ( ! write_file("./application/views/custom/$folder/_entry.php", $string))
 			{
 			    echo 'Unable to write the file, check you have right permissions';
 			}
@@ -229,7 +229,7 @@ class Stuff_template_generator extends CI_Model {
 			    //echo 'File written!';
 			}
 
-			if ( ! write_file("./application/views/custom/$folder/index.html", $string2))
+			if ( ! write_file("./application/views/custom/$folder/index.php", $string2))
 			{
 			    echo 'Unable to write the file, check you have right permissions';
 			}
@@ -260,7 +260,7 @@ class Stuff_template_generator extends CI_Model {
 
 			//$data = 'Some file data';
 			$file = $this->get_section_name($sectionid);
-			if ( ! write_file("./application/views/custom/$file.html", $string))
+			if ( ! write_file("./application/views/custom/$file.php", $string))
 			{
 			    echo 'Unable to write the file, check you have right permissions';
 			}

@@ -146,7 +146,7 @@
                             <input name="limit" type="text" data-maxlength="200"
                              class="form-control" placeholder="Type here" 
                              data-toggle="tooltip" data-placement="top" 
-                             title="" value="<?php echo set_value('limit'); ?>"> 
+                             title="" value="1"  readonly> 
                              <div class='errors'><?php echo form_error('limit'); ?></div>
                          </div>
                     </div>

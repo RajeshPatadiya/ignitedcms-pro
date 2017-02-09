@@ -285,10 +285,10 @@ class Stuff_menu extends CI_Model {
         
         //to remove the menu bug
 		//remove first <ul> and replace with <ul class="sf-menu">
-		//$content =  preg_replace('/<ul>/', '<ul class="sf-menu">', $content, 1);
+		$content =  preg_replace('/<ul>/', '<ul class="menu">', $content, 1);
 
 
-        $menu4 = $menu2 . $content . $menu3;
+        $menu4 =  $content ;
 
         return $menu4;
 
@@ -359,7 +359,7 @@ class Stuff_menu extends CI_Model {
   	 	$t_url = $this->get_url($id);
   	 	$tmp_url = site_url($t_url);
 
-  	 	return "<a href='$tmp_url'> $array[0]</a>";
+  	 	return "<a href='$tmp_url'> <span> <strong>$array[0]</strong></span></a>";
 
   	 }
 

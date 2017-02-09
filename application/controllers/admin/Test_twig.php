@@ -123,19 +123,59 @@ class Test_twig extends CI_Controller {
 		$data['multiples'] = $x;
 
  		//get section name
-		$this->load->library('twig');
-		//$section_name = $this->Stuff_template_generator->get_section_name($sectionid);
+		//$this->load->library('twig');
 
-
-		//twig template go backwards, so you call the child first and the parent 
-		//get to access the same variables passed into it!
-
-		//in short, always call the child template!!
-		
-		// Load our Twig template
-		$this->twig->parse("custom/$section_name/index.html", $data);
+		$this->load->library('parser');
+	
+		$this->parser->parse("custom/$section_name/index.html", $data);
 
      }
+
+
+     //checks to see if image and swap with img url
+     public function for_image($col,$val)
+     {
+     	//return $val;
+
+     	$col = trim($col);
+
+     	$this->db->select('*');
+     	$this->db->from('fields');
+     	$this->db->where('name', $col);
+     	$this->db->limit(1);
+
+     	$query = $this->db->get();
+     	
+     	$type = "";
+     	foreach ($query->result() as $row) 
+     	{
+     		$type= $row->type;
+     	}
+     	
+     	if($type == 'file-upload')
+     	{
+     		$this->db->select('url');
+     		$this->db->from('assetfields');
+     		$this->db->where('id', $val);
+     		$this->db->limit(1);
+     		$query = $this->db->get();
+     		
+     		$url = "";
+     		foreach ($query->result() as $row) 
+     		{
+     			$url= $row->url;
+     		}
+     		return $url;
+
+     	}
+
+     	else
+     	{
+     		return $val;
+     	}
+
+     }
+
 
 
 
@@ -164,7 +204,11 @@ class Test_twig extends CI_Controller {
 
 		 //store all these in the entry array
 		 foreach ($arrTmp as $key => $value) {
-		 	$data['entry'][$key] = $value;
+		 	//special case for images
+		 	//make templating much easier
+		 	 $tmp =$this->for_image($key,$value);
+
+		 	$data[$key] = $tmp;
 		 }
 
 
@@ -221,7 +265,7 @@ class Test_twig extends CI_Controller {
 		{
 
 			//get section name
-			$this->load->library('twig');
+			
 			$section_name = $this->Stuff_template_generator->get_section_name($sectionid);
 
 
@@ -231,12 +275,12 @@ class Test_twig extends CI_Controller {
 			//in short, always call the child template!!
 			
 			// Load our Twig template
-			$this->twig->parse("custom/$section_name/_entry.html", $data);
+			$this->load->view("custom/$section_name/_entry.html", $data);
 		}
 		else
 		{
 			//is Single type
-			$this->load->library('twig');
+			//$this->load->library('parser');
 			$section_name = $this->Stuff_template_generator->get_section_name($sectionid);
 
 			
@@ -246,7 +290,8 @@ class Test_twig extends CI_Controller {
 			//in short, always call the child template!!
 			
 			// Load our Twig template
-			$this->twig->parse("custom/$section_name.html", $data);
+			$this->load->view("custom/$section_name.php", $data);
+			
 		}
 	}
 

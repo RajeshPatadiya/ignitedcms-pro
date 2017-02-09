@@ -192,6 +192,13 @@ class Stuff_permissions extends CI_Model {
 		{
 			return "fa fa-tag big";
 		}
+
+		if($controller == "asset_lib")
+		{
+			return "fa fa-picture-o big";
+		}
+
+
 	}
 
 }

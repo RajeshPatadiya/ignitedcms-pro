@@ -67,34 +67,32 @@
 
                 <strong>Plain text</strong> <br/> 
                   <pre><?php echo trim(my_html_escape('
-{{entry.fieldHandle}}
+<?= $fieldHandle ?>
 ')); ?>
 </pre> 
                   <br/><strong>Rich text</strong> <br/> 
                   <pre><?php echo trim(my_html_escape('
-{{entry.fieldHandle}}
+<?= $fieldHandle ?>
 ')); ?>
 </pre> 
                   <br/><strong>Date</strong> <br/> 
                   <pre><?php echo trim(my_html_escape('
-{{entry.fieldHandle}}
+<?= $fieldHandle ?>
 ')); ?>
 </pre> 
                   <br/><strong>Number</strong> <br/> 
                   <pre><?php echo trim(my_html_escape('
-{{entry.fieldHandle}}
+<?= $fieldHandle ?>
 ')); ?>
 </pre> 
                   <br/><strong>File Upload (E.g images)</strong> <br/> 
                   <pre><?php echo trim(my_html_escape('
-{% for a in assets.fieldHandle %}
-   {{a.url}}
-{% endfor %}
+<?= $fieldHandle ?>
 ')); ?>
 </pre> 
                   <br/><strong>Drop Downs</strong> <br/> 
                   <pre><?php echo trim(my_html_escape('
-{{entry.fieldHandle}}
+<?= $fieldHandle ?>
 ')); ?>
 </pre> 
 

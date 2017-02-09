@@ -40,7 +40,7 @@ class Stuff_globals extends CI_Model {
 			 	{
 			 		if($this->is_asset($f_name))
 			 	   	{
-			 	   		$arr[$name][$f_name] = $this->get_assets($f_content);
+			 	   		$arr[$name][$f_name] = $this->for_image($f_name,$f_content);
 			 	   	}
 			 	   	else
 			 	   	{
@@ -53,6 +53,50 @@ class Stuff_globals extends CI_Model {
 		
 		return $arr;
 	}
+
+	//checks to see if image and swap with img url
+     public function for_image($col,$val)
+     {
+     	//return $val;
+
+     	$col = trim($col);
+
+     	$this->db->select('*');
+     	$this->db->from('fields');
+     	$this->db->where('name', $col);
+     	$this->db->limit(1);
+
+     	$query = $this->db->get();
+     	
+     	$type = "";
+     	foreach ($query->result() as $row) 
+     	{
+     		$type= $row->type;
+     	}
+     	
+     	if($type == 'file-upload')
+     	{
+     		$this->db->select('url');
+     		$this->db->from('assetfields');
+     		$this->db->where('id', $val);
+     		$this->db->limit(1);
+     		$query = $this->db->get();
+     		
+     		$url = "";
+     		foreach ($query->result() as $row) 
+     		{
+     			$url= $row->url;
+     		}
+     		return $url;
+
+     	}
+
+     	else
+     	{
+     		return $val;
+     	}
+
+     }
 
 	/**
 	  *  @Description: returns the section name

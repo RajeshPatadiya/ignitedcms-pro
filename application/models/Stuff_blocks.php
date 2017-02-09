@@ -1,5 +1,7 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+//similar to matrix todo
+
 class Stuff_blocks extends CI_Model {
 
 	public function __construct()

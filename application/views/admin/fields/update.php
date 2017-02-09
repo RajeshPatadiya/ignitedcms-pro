@@ -195,7 +195,7 @@
                             <input name="limit" type="text" 
                              class="form-control" placeholder="Type here" 
                              data-toggle="tooltip" data-placement="top" 
-                             title="" value="<?php echo $row->limitamount; ?>"> 
+                             title="" value="1" readonly> 
                              <div class='errors'><?php echo form_error('limit'); ?></div>
                          </div>
                     </div>

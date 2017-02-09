@@ -71,11 +71,9 @@
                 <br/><br/>
                 When you create a new 'Multiple' section you can loop through all the entries in the index.html file by using the following syntax.<br/><br/>
 <pre><?php echo trim(my_html_escape('
-{% for entry in multiples.sectionName %}
-    <a href="{{entry.url}}">{{entry.title}}</a>
-    <br/>
-
-{% endfor %}
+<?php foreach ($multiples["blog"] as $key) : ?>
+    <a href="<?= $key["url"] ?>"><?= $key["title"] ?></a> <br/>
+  <?php endforeach; ?>
 ')); ?>
 </pre>   
 
@@ -87,23 +85,21 @@
                 <br/><br/>
                 Accessing global content in your template files is slightly different. Instead of doing : <br/>
 <pre><?php echo trim(my_html_escape('
-{{entry.fieldHandle}}
+<?= fieldHandle ?>
 ')); ?>
 </pre>   <br/>You would do: <br/>
 <pre><?php echo trim(my_html_escape('
-{{globalName.fieldHandle}}
+<?= $globalName["fieldHandle"] ?>
 ')); ?>
 </pre>   
 <br/> To access global assets simply do
 <pre><?php echo trim(my_html_escape('
-{ % for a in globalName.fieldHandle %}
-  {{a.url}}
-{ % endfor %}
+<?= $globalName["fieldHandle"] ?>
 ')); ?>
 </pre>   
 
 
-<br/> The beauty about globals is that they can be accessed on any page in your template.
+<br/> The beauty about globals is that they can be accessed on <strong>ANY</strong> page in your template.
 
 
 
