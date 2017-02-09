@@ -41,7 +41,7 @@
 
 
 	<div class="row" style="margin-left:30px; margin-right:30px;">
-		<div class="col-sm-8">
+		<div class="col-sm-12">
 		    <header class="panel-heading font-bold">Global contents </header>
 
 		    <section class="panel">

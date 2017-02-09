@@ -48,6 +48,7 @@ class Menu extends CI_Controller {
 		//get all the pages
 		$this->db->select('*');
 		$this->db->from('section');
+		$this->db->where('sectiontype !=', 'Global');
 
 		$query2 = $this->db->get();
 		

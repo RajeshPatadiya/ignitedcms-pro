@@ -59,8 +59,19 @@
 		        		<div class="row" id='hidden-upload' style="display:none;">
                         
                         <div class="col-sm-12">
+
+                        	<?php foreach ($query3->result() as $key ):  ?>
+
+                        	<a class="fudge" href="<?php echo site_url("admin/asset_files/add_from_lib/$entryid/$sectionid/$key->id/"); ?>"><?= $key->fieldname; ?></a>
+
+                        	<?php endforeach; ?>
+                        	
+                        	
+                        		
+                        	
+
                             <?php $atts = array( 'data-validate'=>'parsley'); 
-                            echo form_open_multipart('admin/asset_files/do_upload',$atts); ?>
+                                  echo form_open_multipart('admin/asset_files/do_upload',$atts); ?>
                   
                           <!-- do the upload -->
                           <div class="form-group">

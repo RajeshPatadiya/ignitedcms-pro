@@ -131,10 +131,24 @@ class Entries extends CI_Controller {
 		$this->db->where('sectionid', $sectionid);
 
 		$query = $this->db->get();
+
+
+		//get all asset files
+		$this->db->select('*');
+		$this->db->from('assetfields');
+
+		$query3 = $this->db->get();
+		
+		
+		
+
+
+
 		
 		
 		
 		$data['query'] = $query;
+		$data['query3'] = $query3;
 
 		$data['entryid'] = $entryid;
 		$data['sectionid'] = $sectionid;
@@ -363,10 +377,18 @@ class Entries extends CI_Controller {
 			$this->db->where('sectionid', $sectionid);
 
 			$query = $this->db->get();
+
+
+			//get all asset files
+			$this->db->select('*');
+			$this->db->from('assetfields');
+
+			$query3 = $this->db->get();
 			
 			
 			
 			$data['query'] = $query;
+			$data['query3'] = $query3;
 
 			$data['entryid'] = $entryid;
 			$data['sectionid'] = $sectionid;
@@ -433,6 +455,12 @@ class Entries extends CI_Controller {
 	    		$this->load->model('Stuff_routes');
 	    		$this->Stuff_routes->save_multiple_route($sectionid,$entryid,$entrytitle);
 	    	}
+
+
+
+
+
+
 
 	    	redirect("admin/entries/render_section/$sectionid/$entryid", "refresh");
 		}

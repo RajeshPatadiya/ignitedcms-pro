@@ -19,6 +19,30 @@ class Asset_files extends CI_Controller {
 		
 	}
 
+
+	//add from lib test
+	public function add_from_lib($entryid,$sectionid,$assetid,$fieldname)
+	{
+
+
+		//echo 'y';
+
+		$object = array($fieldname => $assetid );
+
+		$this->db->where('entryid', $entryid);
+		//$this->db->where($filename, $fieldname);
+		$this->db->update('content', $object);
+
+		redirect("admin/entries/render_section/$sectionid/$entryid", "refresh");
+
+	}
+
+
+
+
+
+
+
 	 /**
 	  *  @Description: upload the asset insert into db
 	  *       @Params: _POST filename, _POST entryid, _POST fieldname, _POST sectionid

@@ -69,8 +69,8 @@ class Stuff_entries extends CI_Model {
 		}
 
 		//now do the delete
-		$this->db->where('id', $assetid);
-		$this->db->delete('assetfields');
+		//$this->db->where('id', $assetid);
+		//$this->db->delete('assetfields');
 
 		//now remove from contents table
 		$this->db->select($fieldname);

@@ -71,6 +71,9 @@ class Asset_lib extends CI_Controller {
 			$this->load->model('stuff_entries');
 			$arr = $this->stuff_entries->del_asset($key);
 
+			$this->db->where('id', $key);
+			$this->db->delete('assetfields');
+
 
 
 		}
