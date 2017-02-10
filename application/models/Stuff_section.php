@@ -29,7 +29,7 @@ class Stuff_section extends CI_Model {
 		else
 		{
 			//delete the file
-			unlink("./application/views/custom/$file_name.html");
+			unlink("./application/views/custom/$file_name.php");
 		}
 
 			

@@ -88,7 +88,7 @@
 
         /*small label text*/
         .igs-small{
-            color: #999;
+            color: #555;
             font-size: 12px;
             line-height: 20px;
             
