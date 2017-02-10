@@ -208,8 +208,8 @@ class Stuff_fields extends CI_Model {
         	$object = array(
 			'name' => $handle, 
 			'type' => $type, 
-			'min'  => $min,
-			'max'  => $max,
+			// 'min'  => $min,
+			// 'max'  => $max,
 			'instructions' => $instructions,
 			'maxchars' => $maxchars,
 			'formvalidation' => $xd
@@ -503,11 +503,13 @@ class Stuff_fields extends CI_Model {
 		if ($type == "number")
 		{
 			$xd = "integer|greater_than[".$min."]|less_than[".$max."]";
+			
 
 			$fields = array(
         
 		        $handle => array(
-		        'type' => 'INT'
+		        'type' => 'INT',
+		        'constraint' =>  '11'
 		        
         		),
         	);
@@ -515,8 +517,8 @@ class Stuff_fields extends CI_Model {
         	$object = array(
 			'name' => $handle, 
 			'type' => $type, 
-			'min'  => $min,
-			'max'  => $max,
+			// 'min'  => $min,
+			 'max'  => $max,
 			'instructions' => $instructions,
 			'maxchars' => $maxchars,
 			'formvalidation' => $xd
