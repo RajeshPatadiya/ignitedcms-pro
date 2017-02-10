@@ -717,7 +717,7 @@ if ( ! function_exists('my_field_show'))
                   {
                      $url = $key['url'];
                      $id = $key['id'];
-                     $link = site_url("admin/entries/remove_asset/$id");
+                     $link = site_url("admin/entries/remove_asset/$entryid/$row->name");
 
                       echo "<img class='img-responsive pull-left' 
                       src='$url' alt='image'  

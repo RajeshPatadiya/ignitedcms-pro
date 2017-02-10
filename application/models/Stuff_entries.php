@@ -34,75 +34,17 @@ class Stuff_entries extends CI_Model {
 	  *  @Description: description
 	  *       @Params: assetid
 	  *
-	  *  	 @returns: array (sectionid, entryid)
+	  *  	 @returns: 
 	  */
 
-	public function del_asset($assetid)
+	public function del_asset($entryid,$fieldname)
 	{
-		$this->db->select('*');
-		$this->db->from('assetfields');
-		$this->db->where('id', $assetid);
-		$this->db->limit(1);
-
-		$query = $this->db->get();
 		
-		$entryid = "";
-		$fieldname = "";
-		foreach ($query->result() as $row) 
-		{
-			$entryid = $row->entryid;
-			$fieldname = $row->fieldname;
-		}
-
-		//now get the sectionid
-		$this->db->select('sectionid');
-		$this->db->from('entry');
-		$this->db->where('id', $entryid);
-		$this->db->limit(1);
-
-		$query2 = $this->db->get();
-		
-		$sectionid = "";
-		foreach ($query2->result() as $row) 
-		{
-			$sectionid =  $row->sectionid;
-		}
-
-		//now do the delete
-		//$this->db->where('id', $assetid);
-		//$this->db->delete('assetfields');
-
-		//now remove from contents table
-		$this->db->select($fieldname);
-		$this->db->from('content');
-		$this->db->where('entryid', $entryid);
-
-		$query = $this->db->get();
-		
-		$orig = "";
-		foreach ($query->result() as $row) 
-		{
-			$orig =  $row->$fieldname;
-		}
-		
-		//remove id rebuild comma delimited string
-		$orig = str_replace($assetid, "", $orig);
-		
-
-		//utlitise string helper to tidy comma output
-		$orig = reduce_multiples($orig, ",", TRUE);
-
-		$object = array($fieldname => $orig );
+		//blank it out
+		$object = array($fieldname => "" );
 
 		$this->db->where('entryid', $entryid);
 		$this->db->update('content', $object);
-
-
-
-
-		$tmp = array('entryid' => $entryid, 'sectionid' => $sectionid);
-
-		return $tmp;
 		
 		
 

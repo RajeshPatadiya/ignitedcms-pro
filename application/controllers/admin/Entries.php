@@ -230,15 +230,29 @@ class Entries extends CI_Controller {
 	  *
 	  *  	 @returns: goes to view
 	  */
-	public function remove_asset($assetid)
+	public function remove_asset($entryid,$fieldname)
 	{
 		//first get the sectionid and entryid so we can return to view file!!
 		//do this before deleting
 		$this->load->model('Stuff_entries');
-		$arr = $this->Stuff_entries->del_asset($assetid);
+		$arr = $this->Stuff_entries->del_asset($entryid,$fieldname);
 
-		$sectionid = $arr['sectionid'];
-		$entryid   = $arr['entryid'];
+
+		//get the sectionid
+		$this->db->select('sectionid');
+		$this->db->from('entry');
+		$this->db->where('id', $entryid);
+		$this->db->limit(1);
+		$query = $this->db->get();
+		
+		$sectionid = "";
+		foreach ($query->result() as $row) 
+		{
+			$sectionid =  $row->sectionid;
+		}
+		
+
+
 
 		redirect("admin/entries/render_section/$sectionid/$entryid", "refresh");
 

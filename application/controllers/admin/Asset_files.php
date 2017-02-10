@@ -21,20 +21,69 @@ class Asset_files extends CI_Controller {
 
 
 	//add from lib test
-	public function add_from_lib($entryid,$sectionid,$assetid,$fieldname)
+	//need to check validation matches otherwise flag issue
+
+
+	 /**
+	  *  @Description: add images from lib
+	  *       @Params: entryid,sectionid,fieldname, _post (asset id)
+	  *
+	  *  	 @returns: returns
+	  */
+	public function add_from_lib()
 	{
 
+		//loop through post values
 
-		//echo 'y';
+		$fieldname2 = trim($this->input->post('fieldname2'));
+		$entryid2   =  trim($this->input->post('entryid2'));
+		$sectionid2 = trim($this->input->post('sectionid2'));
 
-		$object = array($fieldname => $assetid );
 
-		$this->db->where('entryid', $entryid);
-		//$this->db->where($filename, $fieldname);
-		$this->db->update('content', $object);
 
-		redirect("admin/entries/render_section/$sectionid/$entryid", "refresh");
+		$count = 0;
+		$assetid = "";
+		foreach($_POST as $key => $value) 
+	    {
+	    	//set the key
+	    	if($key == 'chosen')
+	    	{
+	    		
+	    		foreach ($value as $val) 
+	    		{
+	    			$assetid = $val;
+	    			$count++;
 
+	    			//echo $assetid;
+	    		}
+
+	    		
+	    	}
+	    	
+	    }
+
+	    //they cannot attach more than one image
+	    if ($count > 1) 
+	    {
+	    	$this->session->set_flashdata('type', '0');
+	    	$this->session->set_flashdata('msg', '<strong>Failed</strong> You cannot add more than one asset!');
+
+	    	redirect("admin/entries/render_section/$sectionid2/$entryid2", "refresh");
+	    }
+	    else
+	    {
+	    	//do the validation logic here
+	    	//echo 'pass';
+
+	    	$object = array($fieldname2 => $assetid );
+
+			$this->db->where('entryid', $entryid2);
+			
+			$this->db->update('content', $object);
+
+			redirect("admin/entries/render_section/$sectionid2/$entryid2", "refresh");
+
+	    }
 	}
 
 
