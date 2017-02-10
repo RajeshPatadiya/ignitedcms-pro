@@ -95,6 +95,10 @@
 
         }
 
+        .breadcrumb{
+            font-weight: bold;
+        }
+
 
         /*For the big icons on dashboard*/
         .big{

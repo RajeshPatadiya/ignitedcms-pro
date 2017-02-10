@@ -63,7 +63,7 @@
                         <div class="panel">
                           <div class="panel-heading">
                             <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
-                              <strong>Sections</strong>
+                              <strong>Add Sections to menu</strong>
                             </a>
                           </div>
                           <div id="collapseOne" class="panel-collapse collapse" style="height: 0px;">
@@ -83,7 +83,7 @@
                                   <?php endforeach; ?>
 
 
-                                  <button type="submit" class="pull-right btn btn-purplet btn-s-xs " ><strong>Add Sections to menu</strong></button>
+                                  <button type="submit" class="pull-right btn btn-purplet btn-s-xs " ><strong>Add</strong></button>
                                   
                                   <?php echo form_close(); ?>
 
@@ -99,10 +99,34 @@
                         <div class="panel">
                           <div class="panel-heading">
                             <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
-                              <strong>Links</strong> (Not yet implemented in 1.0)
+                              <strong>Custom Menu class Styles</strong> 
                             </a>
                           </div>
                           <div id="collapseTwo" class="panel-collapse collapse" style="height: 0px;">
+                            <div class="panel-body text-sm">
+                                <div class="form-group">
+                                    <label><?php echo my_html_escape('<ul>'); ?></label>
+                                    <div class="igs-small">Add a top level custom class to the ul tag</div>
+                                    <input name="url" type="text" data-required="true" data-maxlength="100" class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top"  value="">
+                                </div>
+                                <!-- <div class="form-group">
+                                    <label><?php echo my_html_escape('<li>'); ?></label>
+                                    <input name="linktext" type="text" data-required="true" data-maxlength="50" class="form-control" placeholder="Type here" data-toggle="tooltip" data-placement="top"  value="">
+                                </div> -->
+                                <button type="submit" class="pull-right btn btn-purplet btn-s-xs " ><strong>Save</strong></button>
+                                
+                            </div>
+                          </div>
+                        </div>  
+
+                        <!-- save menu ul and li custom classes -->
+                        <div class="panel">
+                          <div class="panel-heading">
+                            <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion2" href="#collapseThree">
+                              <strong>Links</strong> (Not yet implemented in 1.0)
+                            </a>
+                          </div>
+                          <div id="collapseThree" class="panel-collapse collapse" style="height: 0px;">
                             <div class="panel-body text-sm">
                                 <div class="form-group">
                                     <label>Url</label>
@@ -117,6 +141,16 @@
                             </div>
                           </div>
                         </div>  
+
+
+
+
+
+
+
+
+                        <!-- end -->
+
                     </div>
 
 
