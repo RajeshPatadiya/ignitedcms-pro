@@ -75,17 +75,105 @@ class Asset_files extends CI_Controller {
 	    	//do the validation logic here
 	    	//echo 'pass';
 
-	    	$object = array($fieldname2 => $assetid );
+	    	//retrieve the allowed file types
+			$this->db->select('formvalidation');
+			$this->db->from('fields');
+			$this->db->where('name', $fieldname2);
+			$this->db->limit(1);
 
-			$this->db->where('entryid', $entryid2);
 			
-			$this->db->update('content', $object);
 
-			redirect("admin/entries/render_section/$sectionid2/$entryid2", "refresh");
+			$query = $this->db->get();
+			$formvalidation = "";
+			foreach ($query->result() as $row) 
+			{
+				$formvalidation =  $row->formvalidation;
+			}
+
+
+	       $allowed_types = $formvalidation;
+
+	       //check if this file is in the allowed type array
+	       if($this->check_file_type($allowed_types,$assetid))
+	       {
+		       	$object = array($fieldname2 => $assetid );
+
+				$this->db->where('entryid', $entryid2);
+				
+				$this->db->update('content', $object);
+
+				redirect("admin/entries/render_section/$sectionid2/$entryid2", "refresh");
+
+	       }
+	       else
+	       {
+	       	    //failed
+	       	  	$this->session->set_flashdata('type', '0');
+	    		$this->session->set_flashdata('msg', '<strong>Failed</strong> File type not allowed!');
+
+	    		redirect("admin/entries/render_section/$sectionid2/$entryid2", "refresh");
+
+	       }
 
 	    }
 	}
 
+
+
+	 /**
+	  *  @Description: check if validate array asset id is allowed file type
+	  *       @Params: [jpg|png], asset id
+	  *
+	  *  	 @returns: true or false
+	  */
+	public function check_file_type($allowed_types,$assetid)
+	{
+
+		//first get the assetid extension
+		$this->db->select('kind');
+		$this->db->from('assetfields');
+		$this->db->where('id', $assetid);
+		$this->db->limit(1);
+
+		$query = $this->db->get();
+		
+		$kind = "";
+		foreach ($query->result() as $row) 
+		{
+			$kind =  $row->kind;
+		}
+
+		//get rid of the fullstop at the beginning
+		$kind = trim($kind,'.');
+
+		
+		
+		//explode allowed type array
+		$arr = explode("|", $allowed_types);
+
+
+		$pass = 0;
+
+		$count = 0;
+		foreach ($arr as $key)
+		{
+			
+			if($key == $kind)
+			{
+ 				
+ 				$count++;
+			}
+		}
+
+
+		if($count > 0)
+		{
+			$pass = 1;
+		}
+
+		return $pass;
+
+	}
 
 
 
