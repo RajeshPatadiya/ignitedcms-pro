@@ -49,7 +49,7 @@
 
                   <div class="one-asset">
 
-                     <img class="img-responsive my-center" src="<?=$key->url ?>" alt="image" />
+                     <img class="img-responsive my-center" src="<?=$key->thumb ?>" alt="image" />
 
                     
 

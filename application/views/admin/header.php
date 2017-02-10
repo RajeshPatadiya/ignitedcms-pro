@@ -59,8 +59,8 @@
             position: relative;
             margin-left: 20px;
             
-            max-width: 110px;
-            min-height: 100px;
+            width: 100px;
+            height: auto;
             padding:10px;
             float: left;
 
@@ -69,8 +69,8 @@
 
         .bot{
 
-            position: absolute;
-            bottom: 1px;
+            position: relative;
+            top: 5px;
             
             margin-left: 10px;
 

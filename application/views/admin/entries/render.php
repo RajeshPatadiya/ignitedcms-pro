@@ -74,7 +74,7 @@
 
 			                  <div class="one-asset">
 
-			                     <img class="img-responsive my-center" src="<?=$key->url ?>" alt="image" />
+			                     <img class="img-responsive my-center" src="<?=$key->thumb ?>" alt="image" />
 
 			                    
 
@@ -116,8 +116,8 @@
                                 
                                 <input type="file" name="userfile" size="20" data-toggle="tooltip" data-placement="right" title=""/>
 
-                                <button  type="submit" class="btn btn-purplet btn-s-xs pull-right" id="">
-                                <i class="fa fa-plus"></i> <strong>Upload Image</strong></button>
+                                <button  type="submit" class="btn btn-purplet btn-s-xs m-t" id="">
+                                <i class="fa fa-plus"></i> <strong>Upload New Image</strong></button>
                             <?php echo form_close(); ?>
                               
                             </div>

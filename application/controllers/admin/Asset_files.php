@@ -273,10 +273,10 @@ class Asset_files extends CI_Controller {
 					$config['source_image']	= "./assets/uploads/$filename";
 					$config['create_thumb'] = TRUE;
 					
-					$config['maintain_ratio'] = TRUE;
+					$config['maintain_ratio'] = FALSE;
 					
-					$config['width']	= 200;
-					$config['height']	= 200;
+					$config['width']	= 50;
+					$config['height']	= 50;
 					
 
 
@@ -292,20 +292,20 @@ class Asset_files extends CI_Controller {
 
 
 					//make square image
-					$config2['image_library'] = 'gd2';
-					$config2['source_image']	= "./assets/uploads/$thumb";
-					$config2['create_thumb'] = FALSE;
-					$config2['maintain_ratio'] = FALSE;
-					$config2['x_axis']  =5;
-					$config2['y_axis']  =5;
-					$config2['quality'] =100;
-					$config2['width']	= 40;
-					$config2['height']	= 40;
+					// $config2['image_library'] = 'gd2';
+					// $config2['source_image']	= "./assets/uploads/$thumb";
+					// $config2['create_thumb'] = FALSE;
+					// $config2['maintain_ratio'] = FALSE;
+					// $config2['x_axis']  =5;
+					// $config2['y_axis']  =5;
+					// $config2['quality'] =100;
+					// $config2['width']	= 40;
+					// $config2['height']	= 40;
 
 
-					$this->image_lib->initialize($config2); 
-					//now crop
-					$this->image_lib->crop();
+					// $this->image_lib->initialize($config2); 
+					// //now crop
+					// $this->image_lib->crop();
 
 					$fullsize = $mytry['raw_name'] .  $mytry['file_ext'];
 
