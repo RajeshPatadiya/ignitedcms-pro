@@ -69,10 +69,18 @@ class Globals extends CI_Controller {
 		$this->db->where('sectionid', $sectionid);
 
 		$query = $this->db->get();
+
+
+		//get all asset files
+		$this->db->select('*');
+		$this->db->from('assetfields');
+
+		$query3 = $this->db->get();
 		
 		
 		
 		$data['query'] = $query;
+		$data['query3'] = $query3;
 
 		$data['entryid'] = $entryid;
 		$data['sectionid'] = $sectionid;

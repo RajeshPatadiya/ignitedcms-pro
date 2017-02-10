@@ -119,6 +119,7 @@
          
          
          $("#fieldname").val(handle);
+         $("#fieldname2").val(handle);
 
       });
 

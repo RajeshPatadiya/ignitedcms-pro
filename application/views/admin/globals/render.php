@@ -55,6 +55,49 @@
 		        		<div class="row" id='hidden-upload' style="display:none;">
                         
                         <div class="col-sm-12">
+
+                        	<form  action="<?php echo site_url("admin/asset_files/add_from_lib"); ?>" method="post" enctype="multipart/form-data">
+                        		
+
+                        	<input type="text" name="entryid2" id="entryid2" value="<?php echo $entryid; ?>" style="display:none;"/>
+                          	<input type="text" name="fieldname2" id="fieldname2" value="" style="display:none;"/>
+                          	<input type="text" name="sectionid2" id="sectionid2" value="<?php echo $sectionid; ?>" style="display:none;"/>
+                        	
+
+                        	<!-- show the image lib -->
+                        	<?php foreach ($query3->result() as $key): ?>
+
+			                  <div class="one-asset">
+
+			                     <img class="img-responsive my-center" src="<?=$key->thumb ?>" alt="image" />
+
+			                    
+
+			                    <div class="bot">
+			                         <input  class="m-l"   type="checkbox" name="chosen[]" value="<?= $key->id; ?>" /> <strong>Add</strong>
+			                    </div>
+			               
+			                  
+
+
+			                  </div>
+			              <?php endforeach; ?>
+
+			              	<button type="submit" class="btn btn-purplet btn-s-xs pull-right" id="">
+			              		    <i class="fa fa-check"></i> <strong>add</strong>
+			              	</button>
+			              	
+			              	
+			              </form>
+
+
+			              <div class="clearfix"></div>
+
+
+
+
+
+                        	
                             <?php $atts = array( 'data-validate'=>'parsley'); 
                             echo form_open_multipart('admin/asset_files/do_upload',$atts); ?>
                   
