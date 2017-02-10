@@ -127,7 +127,7 @@ class Test_twig extends CI_Controller {
 
 		$this->load->library('parser');
 	
-		$this->parser->parse("custom/$section_name/index.html", $data);
+		$this->parser->parse("custom/$section_name/index", $data);
 
      }
 
@@ -275,7 +275,7 @@ class Test_twig extends CI_Controller {
 			//in short, always call the child template!!
 			
 			// Load our Twig template
-			$this->load->view("custom/$section_name/_entry.html", $data);
+			$this->load->view("custom/$section_name/_entry.php", $data);
 		}
 		else
 		{

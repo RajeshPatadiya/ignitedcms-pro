@@ -60,7 +60,7 @@
 
                 As soon a you create a section, the name of your section will form the php name. For example,if you created a section called home, you need to create a php file called home.php inside your custom folder. <br/><br/>
 
-                Your section template <strong>MUST</strong> contain a file called _layout.php template and a footer file called _footer.php both placed at the <strong>root</strong> of the views folder Typically the header will call all the css styles and the footer will contain the javascript files. <br/><br>
+                Your section template <strong>MUST</strong> contain a file called _layout.php template and a footer file called _footer.php both placed at the <strong>root</strong> of the views folder. Typically the header will call all the css styles and the footer will contain the javascript files. <br/><br>
                 <pre><?php echo trim(my_html_escape('
 <?php $this->load->view("_layout"); ?>
 <?php $this->load->view("_footer"); ?>')); ?>

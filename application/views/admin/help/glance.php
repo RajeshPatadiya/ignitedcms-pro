@@ -52,7 +52,7 @@
   		        	are where you organise the layout and choose if they are singles such as the home page, or multiples
   		        	such as news items in a blog or products in a shop. Entries, is where you actually input your data.
 
-  		        	<br/><br/> Really that's all there is to it. And we use Twig to output our fields into a template file.
+  		        	<br/><br/> Really that's all there is to it. 
   		        	
 
   		        </div>

@@ -194,28 +194,18 @@ class Stuff_template_generator extends CI_Model {
 			$content = $this->get_field_handles($sectionid);
 
 			$string =
-"{% extends \"_layout.html\" %}
-
-{% block content %}
-
-{# You put our content in here #}
-	$content
-
-{% endblock %}";
+"
+<?php \$this->load->view(\"_layout\"); ?>
+$content
+<?php \$this->load->view(\"_footer\"); ?>";
 
 			$string2 =
-"{% extends \"_layout.html\" %}
-
-{% block content %}
-
-{# You put our content in here #}
-	{% for entry in multiples.$folder %}
-		<a href=\"{{entry.url}}\">{{entry.title}}</a>
-		<br/>
-
-	{% endfor %}
-
-{% endblock %}";
+"
+<?php \$this->load->view(\"_layout\"); ?>
+<?php foreach (\$multiples[\"$folder\"] as \$key) : ?>
+    <a href=\"<?= \$key[\"url\"] ?>\"><?= \$key[\"title\"] ?></a> <br/>
+  <?php endforeach; ?>
+<?php \$this->load->view(\"_footer\"); ?>";
 
 
 
@@ -248,14 +238,11 @@ class Stuff_template_generator extends CI_Model {
 			$content = $this->get_field_handles($sectionid);
 
 			$string =
-"{% extends \"_layout.html\" %}
+"
+<?php \$this->load->view(\"_layout\"); ?>
+$content
+<?php \$this->load->view(\"_footer\"); ?>";
 
-	{% block content %}
-
-	{# You put our content in here #}
-		$content
-
-	{% endblock %}";
 
 
 			//$data = 'Some file data';
@@ -295,19 +282,8 @@ class Stuff_template_generator extends CI_Model {
 		$string = "";
 		foreach ($query->result() as $row) 
 		{
-			//special case for uploads
-			if($row->type === "file-upload")
-			{
-				$string = $string . 
-				 '{% for a in assets.'.$row->name. ' %}
-	    	<img src="{{a.url}}" alt="" width="600px;"/>
-	    {% endfor %}' ."\n\t";
-			}
-			else
-			{
-				$string = $string . "{{entry." .$row->name ."}}" . "\n\t\t";	
-			}
 
+			$string = $string . "<?=\$" .$row->name ."?>" . "\n\t\t";	
 			
 		}
 		return $string;

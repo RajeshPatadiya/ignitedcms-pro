@@ -67,15 +67,7 @@
                 Windows users, using xamp should be good to go. <br/><br/>
 
                 <strong>Mac Users</strong> <br/><br/>
-                Mac users on MAMP need to do one extra step. Simply open the config.php file under: <br/><br/>
-                <pre><?php echo trim(my_html_escape('
-application > config > config.php
-')); ?>
-</pre> <br/>   And edit the base_url line to read: <br/><br/>
-<pre><?php echo trim(my_html_escape('
-$config[\'base_url\'] = \'http://localhost:8888/ignitedcms-pro/\';
-')); ?>
-</pre> <br/>  Then just follow the steps as usual <br/><br/>
+                Mac users same as Windows users. You shouldn't need to worry about the port being 8888. <br/>  <br/>
               <strong>Linux Users</strong> <br/><br/>
               First you need to give the full folder 777 permissions. This can be done by going into the terminal and typing: <br/><br/>
               <pre><?php echo trim(my_html_escape('
