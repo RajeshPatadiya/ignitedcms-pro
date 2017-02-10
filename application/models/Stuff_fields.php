@@ -508,8 +508,7 @@ class Stuff_fields extends CI_Model {
 			$fields = array(
         
 		        $handle => array(
-		        'type' => 'INT',
-		        'constraint' =>  '11'
+		        'type' => 'INT'
 		        
         		),
         	);
@@ -518,7 +517,7 @@ class Stuff_fields extends CI_Model {
 			'name' => $handle, 
 			'type' => $type, 
 			// 'min'  => $min,
-			 'max'  => $max,
+			 //'max'  => $max,
 			'instructions' => $instructions,
 			'maxchars' => $maxchars,
 			'formvalidation' => $xd
