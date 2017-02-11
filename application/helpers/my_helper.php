@@ -513,7 +513,7 @@ if ( ! function_exists('my_field_show'))
 
           echo "
           <div class='form-group'>
-              <label>$row->name</label>
+              <label>[$row->name]</label>
               <div class='igs-small'>$row->instructions</div>
               <input name='$row->name' 
               type='text'  
@@ -534,7 +534,7 @@ if ( ! function_exists('my_field_show'))
           $content = my_field_content($entryid,$row->name);
           echo "
           <div class='form-group'>
-              <label>$row->name</label>
+              <label>[$row->name]</label>
               <div class='igs-small'>$row->instructions</div>
               <input name='$row->name' 
               type='text'  
@@ -556,7 +556,7 @@ if ( ! function_exists('my_field_show'))
           $arr = explode(",", $row->opts);
           echo "
              <div class='form-group'>
-                  <label>$row->name</label>
+                  <label>[$row->name]</label>
                   <div class='igs-small'>$row->instructions</div>
                      <select name='$row->name' class='form-control m-b'>";
 
@@ -586,7 +586,7 @@ if ( ! function_exists('my_field_show'))
           $arr = explode(",", $row->opts);
           echo "
              <div class='form-group'>
-                <label>$row->name</label>
+                <label>[$row->name]</label>
                 <div class='igs-small'>$row->instructions</div>
                   <input type='text' 
                     name='chk-$row->name' 
@@ -618,7 +618,7 @@ if ( ! function_exists('my_field_show'))
             $content = my_field_content($entryid,$row->name);
           echo "
           <div class='form-group'>
-              <label>$row->name</label>
+              <label>[$row->name]</label>
               <div class='igs-small'>$row->instructions</div>
                
                    <textarea name='$row->name'   class='form-control' rows='5'  placeholder='Type here' data-toggle='tooltip' data-placement='top'>$content</textarea>
@@ -639,7 +639,7 @@ if ( ! function_exists('my_field_show'))
               value='' 
               style='display:none;' />
             <div class='form-group'>
-                <label>$row->name</label>   
+                <label>[$row->name]</label>   
                   <a href='#' class='t-edit' uid='$row->name'>Edit</a>
                   <div class='igs-small'>$row->instructions</div>
                   <div id='tmp-$row->name' 
@@ -656,7 +656,7 @@ if ( ! function_exists('my_field_show'))
           $content = my_field_content($entryid,$row->name);
           echo "
           <div class='form-group'>
-             <label>$row->name</label>
+             <label>[$row->name]</label>
              <div class='igs-small'>$row->instructions</div>
              <input class='color' 
               name='$row->name' 
@@ -679,7 +679,7 @@ if ( ! function_exists('my_field_show'))
           echo "
           <div class='form-group'>
 
-          <label>$row->name</label>
+          <label>[$row->name]</label>
           <div class='igs-small'>$row->instructions</div>
               <input name='$row->name'  
               class='input-sm input-s datepicker-input form-control' 
@@ -709,7 +709,7 @@ if ( ! function_exists('my_field_show'))
           echo "
           <div class='clear'></div>
           <div class='form-group'>
-            <label>$row->name</label>
+            <label>[$row->name]</label>
                   <div class='igs-small'>$row->instructions</div>
                  ";
 
@@ -755,7 +755,7 @@ if ( ! function_exists('my_field_show'))
 
           echo "
           <div class='form-group'>
-          <label>$row->name</label>
+          <label>[$row->name]</label>
                   <div class='igs-small'>$row->instructions</div>
             <label class='switch'>
               <input type='hidden' value='0' name='$row->name'>

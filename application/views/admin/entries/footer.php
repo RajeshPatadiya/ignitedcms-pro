@@ -91,7 +91,7 @@
          var kTmp =  $('#editor').html().trim();
          $(gLob).html(kTmp);
 
-         $('#r-editor').slideDown();
+         $('#r-editor').slideUp();
       });
       
        $('#rich-close').click(function (event) {
