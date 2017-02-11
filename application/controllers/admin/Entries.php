@@ -450,8 +450,31 @@ class Entries extends CI_Controller {
 
 	    		else
 	    		{
-	    			//$object = array( $key => $value  );
-	    			$arr[$key] = trim($value);
+	    			
+	    			//special case to prevent saving date as 0000-00-00
+
+	    			$this->load->model('stuff_fields');
+	    			$type = $this->stuff_fields->get_field_type_n($key);
+
+	    			if($type == 'date')
+	    			{
+	    				//10 is character count xxxx-xx-xx
+	    				if(strlen($value) == 10)
+	    				{
+	    					$arr[$key] = trim($value);
+	    				}
+	    				else
+	    				{
+	    					//do nothing
+	    					//don't save the empty date field
+	    				}
+	    				
+	    			}
+	    			else
+	    			{
+	    				$arr[$key] = trim($value);
+	    			}
+
 
 	    		}
 

@@ -95,9 +95,37 @@ class Stuff_fields extends CI_Model {
 		}
 		return $type;
 		
+	}
 
+	 /**
+	  *  @Description: returns the field type
+	  *       @Params: fieldname
+	  *
+	  *  	 @returns: string fieldtype
+	  */
+	public function get_field_type_n($name)
+	{
+		$this->db->select('*');
+		$this->db->from('fields');
+		$this->db->where('name', $name);
+		$this->db->limit(1);
+
+		$query = $this->db->get();
+		$type = "";
+		foreach ($query->result() as $row) 
+		{
+			$type = $row->type;
+		}
+		return $type;
 		
 	}
+
+
+
+
+
+
+
 
 	 /**
 	  *  @Description: As a new field is added add the content table with table structure
@@ -682,7 +710,7 @@ class Stuff_fields extends CI_Model {
 			 
 			'instructions' => $instructions,
 			'maxchars' => $maxchars,
-			'formvalidation' => 'min_length[1]'
+			'formvalidation' => 'min_length[10]'
 			
 			);
 
