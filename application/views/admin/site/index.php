@@ -31,9 +31,22 @@
               <div class="panel-body">
 
               	<div class="form-group">
+                    <div class="errors pull-left">*</div>
               	    <label>Site Home page</label>
-              	    <div class="igs-small">The name (section) for the site main page, this will be the first your visitors see when they go to your site</div>
-              	    <input name="default_page" type="text"  class="form-control" placeholder="E.g. home" data-toggle="tooltip" data-placement="top"  value="">
+              	    <div class="igs-small">The name (section) for the site main page, this will be the first page your visitors see when they go to your site, this field is case sensitive.</div>
+              	   
+
+                    <select name="default_page" class="form-control">
+                      
+                        <?php foreach ($query->result() as $row): ?>
+
+                          <option value="<?= $row->name; ?>"> <?= $row->name; ?></option>
+                        <?php endforeach; ?>
+                        
+                    </select>
+                    
+
+
               	</div>
 
               	<button type="submit" class="btn btn-purplet btn-s-xs pull-right" id="">

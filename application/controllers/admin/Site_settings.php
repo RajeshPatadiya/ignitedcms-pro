@@ -9,7 +9,14 @@ class Site_settings extends CI_Controller {
 	public function index()
 	{
 		
-		$data['test'] = $test;
+		//get all the sections and pass to view
+		$this->db->select('*');
+		$this->db->from('section');
+		$this->db->where('sectiontype !=', 'Global');
+
+		$query = $this->db->get();
+		
+		$data['query'] = $query;
 
 
 		$this->load->view('admin/header');
@@ -42,10 +49,24 @@ class Site_settings extends CI_Controller {
 
 		//now overwrite the enter controller
 
+		$string =
+"<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-		$content = file_get_contents(APPPATH ."controllers/enter.php");
+//define the entry point
+//Please do not delete this file!
+
+class Enter extends CI_Controller {
+
+	public function index()
+	{
+		redirect('%VAR%');	
+	}
+}";
+
+
+		//$content = file_get_contents(APPPATH ."controllers/enter.php");
 		
-		$content = str_replace("admin/dashboard", "$default_page", $content);
+		$content = str_replace("%VAR%", "$default_page", $string);
 
 		if ( ! write_file(APPPATH ."controllers/enter.php", $content))
 		{
