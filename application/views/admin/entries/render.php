@@ -41,7 +41,7 @@
 
 
 	<div class="row" style="margin-left:30px; margin-right:30px;">
-		<div class="col-sm-9">
+		<div class="col-sm-8">
 		    <header class="panel-heading font-bold">Entry contents  
 		    	
 
@@ -234,7 +234,34 @@
 		    </section>
 		</div>
 
-		<div class="col-sm-3">
+		<?php if(my_is_global($sectionid)) { ?>
+
+		<div class="col-sm-4">
+		    <header class="panel-heading font-bold">Global Variables
+		    	<div class="pull-right btn btn-sm  btn-info btn-rounded" data-toggle="popover" data-html="true" data-placement="top" data-content="Global Variables" title="" data-original-title="<button type=&quot;button&quot; class=&quot;close pull-right&quot; data-dismiss=&quot;popover&quot;>×</button>Info"> <i class="fa fa-question"></i> <strong></strong> 
+		       	 </div>
+		    </header>
+		    <section class="panel">
+		        
+		        <div class="panel-body">
+
+		        	These can be accessed <strong>ANYWHERE</strong> in your template files. To use them use the following syntax:
+
+		        	<pre><?php echo my_html_escape('<?= $globalname["fieldHandle"] ?>'); ?>
+
+		        	</pre>
+
+		        </div>
+		    </section>
+		</div>
+		
+
+
+		
+
+	   <?php } else { ?>
+
+		<div class="col-sm-4">
 		    <header class="panel-heading font-bold">Utilities</header>
 		    <section class="panel">
 		        
@@ -266,7 +293,7 @@
 		        </div>
 		    </section>
 		</div>
-		
+		<?php } ?>
 		
 	</div>
 

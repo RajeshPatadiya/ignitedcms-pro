@@ -50,8 +50,33 @@
     <script src="<?php echo (base_url()."resources")?>/js/ie/html5.js" cache="false"></script>
     <script src="<?php echo (base_url()."resources")?>/js/ie/fix.js" cache="false"></script>
   <![endif]-->
+
+
+  
     <style type="text/css">
 
+        /*style for asset add new*/
+        .m-asset-new{
+            color: #03a9f4;
+            text-decoration: underline;
+            margin-left: 5px;
+        }
+
+        /*styles for the select assets*/
+        .new-file{
+
+            padding: 10px;
+            background-color: #e8ebef;
+
+
+        }
+
+
+        .existing-assets{
+            padding: 10px;
+            
+
+        }
 
         /*styling for the assets*/
         .one-asset{
@@ -64,8 +89,17 @@
             padding:10px;
             float: left;
 
+        }
+
+        /*styling for rich text box display*/
+        .rich{
+
+            padding: 10px;
+            background-color: #e8efec;
+            min-height: 200px;
 
         }
+
 
         .bot{
 

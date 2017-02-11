@@ -215,6 +215,43 @@ if ( ! function_exists('my_role'))
 
 
 
+/**
+  *  @Description: checks if sectionid is a global
+  *       @Params: sectionid
+  *
+  *     @returns: true or false
+  */
+if ( ! function_exists('my_is_global'))
+{
+    function my_is_global($id)
+    {
+      $CI =& get_instance();
+      $CI->db->select('sectiontype');
+      $CI->db->from('section');
+      $CI->db->where('id', $id);
+      $CI->db->limit(1);
+
+      $query = $CI->db->get();
+      $sectiontype = "";
+      foreach ($query->result() as $row) 
+      {
+        $sectiontype = $row->sectiontype;
+      }
+      
+      if ($sectiontype == "Global") 
+      {
+         return true;
+      }
+      else
+      {
+        return false;
+      }
+
+    }   
+}
+
+
+
 
 
 /**

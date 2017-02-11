@@ -52,7 +52,7 @@
  	           <section class="panel">
  	               
  	               <div class="panel-body">
- 	               	<div class="col-sm-6 my-pad-top">
+ 	               	<div class="col-sm-4 my-pad-top">
                     <div class="my-blk">
                        <i class="fa fa-file big purplet"></i>
                        <div class="my-info ">Singles</div>
@@ -67,7 +67,7 @@
                     </div>
                      
                   </div>
-                  <div class="col-sm-6 my-pad-top">
+                  <div class="col-sm-4 my-pad-top">
                     <div class="my-blk">
                        <i class="fa fa-copy big purplet"></i>
                        <div class="my-info">Multiples</div>
@@ -80,7 +80,7 @@
                     
                      
                   </div>
-                  <div class="col-sm-6 my-pad-top">
+                  <div class="col-sm-4 my-pad-top">
                     <div class="my-blk">
                        <i class="fa fa-globe big purplet"></i>
                        <div class="my-info ">Globals</div>
