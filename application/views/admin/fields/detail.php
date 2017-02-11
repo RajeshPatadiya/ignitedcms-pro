@@ -111,7 +111,7 @@
                         <div class="small-gap"></div>
                         <div class="form-group">
                             <label>Drop Down values</label>
-                            <input name="opts-name" type="text"  
+                            <input name="opts-name2" type="text"  
                             data-maxlength="200" class="form-control" 
                             placeholder="Type option here" 
                             data-toggle="tooltip" 

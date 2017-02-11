@@ -260,10 +260,7 @@ class Field_builder extends CI_Controller {
 		{
 			$pass = TRUE;
 		}
-		if($type === 'drop-down')
-		{
-			$pass = TRUE;
-		}
+		
 		if($type === 'check-box')
 		{
 			$pass = TRUE;
@@ -475,10 +472,7 @@ class Field_builder extends CI_Controller {
 		{
 			$pass = TRUE;
 		}
-		if($type === 'drop-down')
-		{
-			$pass = TRUE;
-		}
+		
 		if($type === 'check-box')
 		{
 			$pass = TRUE;
