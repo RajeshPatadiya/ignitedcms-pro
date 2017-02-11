@@ -65,6 +65,20 @@ class Entries extends CI_Controller {
 		$query2 = $this->db->get();
 		
 		$data['query2'] = $query2;
+
+
+		$this->db->select('entry.id AS eid,section.name,entry.sectionid,entry.type');
+		$this->db->from('entry');
+		$this->db->join('section', 'section.id = entry.sectionid', 'left');
+		$this->db->where('section.sectiontype', 'Global');
+		
+		//ONLY select the global section types!!!
+		
+
+		$query3 = $this->db->get();
+		
+
+		$data['query3'] = $query3;
 		
 		$this->load->view('admin/header');
 		$this->load->view('admin/body');

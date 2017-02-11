@@ -223,7 +223,6 @@ class Installer extends CI_Controller {
 		(13,'field_builder',13),
 		(14,'sections',14),
 		(15,'entries',15),
-		(16,'globals',16),
 		(17,'asset_lib',17),
 		(18,'site_settings',18);";
 
@@ -238,7 +237,6 @@ class Installer extends CI_Controller {
 		(1,13),
 		(1,14),
 		(1,15),
-		(1,16),
 		(1,17),
 		(1,18);";
 

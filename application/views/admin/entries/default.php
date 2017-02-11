@@ -80,6 +80,21 @@
                     
                      
                   </div>
+                  <div class="col-sm-6 my-pad-top">
+                    <div class="my-blk">
+                       <i class="fa fa-globe big purplet"></i>
+                       <div class="my-info ">Globals</div>
+                       <br/><br/>
+                       <?php foreach ($query3->result() as $row): ?>
+                       <?php $sectionid = $row->sectionid;
+                              $id = $row->eid;
+
+                         ?>
+                       <a href="<?php echo site_url("admin/entries/render_section/$sectionid/$id"); ?>"><?php echo $row->name; ?></a> <br/>
+                     <?php endforeach; ?>
+                    </div>
+                     
+                  </div>
                   
 
 
