@@ -56,73 +56,93 @@
 		        
 		        <div class="panel-body">
 
-		        		<div class="row" id='hidden-upload' style="display:none;">
+		        		<div class="row" >
                         
                         <div class="col-sm-12">
 
 
-                        	<form  action="<?php echo site_url("admin/asset_files/add_from_lib"); ?>" method="post" enctype="multipart/form-data">
+                        	<!-- existing assets -->
+                        	<div class="existing-assets" id='hidden-upload' style="display:none;">
+                        		
+                        		<form  action="<?php echo site_url("admin/asset_files/add_from_lib"); ?>" method="post" enctype="multipart/form-data">
                         		
 
-                        	<input type="text" name="entryid2" id="entryid2" value="<?php echo $entryid; ?>" style="display:none;"/>
-                          	<input type="text" name="fieldname2" id="fieldname2" value="" style="display:none;"/>
-                          	<input type="text" name="sectionid2" id="sectionid2" value="<?php echo $sectionid; ?>" style="display:none;"/>
-                        	
+	                        	<input type="text" name="entryid2" id="entryid2" value="<?php echo $entryid; ?>" style="display:none;"/>
+	                          	<input type="text" name="fieldname2" id="fieldname2" value="" style="display:none;"/>
+	                          	<input type="text" name="sectionid2" id="sectionid2" value="<?php echo $sectionid; ?>" style="display:none;"/>
+	                        	
 
-                        	<!-- show the image lib -->
-                        	<?php foreach ($query3->result() as $key): ?>
+	                        	<!-- show the image lib -->
+	                        	<?php foreach ($query3->result() as $key): ?>
 
-			                  <div class="one-asset">
+				                  <div class="one-asset">
 
-			                     <img class="img-responsive my-center" src="<?=$key->thumb ?>" alt="image" />
+				                     <img class="img-responsive my-center" src="<?=$key->thumb ?>" alt="image" />
 
-			                    
+				                    
 
-			                    <div class="bot">
-			                         <input  class="m-l"   type="checkbox" name="chosen[]" value="<?= $key->id; ?>" /> <strong>Add</strong>
-			                    </div>
-			               
-			                  
+				                    <div class="">
+				                         <input  class="m-l"   type="checkbox" name="chosen[]" value="<?= $key->id; ?>" /> <strong>Add</strong>
+				                    </div>
+				               
+				                  
 
 
-			                  </div>
-			              <?php endforeach; ?>
+				                  </div>
+				              		<?php endforeach; ?>
 
-			              	<button type="submit" class="btn btn-purplet btn-s-xs pull-right" id="">
-			              		    <i class="fa fa-check"></i> <strong>add</strong>
-			              	</button>
-			              	
-			              	
-			              </form>
-                        	
-                        	
-                        		
-                        	<!-- end image lib -->
+				              	<button type="submit" class="btn btn-purplet btn-s-xs pull-right" id="">
+				              		    <i class="fa fa-check"></i> <strong>add</strong>
+				              	</button>
+				              	
+				              	
+				              </form>
 
-                        	<div class="clearfix"></div>
+                        	</div>
 
-                            <?php $atts = array( 'data-validate'=>'parsley'); 
-                                  echo form_open_multipart('admin/asset_files/do_upload',$atts); ?>
-                  
-                          <!-- do the upload -->
-                          <div class="form-group">
-                                      
-                          		<input type="text" name="entryid" id="entryid" value="<?php echo $entryid; ?>" style="display:none;"/>
-                          		<input type="text" name="fieldname" id="fieldname" value="" style="display:none;"/>
-                          		<input type="text" name="sectionid" id="sectionid" value="<?php echo $sectionid; ?>" style="display:none;"/>
-
-                                <label >Upload Image:</label>
-                                
-                                
-                                <input type="file" name="userfile" size="20" data-toggle="tooltip" data-placement="right" title=""/>
-
-                                <button  type="submit" class="btn btn-purplet btn-s-xs m-t" id="">
-                                <i class="fa fa-plus"></i> <strong>Upload New Image</strong></button>
-                            <?php echo form_close(); ?>
-                              
-                            </div>
+                        	<!-- end existing assets -->
                         </div>
                     </div>
+                        	
+                        	
+                        	
+                        		
+                        <div class="row" >
+                        
+                        <div class="col-sm-12">	
+
+                        	
+
+                        	<!-- upload new file -->
+
+                        	<div class="new-file" id='hidden-upload2' style="display:none;">
+                        		<div class="close btn" id="m-close">&times;</div>
+                        		<?php $atts = array( 'data-validate'=>'parsley'); 
+                                  echo form_open_multipart('admin/asset_files/do_upload',$atts); ?>
+                  
+                          
+		                          <div class="form-group">
+		                                      
+		                          		<input type="text" name="entryid" id="entryid" value="<?php echo $entryid; ?>" style="display:none;"/>
+		                          		<input type="text" name="fieldname" id="fieldname" value="" style="display:none;"/>
+		                          		<input type="text" name="sectionid" id="sectionid" value="<?php echo $sectionid; ?>" style="display:none;"/>
+
+		                                <label >Upload Image:</label>
+		                                
+		                                
+		                                <input type="file" name="userfile" size="20" data-toggle="tooltip" data-placement="right" title=""/>
+
+		                                <button  type="submit" class="btn btn-purplet btn-s-xs m-t" id="">
+		                                <i class="fa fa-plus"></i> <strong>Upload New Image</strong></button>
+		                            <?php echo form_close(); ?>
+		                              
+		                           </div>
+                        	</div>
+                        	<!-- end upload new file -->
+                        </div>
+                    </div>
+
+                      
 
                     <?php $atts= array( 'data-validate'=>'parsley'); echo form_open_multipart("admin/entries/save_content/$sectionid/$entryid",$atts); ?>
 		        	<!-- rich text editor -->

@@ -734,9 +734,9 @@ if ( ! function_exists('my_field_show'))
                  
                   echo "<div  class='btn btn-purplet btn-s-xs add-asset'  
                       uid='$row->name' style='margin-left:10px; margin-top:0px;'>
-                      <strong>Add asset</strong>
+                      <strong>Add asset from library</strong>
                         <i class='fa fa-plus pull-left'></i>
-                      </div>    
+                      </div> <a href='#' class='m-asset-new' uid='$row->name'> Upload new file</a>     
                   </div> 
                   <div class='clearfix'></div>
               <div class='errors'>$errors</div>";

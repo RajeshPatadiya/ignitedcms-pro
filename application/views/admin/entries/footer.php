@@ -91,9 +91,16 @@
          var kTmp =  $('#editor').html().trim();
          $(gLob).html(kTmp);
 
-         $('#r-editor').slideUp();
+         $('#r-editor').slideDown();
       });
       
+       $('#rich-close').click(function (event) {
+         
+
+         $('#r-editor').slideUp();
+      });
+
+
 
       $("#save").click(function (event) {
 
@@ -111,6 +118,7 @@
 
       });
 
+      // upload from lib
       $(".add-asset").click(function (event) {
          $('#hidden-upload').slideDown();
 
@@ -123,6 +131,27 @@
          $("#fieldname").val(handle);
          $("#fieldname2").val(handle);
 
+      });
+
+      // new upload
+      $(".m-asset-new").click(function (event) {
+         $('#hidden-upload2').slideDown();
+
+         
+         var handle = $(this).attr("uid");
+         
+         
+       
+
+         $("#fieldname").val(handle);
+         $("#fieldname2").val(handle);
+
+      });
+
+      $('#m-close').click(function (event) {
+         
+
+         $('#hidden-upload2').slideUp();
       });
 
       
