@@ -12,6 +12,53 @@
 
 class Stuff_template_generator extends CI_Model {
 
+	 public function for_image($col,$val)
+     {
+     	//return $val;
+
+     	$col = trim($col);
+
+     	$this->db->select('*');
+     	$this->db->from('fields');
+     	$this->db->where('name', $col);
+     	$this->db->limit(1);
+
+     	$query = $this->db->get();
+     	
+     	$type = "";
+     	foreach ($query->result() as $row) 
+     	{
+     		$type= $row->type;
+     	}
+     	
+     	if($type == 'file-upload')
+     	{
+     		$this->db->select('url');
+     		$this->db->from('assetfields');
+     		$this->db->where('id', $val);
+     		$this->db->limit(1);
+     		$query = $this->db->get();
+     		
+     		$url = "";
+     		foreach ($query->result() as $row) 
+     		{
+     			$url= $row->url;
+     		}
+     		return $url;
+
+     	}
+
+     	else
+     	{
+     		return $val;
+     	}
+
+     }
+
+
+
+
+
 	   /**
 	    *  @Description: A way to loop through all the entries that are multiples
 	    *                so that they can be passed into the twig template builder
@@ -43,6 +90,42 @@ class Stuff_template_generator extends CI_Model {
 
 	  		$a['url'] =  $url;
 	  		$a['title'] = $this->get_title($row->id,$row->sectionid);
+
+
+
+	  		//////////////////////////////////////
+	  		$this->db->select('*');
+			$this->db->from('content');
+			$this->db->where('entryid', $row->id);
+			$this->db->limit(1);
+
+			$query2 = $this->db->get();
+			
+			$query2 =  $query2->result_array();
+
+			
+			 $arrTmp = array();
+			 foreach ($query2 as $b  ) {
+			 	$arrTmp = $b;
+			 }
+
+			foreach ($arrTmp as $key => $value) 
+			{
+			 	//special case for images
+			 	//make templating much easier
+			 	 $tmp =$this->for_image($key,$value);
+
+		 		$a[$key] = $tmp;
+		 	}
+		 	//////////////////////////////////////
+
+
+
+
+
+
+
+
 	  		$arr[$section_name][$counter] = $a;
 	  		$counter++;
 	  	}
