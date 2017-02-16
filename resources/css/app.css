@@ -131,18 +131,7 @@ a:hover .caret-white {
   font-weight: normal;
   display: block;
 }
-.form-control {
-  border: none;
-  border-radius: 2px;
-  box-shadow: 0 0 2px rgba(51, 170, 255, 0), inset 0 0 0 1px rgba(0, 0, 0, 0.1), inset 0 2px 4px rgba(0, 0, 0, 0.1), inset 0 0 0 1px rgba(51, 170, 255, 0);
-}
 
-.form-control:focus {
- /* -webkit-box-shadow: none;
-  box-shadow: none;*/
-  border: solid 1px;
-  border-color: #B9D9F3;
-}
 .input-s-sm {
   width: 120px;
 }
@@ -548,8 +537,8 @@ a:hover .caret-white {
   }
   .vbox > section,
   .vbox > footer {
-    position: absolute;
-    top: 81px;
+    position: relative;
+    top: 0px;
     bottom: 0;
     width: 100%;
   }
