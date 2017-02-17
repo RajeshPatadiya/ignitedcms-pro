@@ -63,7 +63,7 @@
 
                         	<!-- existing assets -->
                         	<div class="existing-assets" id='hidden-upload' style="display:none;">
-                        		
+                        		<div class="close btn" id="a-close">&times;</div>
                         		<form  action="<?php echo site_url("admin/asset_files/add_from_lib"); ?>" method="post" enctype="multipart/form-data">
                         		
 
@@ -91,9 +91,11 @@
 				                  </div>
 				              		<?php endforeach; ?>
 
-				              	<button type="submit" class="btn btn-purplet btn-s-xs pull-right" id="">
-				              		    <i class="fa fa-check"></i> <strong>add</strong>
+				              	<div class="clearfix"></div>
+				              	<button type="submit" class="btn btn-purplet btn-s-xs " id="">
+				              		    <i class="fa fa-plus"></i> <strong>add</strong>
 				              	</button>
+				              	
 				              	
 				              	
 				              </form>

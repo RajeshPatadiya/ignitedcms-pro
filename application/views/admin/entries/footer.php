@@ -133,6 +133,12 @@
 
       });
 
+      $('#a-close').click(function (event) {
+         
+
+         $('#hidden-upload').slideUp();
+      });
+
       // new upload
       $(".m-asset-new").click(function (event) {
          $('#hidden-upload2').slideDown();

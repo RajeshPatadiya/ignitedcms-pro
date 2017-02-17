@@ -361,6 +361,9 @@ class Stuff_menu extends CI_Model {
 
   	 	$nam = ucfirst(trim($array[0]));
 
+  	 	$nam = str_replace("-", " ", $nam);
+  	 	$nam = str_replace("_", " ", $nam);
+
   	 	return "<a href='$tmp_url'> <span> <strong>$nam</strong></span></a>";
 
   	 }

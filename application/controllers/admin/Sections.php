@@ -227,7 +227,7 @@ class Sections extends CI_Controller {
 	public function save_section($id)
 	{
 
-		$this->form_validation->set_rules('name', 'Handle', 'required|alpha|is_unique[section.name]'); //unique
+		$this->form_validation->set_rules('name', 'Handle', 'required|alpha_dash|is_unique[section.name]'); //unique
 		$this->form_validation->set_rules('sectiontype', 'Type', 'callback_type_check');
 		$this->form_validation->set_rules('dummy', 'Type', 'required');
 

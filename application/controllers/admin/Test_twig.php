@@ -259,6 +259,15 @@ class Test_twig extends CI_Controller {
 		$this->load->model('Stuff_template_generator');
 		$data['assets'] = $this->Stuff_template_generator->get_all_assets($entryid);
 
+
+		//allow multiples to be accessed from anywhere
+		$this->load->model('Stuff_template_generator');
+		$x = $this->Stuff_template_generator->get_all_sections();
+
+
+		$data['multiples'] = $x;
+
+
 		
 
 		if($this->Stuff_template_generator->is_multiple($sectionid))
