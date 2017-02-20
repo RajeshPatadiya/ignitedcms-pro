@@ -76,61 +76,21 @@
 
 
 
-	           	<!-- search and sort -->
-              <?php $atts= array( 'data-validate'=>'parsley'); echo form_open_multipart('admin/users/search_users_or_delete',$atts); ?>
-	           	<div class="row" >
-	           		<div class="col-sm-2">
-	           		<div class="btn  btn-white" data-toggle="popover" data-html="true" data-placement="top" data-content='
-                   Are you sure? You can not can not get this back if you click yes ;)<br/><br/>
-                   
-                  <button type="submit" class="btn btn-purplet btn-block" name="sbm" value="delete" ><strong>Yes</strong></button>
-                  
-
-                  ' title="" data-original-title='<button type="button" class="close pull-right" data-dismiss="popover">&times;</button>Warning!!!'>  
-                    <strong>Delete Selected</strong> 
-                  </div>
-	           		
-		           	</div>
-		           	
-		           	<div class="col-sm-8">
-		           		<div class="input-group">
-		           		  
-		           		  		
-	                      <input type="text" name="search_term" class="input-sm form-control" placeholder="Search">
-	                      <span class="input-group-btn">
-	                        <button class="btn btn-sm btn-white" type="submit" name="sbm" value="search"> <i class="fa fa-search"> </i></button>
-	                      </span>
-	                      
-                    	</div>
-		           	</div>
-		           
-		           	<div class="col-sm-2">
-		           		<div class="input-group-btn">
-                            <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown"><i class="fa fa-sort-amount-desc"> </i> <strong>Sort by User</strong><span class="caret"></span></button>
-                            <ul class="dropdown-menu pull-right">
-                              <li><a href="<?php echo site_url('admin/users/sort_by/name'); ?> ">Username</a></li>
-                              <li><a href="<?php echo site_url('admin/users/sort_by/email'); ?>">Email</a></li>
-                              <li><a href="<?php echo site_url('admin/users/sort_by/groupID'); ?>">Roles</a></li>
-                              <li class="divider"></li>
-                              <li><a href="#">Ascending</a></li>
-                              <li><a href="#">Descending</a></li>
-                            </ul>
-                          </div>
-		           	</div>
-	           	
-	           	</div>
+	           
+	          
 	           	
 
 
 	           	<div class="table-responsive" style="margin-top:20px;">
-                  <table class="table table-striped b-t text-sm">
+                  <table class="table table-striped b-t text-sm" id="example">
                     <thead>
 
                       <tr>
-                        <th width="20" ><input type="checkbox"></th>
+                        <th class="text-muted">User Id</th>
                         <th class="text-muted">Username</th>
                         <th width="500" class="text-muted">Email</th>
                         <th class="text-muted">Roles</th>
+                         <th class="text-muted">Action</th>
                         
                       </tr>
                     </thead>
@@ -138,12 +98,13 @@
                     	<?php foreach ($query->result() as $row): ?>
                     		<?php $id = $row->id; ?>
                     		<tr>
-		                        <td><input type="checkbox" name="chosen[]" value="<?php echo $id; ?>"></td>
+		                        <td><?php echo $id; ?></td>
 		                        <td>
 		                        	<a href="<?php echo site_url("admin/users/user_update_view/$id"); ?>"><?php echo $row->name; ?></a>
 		                        </td>
 		                        <td> <?php echo $row->email; ?></td>
 		                        <td><?php echo $row->groupName; ?></td>
+                            <td><?php echo anchor("admin/users/search_users_or_delete/$id", 'Delete', 'attributs'); ?></td>
                       		</tr>
                     	<?php endforeach ?>
 
@@ -151,7 +112,7 @@
                     </tbody>
                   </table>
                 </div>
-                  <?php echo form_close(); ?>
+                  
 	           </div>
 	       </section>
 	   </div>

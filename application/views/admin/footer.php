@@ -30,6 +30,8 @@
   
   <script src="<?php echo(base_url()."resources") ?>/js/jscolor/jscolor.js" type="text/javascript"></script>
   
+  <!-- datatables -->
+  <script src="<?php echo(base_url()."resources") ?>/js/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
 
    <!-- smart menus -->
    <script src="<?php echo(base_url()."resources") ?>/js/jquery.smartmenus.js"></script>
@@ -69,6 +71,10 @@ $(function() {
     });
   }
 });
+
+$('#example').dataTable( {
+      
+    });
 
          
         

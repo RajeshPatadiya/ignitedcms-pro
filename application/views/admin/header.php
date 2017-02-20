@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="<?php echo (base_url()."resources")?>/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="<?php echo (base_url()."resources")?>/css/font.css" type="text/css" cache="false">
     <link rel="stylesheet" href="<?php echo (base_url()."resources")?>/js/fuelux/fuelux.css" type="text/css">
+    <link rel="stylesheet" href="<?php echo (base_url()."resources")?>/js/datatables/datatables.css" type="text/css">
     <link rel="stylesheet" href="<?php echo (base_url()."resources")?>/js/datepicker/datepicker.css" type="text/css">
     <link rel="stylesheet" href="<?php echo (base_url()."resources")?>/js/nestable/nestable.css" type="text/css" cache="false" />
     <link rel="stylesheet" href="<?php echo (base_url()."resources")?>/css/plugin.css" type="text/css">
@@ -58,6 +59,71 @@
 
   
     <style type="text/css">
+
+/*for the datatable pagination*/
+        .paginate_disabled_previous{
+
+            margin-top: 5px;
+            padding: 5px;
+            color: #ffffff;
+            border-radius: 2px;
+            background-color: #2E8C7A;
+            border:  1px solid;
+            border-color: rgb(13, 116, 185);
+            font-weight: bold;
+            font-size: 12px;
+            cursor: pointer;
+
+        }
+
+         .paginate_enabled_previous{
+
+            margin-top: 5px;
+            padding: 5px;
+            color: #ffffff;
+            border-radius: 2px;
+            background-color: #2E8C7A;
+            border:  1px solid;
+            border-color: rgb(13, 116, 185);
+            font-weight: bold;
+            font-size: 12px;
+            cursor: pointer;
+
+        }
+
+        .paginate_disabled_next{
+            margin-top: 5px;
+            margin-left: 5px;
+            padding: 5px;
+            color: #ffffff;
+            border-radius: 2px;
+            background-color: #2E8C7A;
+            border:  1px solid;
+            border-color: rgb(13, 116, 185);
+            font-weight: bold;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+         .paginate_enabled_next{
+            margin-top: 5px;
+            margin-left: 5px;
+            padding: 5px;
+            color: #ffffff;
+            border-radius: 2px;
+            background-color: #2E8C7A;
+            border:  1px solid;
+            border-color: rgb(13, 116, 185);
+            font-weight: bold;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .dataTables_length {
+            padding: 5px;
+            max-width: 200px;
+            float: left;
+        }
 
     /*new menu test styles*/
 .main-nav {
