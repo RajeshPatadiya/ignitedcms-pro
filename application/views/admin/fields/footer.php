@@ -37,11 +37,18 @@
   <!-- markdown -->
 
   
+    <!-- datatables -->
+  <script src="<?php echo(base_url()."resources") ?>/js/datatables/jquery.dataTables.min.js" type="text/javascript"></script>
 
 
  <script type="text/javascript">
    
     $(document).ready(function (event) {
+
+
+    $('#example').dataTable( {
+      
+    });
 
       var counter = "<?php echo $counter; ?>"
 

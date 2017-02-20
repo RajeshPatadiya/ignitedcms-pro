@@ -105,57 +105,21 @@ class Field_builder extends CI_Controller {
 	  *
 	  *  	 @returns: returns
 	  */
-	public function search_posts_or_delete()
+	public function search_posts_or_delete($value)
 	{
-		//check if search or delete
-		if($this->input->post('sbm') == "search") 
-		{
-
-			$search_term = $this->input->post('search_term');
-
-			$this->db->select('*');
-			$this->db->from('fields');
-			$this->db->like('name', $search_term);
-
-			$query = $this->db->get();
-			
-
-			$data['query'] = $query;
-			
-
-
-			$this->load->view('admin/header');
-			$this->load->view('admin/body');
-			$this->load->view('admin/fields/default',$data); 
-			$this->load->view('admin/fields/footer');
-		}
-
-		if($this->input->post('sbm') == "delete") 
-		{
-			
+		
 			$this->load->model('Stuff_fields');
+			$this->Stuff_fields->remove_field($value);
 
-			//iterate over selected items and delete
-			if (isset($_POST['chosen']))
-			{
-				$arrayName = $_POST['chosen'];
+			//delete the pages in the db
+			$this->db->where('id', $value);
+			$this->db->delete('fields');
 
-				foreach ($arrayName as $key => $value) {
-					
-					$this->Stuff_fields->remove_field($value);
-
-					//delete the pages in the db
-					$this->db->where('id', $value);
-					$this->db->delete('fields');
-
-				}
-				
-			}
 			
 			//return to page view
 			redirect("admin/field_builder","refresh");
 		
-		}
+		
 	}
 
 
