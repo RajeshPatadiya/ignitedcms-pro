@@ -273,54 +273,17 @@ class Permissions extends CI_Controller {
 	}
 
 
-	public function search_permissions_or_delete()
+	public function search_permissions_or_delete($value)
 	{
-		//check if search or delete
-		if($this->input->post('sbm') == "search") 
-		{
-
-			$search_term = $this->input->post('search_term');
-
-			$this->db->select('*');
-			$this->db->from('permission_groups');
-			$this->db->like('groupName', $search_term);
-
-			$query = $this->db->get();
-			
-
-			$data['query'] = $query;
-			
-
-
-			$this->load->view('admin/header');
-			$this->load->view('admin/body');
-			$this->load->view('admin/permissions/group-perm',$data);
-			$this->load->view('admin/footer');
-		}
-
-		if($this->input->post('sbm') == "delete") 
-		{
+		
 			$error_msg = "";
 
-			//iterate over selected items and delete
-			if (isset($_POST['chosen']))
-			{
-				$arrayName = $_POST['chosen'];
+			
 
-				foreach ($arrayName as $key => $value) {
-					//echo $value;
-
-					//make sure not to delete the administrators!! = id '1'
-					//make sure not to delete a group that is already
-					//linked to a user account
-
-					$this->load->model('Stuff_permissions');
-					$error_msg = $this->Stuff_permissions->delete_group($value);
+			$this->load->model('Stuff_permissions');
+			$error_msg = $this->Stuff_permissions->delete_group($value);
 					
 
-				}
-				
-			}
 			//success
 			if($error_msg == "*")
 			{
@@ -338,7 +301,7 @@ class Permissions extends CI_Controller {
 			//return to page view
 			redirect("admin/permissions","refresh");
 		
-		}
+		
 
 
 	}
