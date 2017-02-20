@@ -38,7 +38,7 @@ class Sections extends CI_Controller {
 		$this->load->view('admin/header');
 		$this->load->view('admin/body');
 		$this->load->view('admin/section/default',$data); 
-		$this->load->view('admin/section/footer');
+		$this->load->view('admin/footer');
 		
 	}
 
@@ -134,7 +134,7 @@ class Sections extends CI_Controller {
 		$this->load->view('admin/header');
 		$this->load->view('admin/body');
 		$this->load->view('admin/section/default',$data); 
-		$this->load->view('admin/section/footer');
+		$this->load->view('admin/footer');
 
 	}
 
@@ -165,55 +165,21 @@ class Sections extends CI_Controller {
 	  *
 	  *  	 @returns: returns
 	  */
-	public function search_posts_or_delete()
+	public function search_posts_or_delete($value)
 	{
-		//check if search or delete
-		if($this->input->post('sbm') == "search") 
-		{
+	
 
-			$search_term = $this->input->post('search_term');
+			$this->load->model('Stuff_section');
+			$this->Stuff_section->delete_section($value);
 
-			$this->db->select('*');
-			$this->db->from('section');
-			$this->db->like('name', $search_term);
+
+
 			
-			$query = $this->db->get();
-			
-			$data['query'] = $query;
-
-			$this->load->view('admin/header');
-			$this->load->view('admin/body');
-			$this->load->view('admin/section/default',$data); 
-			$this->load->view('admin/section/footer');
-		}
-
-		if($this->input->post('sbm') == "delete") 
-		{
-			
-			
-
-			//iterate over selected items and delete
-			if (isset($_POST['chosen']))
-			{
-				$arrayName = $_POST['chosen'];
-
-				foreach ($arrayName as $key => $value) {
-					
-					
-
-					$this->load->model('Stuff_section');
-					$this->Stuff_section->delete_section($value);
-
-
-
-				}
-				
-			}
 			
 			//return to section view
 			redirect("admin/sections","refresh");
 		
-		}
+		
 	}
 
 
@@ -259,7 +225,7 @@ class Sections extends CI_Controller {
 			$this->load->view('admin/header');
 			$this->load->view('admin/body');
 			$this->load->view('admin/section/detail',$data); 
-			$this->load->view('admin/section/footer');
+			$this->load->view('admin/footer');
 		}
 		else
 		{
@@ -283,7 +249,7 @@ class Sections extends CI_Controller {
 			$this->load->view('admin/header');
 			$this->load->view('admin/body');
 			$this->load->view('admin/section/default',$data); 
-			$this->load->view('admin/section/footer');
+			$this->load->view('admin/footer');
 		}
 
 	}
