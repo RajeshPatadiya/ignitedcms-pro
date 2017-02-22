@@ -95,7 +95,7 @@
 		                    <div class="fa fa-gear pull-right" 
 		                      data-toggle="popover" data-html="true" 
 		                      data-placement="top" 
-		                      data-content='<div class="ot" xid="<?php echo $row->id; ?>">yes</div><div class="not" xid="<?php echo $row->id; ?>">No</div>' 
+		                      data-content='<div class="ot" xid="<?php echo $row->id; ?>">Yes</div><div class="not" xid="<?php echo $row->id; ?>">No</div>' 
 		                      title="" 
 		                      data-original-title='<button type="button" class="close pull-right" data-dismiss="popover">&times;</button>Make required'>   
 		                    </div>
