@@ -52,16 +52,16 @@
 
                 <br/><br/>
                 <strong>Types</strong> <br/>
-                Sections have three main types, singles, which are individual pages, multiples which can be like posts or products and globals - as the name suggest these can be accessed on any page in your templates and are useful for setting your site's main look and feel.
+                Sections have three main types, singles, which are individual pages, multiples which can be like posts or products and globals - as the name suggests these can be accessed on any page in your templates and are useful for setting your site's main look and feel.
 
                 <br/><br/>
                 <strong>Singles and Multiples</strong> <br/>
-                The main difference between a single and a multiple section type is that a multiple section type must have a folder with the section name and MUST contain a html file called _entry.html. This will act as the detail page, for example if you imagine your browsing a blog and you click on one post it goes into the detail view. <br/><br/>
+                The main difference between a single and a multiple section type is that a multiple section type must have a folder with the section name and MUST contain a php file called _entry.php. This will act as the detail page, for example if you imagine your browsing a blog and you click on one post it goes into the detail view. <br/><br/>
 
                 <pre><?php echo trim(my_html_escape('
 -- blog(Folder)
----- _entry.html(File)
----- index.html(File)
+---- _entry.php(File)
+---- index.php(File)
 ')); ?>
 </pre>   
 
@@ -69,7 +69,7 @@
                 If you are unsure of the folder and file layout of a multiple, simply click the boiler plate template generator and it will generate the folder structure and files in your view file. Then you can simply inspect them with your favourite text editor (we recommend either sublime or atom) and edit these files.
 
                 <br/><br/>
-                When you create a new 'Multiple' section you can loop through all the entries in the index.html file by using the following syntax.<br/><br/>
+                When you create a new 'Multiple' section you can loop through all the entries in the index.php file by using the following syntax.<br/><br/>
 <pre><?php echo trim(my_html_escape('
 <?php foreach ($multiples["blog"] as $key) : ?>
     <a href="<?= $key["url"] ?>"><?= $key["title"] ?></a> <br/>

@@ -50,7 +50,7 @@
                 We figure if you're reading this you've already installed. But here are a few tips for
                 installation. <br/><br/>
 
-                IgnitedCMS is a one click install, with little or no configuration your end. And we pride ourselves
+                IgnitedCMS Pro is a one click install, with little or no configuration your end. And we pride ourselves
                 on our installer. No need for composer or any other dependencies. It really is a thing of beauty. <br/><br/>
 
                 There are a few steps. <br/><br/>

@@ -47,11 +47,10 @@
   		        
   		        <div class="panel-body" style="padding:30px; font-size:15px; line-height:24px;">
   		        	<h3 class="purplet">Entries</h3>
-                Entries is simply where you enter and store your section content. For example, if you have created a Multiple type
-                you would need to click on the button new (name of your 'multiple' section.) For example, if you created a section type called 'blog' as a multiple. You would click on the button and choose new 'blog.'
+                Entries is simply where you enter and store your section content. There are three types of entry content, singles, multiples and globals.
 
                 <br/><br/>
-                Multiples can have many entries, whereas singles can <strong>ONLY</strong> have one. 
+                Multiples can have many entries, whereas singles can <strong>ONLY</strong> have one. Multiples can actually be accessed from anywhere, even in singles. 
 
                 <br/><br/>
                 In the entry view, this is where you can let ignitedCMS Pro generate the folder and file structures in your views > custom folder. The engine will automagically collect all field types in that section and dump them into your template with the correct syntax.
