@@ -76,7 +76,10 @@ class Plugins extends CI_Controller {
             //without the .zip extentsion
             $this->install_plugin($mytry['raw_name']);
 
-            redirect('admin/plugins','refresh');
+
+            $this->session->set_flashdata('type', '1');
+            $this->session->set_flashdata('msg', '<strong>Success</strong> Plugin installed!');
+            redirect('admin/dashboard','refresh');
         }
 
     }
@@ -100,7 +103,7 @@ class Plugins extends CI_Controller {
         {
             $zip->extractTo('./assets/plugins');
             $zip->close();
-            echo 'Zip file successfully extracted.';
+            
         } 
         else 
         {
