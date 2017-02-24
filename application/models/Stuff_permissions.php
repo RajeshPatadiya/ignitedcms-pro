@@ -197,6 +197,10 @@ class Stuff_permissions extends CI_Model {
 		{
 			return "fa fa-picture-o big";
 		}
+        if($controller == "plugins")
+        {
+            return "fa fa-upload big";
+        }
 
 
 	}
