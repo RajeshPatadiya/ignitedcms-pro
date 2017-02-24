@@ -216,7 +216,7 @@ class Plugins extends CI_Controller {
 
 
         $input = "assets/plugins/$filename/views/$filename";
-        $output = APPPATH ."/views";
+        $output = APPPATH ."/views/admin";
 
 
         $string = read_file("$input/index.php");
