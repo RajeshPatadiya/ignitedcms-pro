@@ -165,7 +165,7 @@ class Plugins extends CI_Controller {
         
 
         //view file directories todo move to admin folder only!
-        mkdir(APPPATH ."/$table");
+        mkdir(APPPATH ."/views/$filename");
         
 
         //model directory
@@ -175,9 +175,9 @@ class Plugins extends CI_Controller {
         //write the controller
         $stmp = ucfirst($filename);
         $stmp = $stmp . ".php";
-        $string = read_file("assets/plugins/$filename/controllers/admin/$filename.php");
+        $string3 = read_file("assets/plugins/$filename/controllers/admin/$filename.php");
 
-        if ( ! write_file(APPPATH. "/controllers/admin/$stmp", $string))
+        if ( ! write_file(APPPATH. "/controllers/admin/$stmp", $string3))
         {
             echo 'Unable to write the file, check you have right permissions';
         }
@@ -200,6 +200,113 @@ class Plugins extends CI_Controller {
         {
             //echo 'File written!';
         }
+
+
+        //finally do the views!//////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+         //////////////////////////////////////////index file
+
+
+        $input = "assets/plugins/$filename/views/$filename";
+        $output = APPPATH ."/views";
+
+
+        $string = read_file("$input/index.php");
+        
+        
+
+        if ( ! write_file("$output/$filename/index.php", $string))
+        {
+            echo 'Unable to write the file, check you have right permissions';
+        }
+        else
+        {
+            //echo 'File written!';
+        }
+
+      
+        $string = read_file("$input/new.php");
+        
+
+
+        if ( ! write_file("$output/$filename/new.php", $string))
+        {
+            echo 'Unable to write the file, check you have right permissions';
+        }
+        else
+        {
+            //echo 'File written!';
+        }
+        
+
+        //////////////////////////////////////////////////////////edit file
+        $string = read_file("$input/edit.php");
+        
+
+
+        if ( ! write_file("$output/$filename/edit.php", $string))
+        {
+            echo 'Unable to write the file, check you have right permissions';
+        }
+        else
+        {
+            //echo 'File written!';
+        }
+
+
+
+
+        ////////////////////////////////////////////////////////////////////////breadcrumb all
+        $string = read_file("$input/breadcrumb-all.php");
+        
+        
+
+        if ( ! write_file("$output/$filename/breadcrumb-all.php", $string))
+        {
+            echo 'Unable to write the file, check you have right permissions';
+        }
+        else
+        {
+            //echo 'File written!';
+        }
+
+        ////////////////////////////////////////////////////////////////////////breadcrumb edit
+        $string = read_file("$input/breadcrumb-edit.php");
+        
+       
+
+        if ( ! write_file("$output/$filename/breadcrumb-edit.php", $string))
+        {
+            echo 'Unable to write the file, check you have right permissions';
+        }
+        else
+        {
+            //echo 'File written!';
+        }
+
+        ////////////////////////////////////////////////////////////////////////breadcrumb new
+        $string = read_file("$input/breadcrumb-new.php");
+        
+       
+
+        if ( ! write_file("$output/$filename/breadcrumb-new.php", $string))
+        {
+            echo 'Unable to write the file, check you have right permissions';
+        }
+        else
+        {
+            //echo 'File written!';
+        }
+
+
 
 
      }
