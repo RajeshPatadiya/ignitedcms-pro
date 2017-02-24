@@ -165,7 +165,7 @@ class Plugins extends CI_Controller {
         
 
         //view file directories todo move to admin folder only!
-        mkdir(APPPATH ."/views/$filename");
+        mkdir(APPPATH ."/views/admin/$filename");
         
 
         //model directory
