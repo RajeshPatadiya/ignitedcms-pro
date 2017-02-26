@@ -104,6 +104,34 @@ class Stuff_plugins extends CI_Model {
     	$this->db->where('id', $id);
     	$this->db->delete('plugins');
 
+        //tidy and delte controllers/models and views
+        $this->delete_files($name);
+
+    }
+
+
+     /**
+      *  @Description: tidy and delete all plugin controller models and view
+      *       @Params: filenname
+      *
+      *       @returns: returns
+      */
+    public function delete_files($file_name)
+    {
+        //delete the view
+        delete_files("./application/views/admin/$file_name", TRUE);
+        //delete the now empty folder
+        rmdir("./application/views/admin/custom/$file_name");
+
+        //delete the controller
+        unlink("./application/controllers/admin/$file_name.php");
+
+        //delete the models
+        delete_files("./application/models/$file_name", TRUE);
+        //delete the now empty folder
+        rmdir("./application/views/models/$file_name");
+
+
     }
 	
 
