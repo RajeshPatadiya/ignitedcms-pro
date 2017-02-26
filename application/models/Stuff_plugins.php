@@ -121,7 +121,7 @@ class Stuff_plugins extends CI_Model {
         //delete the view
         delete_files("./application/views/admin/$file_name", TRUE);
         //delete the now empty folder
-        rmdir("./application/views/admin/custom/$file_name");
+        rmdir("./application/views/admin/$file_name");
 
         //delete the controller
         unlink("./application/controllers/admin/$file_name.php");
@@ -129,7 +129,13 @@ class Stuff_plugins extends CI_Model {
         //delete the models
         delete_files("./application/models/$file_name", TRUE);
         //delete the now empty folder
-        rmdir("./application/views/models/$file_name");
+        rmdir("./application/models/$file_name");
+
+        //delete the plugins folder in assets
+        delete_files("./application/plugins/$file_name", TRUE);
+        //delete the now empty folder
+        rmdir("./application/plugins/$file_name");
+
 
 
     }
