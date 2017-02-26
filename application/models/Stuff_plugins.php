@@ -16,7 +16,10 @@ class Stuff_plugins extends CI_Model {
 
     public function add_plug($name,$install,$status)
     {
-    	$object = array(
+    	//make sure duplicate entry does not exist
+
+
+        $object = array(
     		'name'=>$name,'install'=>$install,'status'=>$status
 
 
@@ -44,7 +47,10 @@ class Stuff_plugins extends CI_Model {
     public function get_plug($id)
     {
 
-    	$this->db->select('*');
+    	
+
+
+        $this->db->select('*');
     	$this->db->from('plugins');
     	$this->db->where('id', $id);
 
@@ -57,6 +63,44 @@ class Stuff_plugins extends CI_Model {
 
     public function delete_plug($id)
     {
+
+        //delete the permission and permission map first
+        $this->db->select('name');
+        $this->db->from('plugins');
+        $this->db->limit(1);
+
+        $query = $this->db->get();
+        
+        $name = "";
+        foreach ($query->result() as $row) 
+        {
+            $name = $row->name;
+        }
+        
+
+        $this->db->select('permissionID');
+        $this->db->from('permissions');
+        $this->db->where('permission', $name);
+        $this->db->limit(1);
+
+        $query2 = $this->db->get();
+        
+        foreach ($query2->result() as $row) 
+        {
+            //delete the permission map
+            $this->db->where('permissionID', $row->permissionID);
+            $this->db->delete('permission_map');
+            
+        }
+        
+
+        //delete the permission
+        $this->db->where('permission', $name);
+        $this->db->delete('permissions');
+
+
+        //finallly delete the plugin entry
+
     	$this->db->where('id', $id);
     	$this->db->delete('plugins');
 
