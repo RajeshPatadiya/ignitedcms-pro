@@ -132,9 +132,12 @@ class Stuff_plugins extends CI_Model {
         rmdir("./application/models/$file_name");
 
         //delete the plugins folder in assets
-        delete_files("./application/plugins/$file_name", TRUE);
+        delete_files("./assets/plugins/$file_name", TRUE);
         //delete the now empty folder
-        rmdir("./application/plugins/$file_name");
+        rmdir("./assets/plugins/$file_name");
+
+        //remove the zip file
+        unlink("./assets/plugins/$file_name.zip");
 
 
 
