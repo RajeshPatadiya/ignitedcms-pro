@@ -25,10 +25,38 @@ class Plugins extends CI_Controller {
 
     public function index()
     {
+
+
+
+        $this->load->model('stuff_plugins');
+        $query = $this->stuff_plugins->get_all();
+        
+        $data['query'] = $query;
+
+
         $this->load->view('admin/header');
         $this->load->view('admin/body');
-        $this->load->view('admin/plugins/default'); 
+        $this->load->view('admin/plugins/default',$data); 
         $this->load->view('admin/footer');
+    }
+
+
+   
+
+
+    //comment delete the entry, remove permission and permission group remove plugin asset
+    public function delete_plug($id)
+    {
+
+        $this->load->model('stuff_plugins');
+        $this->stuff_plugins->delete_plug($id);
+
+        $this->session->set_flashdata('type', '1');
+        $this->session->set_flashdata('msg', '<strong>Entry removed</strong> ');
+
+        redirect("admin/plugins","refresh");
+
+
     }
 
 
@@ -64,22 +92,34 @@ class Plugins extends CI_Controller {
         //successful
         else
         {
-            $mytry = $this->upload->data();
-            $filename = $mytry['raw_name'].$mytry['file_ext'];
+            
+            
+                //successful
 
-          
-            $this->session->set_flashdata('type', '1');
-            $this->session->set_flashdata('msg', '<strong>Success</strong> plugin added!');
+                $mytry = $this->upload->data();
+                $filename = $mytry['raw_name'].$mytry['file_ext'];
+                $name = $mytry['raw_name'];
 
-            $this->unzip_and_import($filename);
-
-            //without the .zip extentsion
-            $this->install_plugin($mytry['raw_name']);
+                $this->load->model('stuff_plugins');
 
 
-            $this->session->set_flashdata('type', '1');
-            $this->session->set_flashdata('msg', '<strong>Success</strong> Plugin installed!');
-            redirect('admin/dashboard','refresh');
+                $install = date("Y-m-d H:i:s");
+                $this->stuff_plugins->add_plug($name,$install,'1');
+
+                
+
+
+                $this->unzip_and_import($filename);
+
+                //without the .zip extentsion
+                $this->install_plugin($mytry['raw_name']);
+                
+    
+                $this->session->set_flashdata('type', '1');
+                $this->session->set_flashdata('msg', '<strong>Success</strong> Plugin installed!');
+                redirect('admin/plugins','refresh');
+
+            
         }
 
     }
