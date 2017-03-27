@@ -1,12 +1,12 @@
           
                         <?php $this->load->view('admin/footer-map'); ?>
-                    </section>        
-                </section> 
-            </section>
-        </section>
-    </section>
+                    </div>        
+                </div> 
+            </div>
+        </div>
+    </div>
     <!-- /.vbox -->
-  </section>
+  </div>
   <!-- jquery -->
   <script src="<?php echo(base_url()."resources") ?>/js/jquery.min.js" type="text/javascript"></script>
   <script src="<?php echo(base_url()."resources") ?>/js/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>

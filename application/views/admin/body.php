@@ -1,7 +1,7 @@
 
 <!-- .vbox -->
-<section id="content">
-  <section class="vbox">
+<div id="content">
+  <div class="vbox">
    
 
   <div class="head-outer">
@@ -22,20 +22,15 @@
 
           ' title="" data-original-title='<button type="button" class="close pull-right" data-dismiss="popover">&times;</button>Profile'> <i class="fa fa-user"></i>  <strong> <?php echo my_username(); ?></strong></div>
 
-          
-
-          
-          
-
           </div>
       </div> <!-- end class head-->
   </div> <!-- end head-outer -->
 
     
   <!-- Actual content goes here took out wrapper -->
-  <section class="scrollable " > 
-    <section class="tab-content" 
-      <section class="tab-pane active" id="basic">
+  <div class="scrollable " > 
+    <div class="tab-content">
+      <div class="tab-pane active" id="basic">
         
           
         

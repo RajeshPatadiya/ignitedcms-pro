@@ -660,5 +660,5 @@
     </style>
 </head>
 
-<body screen_capture_injected="true">
-    <section class="hbox stretch">
+<body>
+    <div class="hbox stretch">
