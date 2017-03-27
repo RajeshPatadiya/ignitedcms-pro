@@ -1,7 +1,8 @@
           
-                    <?php $this->load->view('admin/footer-map'); ?>
-                </section>        
-            </section> 
+                        <?php $this->load->view('admin/footer-map'); ?>
+                    </section>        
+                </section> 
+            </section>
         </section>
     </section>
     <!-- /.vbox -->
